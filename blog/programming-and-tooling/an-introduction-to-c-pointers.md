@@ -61,6 +61,37 @@ The value of my_number using pointers is 10
 
 ## De-referencing
 
+<p>So, I just mention that we can de-reference a pointer. Well, that means, in short, that we will access the value stored in the address that the pointer holds and not the address itself. That's why when we pass <custom-code>pointer</custom-code> to a function that prints out its value we get the address in hexadecimal and when we pass <custom-code>*pointer</custom-code> we get the value. We are basically telling the pointer "hey, tell me what value is inside your address".</p>
+<p>We can also use this to change values the values that are stored in the address of the pointer. Let's see an example:</p>
+
+```c
+#include <stdio.h>
+
+int main (void) {
+    int my_number;
+    int* pointer;
+
+    my_number = 10;
+    pointer = &my_number;
+
+    printf("The value of my_number using pointers is: %d\n", *pointer);
+
+    *pointer = 11;
+
+    printf("The value of my_number using pointers is now: %d\n", *pointer);
+    printf("And we can confirm that my_number is now also %d\n", my_number);
+}
+```
+
+<p>This should generate the following output:</p>
+
+```
+./myprogram
+The value of my_number using pointers is: 10
+The value of my_number using pointers is now: 11
+And we can confirm that my_number is now also 11
+```
+
 ## Function Pointers
 
 ## Void Pointers
