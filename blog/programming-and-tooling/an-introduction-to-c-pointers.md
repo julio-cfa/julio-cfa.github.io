@@ -52,9 +52,15 @@ The value of my_number using pointers is 10
 ```
 
 <p>A few things to consider here:</p>
-<ol>
+<ul>
 <li><custom-code>int *pointer;</custom-code> is how we define a pointer to an integer. We could also have written it as <custom-code>int* pointer;</custom-code>. It is pretty much the same thing.</li>
 <li><custom-code>&my_number;</custom-code> is how we indicate what is the address that we want to store in a pointer. You can read it as "adress of". The whole thing is something like "pointer is the address of my_number".</li>
 <li><custom-code>pointer</custom-code> in the <custom-code>printf()</custom-code> will print out the address of <custom-code>my_number</custom-code> in hexadecimal.
-<li><custom-code>*pointer</custom-code> in the <custom-code>printf()</custom-code> function is how we de-reference it and access the actual value. More on that soon.
-</ol>
+<li><custom-code>*pointer</custom-code> in the <custom-code>printf()</custom-code> function is how we de-reference it and access the actual value. More on that soon, but know that the asterisk here is different from when we are creating a pointer.</li>
+</ul>
+
+## De-referencing
+
+## Function Pointers
+
+## Void Pointers
