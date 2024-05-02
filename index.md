@@ -6,11 +6,7 @@ layout: default
 
 Testing test, testing test.
 
-```python
-#!/bin/bash
-
-name = "Testing"
-number = 123
-
-```
-
+[About Me](./about-me)
+[Certifications](./certifications)
+[CTFs](./ctfs)
+[Posts](./posts)
