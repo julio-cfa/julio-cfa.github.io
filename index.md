@@ -6,5 +6,5 @@ layout: default
 
 Testing test, testing test.
 
-[About Me](./_blog/about-me.md)
-[CTFs](./_blog/ctfs.md)
+[About Me](./blog/about-me)
+
