@@ -3,7 +3,8 @@
 
 @import 'jekyll-theme-hacker';
 
-code {
-    color: purple; // Set text color to purple
+custom-code {
+    color: rgb(174, 24, 102); // Set text color to purple
+    background-color: rgb(0, 0, 0); // Set background color to dark gray
     padding: 0.2em 0.4em; // Add some padding for better readability
   }

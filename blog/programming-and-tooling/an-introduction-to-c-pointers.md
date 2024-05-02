@@ -21,7 +21,7 @@ int main (void) {
 }
 ```
 
-<p>Here, we are defining an <code>int</code> called <code>my_number</code>. Then, we assign `10` to `my_number`. This value will have to be stored somewhere in memory and that place will receive an address - which is generally a random number. We can call it an address in memory, a location in memory, a reference, call it whatever makes it easier for you to understand it.</p>
+<p>Here, we are defining an <custom-code>int</custom-code> called <custom-code>my_number</custom-code>. Then, we assign <custom-code>10</custom-code> to <custom-code>my_number</custom-code>. This value will have to be stored somewhere in memory and that place will receive an address - which is generally a random number. We can call it an address in memory, a location in memory, a reference, call it whatever makes it easier for you to understand it.</p>
 <p>To retrieve the address of a variable (and its value) in memory, we can use something call a pointer. It is something that points to the address of a variable. Let's see it in practice:</p>
 
 ```c
@@ -39,7 +39,7 @@ int main (void) {
 }
 ```
 
-<p>We can compile this code with `gcc myprogram.c -o myprogram` and execute it with `./myprogram`. The output should be something like:</p>
+<p>We can compile this code with <custom-code>gcc myprogram.c -o myprogram</custom-code> and execute it with <custom-code>./myprogram</custom-code>. The output should be something like:</p>
 
 ```
 ./myprogram
