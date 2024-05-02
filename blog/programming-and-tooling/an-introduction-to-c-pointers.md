@@ -164,7 +164,7 @@ int main (void) {
     my_number = 10;
     pointer = &my_number;
 
-    printf("%d\n", *(int*)pointer);
+    printf("%d\n", *(int*)pointer); // We are converting the void pointer to an int pointer with (int*) - this will be executed before. Then, *pointer will be executed and de-referenced.
 }
 ```
 
@@ -173,6 +173,34 @@ int main (void) {
 ```
 ./myprogram
 10
+```
+
+### Malloc
+
+<p>So, we kind of understood what void pointers are. But what is a practical application of such pointers? Well, a very common is when we are using the <custom-code>malloc()</custom-code> function.</p>
+<p>This is the definition of the function: <custom-code>void *malloc(size_t size);<custom-code>. As seen, the function takes <custom-code>size_t<custom-code> (which is basically an integer) to know how many bytes of memory it needs to allocate.</p>
+<p>This function returns a void pointer and we can then assign (or convert) this returned void pointer to a different data type and store data in it. It may get easier to understand with an example:</p>
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+    int *pointer = malloc(4);
+
+    *pointer = 42;
+
+    printf("The address allocated is %p and the value stored is %d\n", pointer, *pointer);
+
+    free(pointer);
+}
+```
+
+<p>This should output:</p>
+
+```
+./myprogram
+The address allocated is 0x60000391c020 and the value stored is 42
 ```
 
 ## Function Pointers
