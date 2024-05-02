@@ -9,6 +9,10 @@ layout: default
 <p>What is a pointer? Well, this is a question that lived rent-free in my head for a long time. It was just too hard for me to understand what the hell a pointer was. Not only that, everyone I talked to - programmers and security folks - about it would try to avoid this question and tell me that pointers were incomprehensible. After reading <a href="https://beej.us/guide/bgc/">Beej's Guide To C Programming</a> I understood that that couldn't be farther from the truth.</p>
 <p>Ok, so... What the hell is a pointer then? Well, a pointer is a reference to an address in memory. Yeah, I know, that's still a bit complicated. Let's break it down a bit more.</p>
 
+## Pointers
+
+<p>Let's take a look at the following code:</p>
+
 ```c
 #include <stdio.h>
 
@@ -49,5 +53,8 @@ The value of my_number using pointers is 10
 
 <p>A few things to consider here:</p>
 <ol>
-<li><custom-code>int *pointer</custom-code> is how we define a pointer to an integer. We could also have written it as <custom-code>int* pointer</custom-code>. It is pretty much the same thing.</li>
+<li><custom-code>int *pointer;</custom-code> is how we define a pointer to an integer. We could also have written it as <custom-code>int* pointer;</custom-code>. It is pretty much the same thing.</li>
+<li><custom-code>&my_number;</custom-code> is how we indicate what is the address that we want to store in a pointer. You can read it as "adress of". The whole thing is something like "pointer is the address of my_number".</li>
+<li><custom-code>pointer</custom-code> in the <custom-code>printf()</custom-code> will print out the address of <custom-code>my_number</custom-code> in hexadecimal.
+<li><custom-code>*pointer</custom-code> in the <custom-code>printf()</custom-code> function is how we de-reference it and access the actual value. More on that soon.
 </ol>
