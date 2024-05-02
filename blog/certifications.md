@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Certifications
+# /certifications
 
 - <a href="./certification/certified-bug-bounty-hunter-cbbh.html">Certified Bug Bounty Hunter (CBBH) Review</a>
 - <a href="./">eLearn Security Web Application Penetration Tester eXtreme (eWPTXv2) Review</a>
