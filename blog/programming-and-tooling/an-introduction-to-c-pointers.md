@@ -125,6 +125,56 @@ We can print:
 - A char: A
 ```
 
+<p>A void pointer, on the other hand, is a pointer that has no data type defined. No data type associated with it. That means that a void pointer can hold the address of any data type and it can also be typecasted (read converted) to any data type. Let's see an example:</p>
+
+```c
+#include <stdio.h>
+
+int main (void) {
+    int my_number = 10;
+    char* my_string = "Hello World";
+
+    void *pointer;
+
+    pointer = &my_number;
+    printf("Pointer holds the address of my_number, which is: %p\n", pointer);
+
+    pointer = &my_string;
+    printf("Now pointer holds the address of my_string, which is %p\n", pointer);
+}
+```
+
+<p>This should have the following output:</p>
+
+```
+./myprogram
+Pointer holds the address of my_number, which is: 0x16bb2b21c
+Now pointer holds the address of my_string, which is 0x16bb2b210
+```
+
+<p>The problem is that we cannot de-reference a void pointer. Well, at least not without having it converted (i.e. typecasted) first. So, if we want to access the value that a void pointer stores we would need to define its type before. For example:</p>
+
+```c
+#include <stdio.h>
+
+int main (void) {
+    int my_number;
+    void *pointer;
+
+    my_number = 10;
+    pointer = &my_number;
+
+    printf("%d\n", *(int*)pointer);
+}
+```
+
+<p>This should output:</p>
+
+```
+./myprogram
+10
+```
+
 ## Function Pointers
 
 ```
