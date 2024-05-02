@@ -16,7 +16,5 @@ int main (void) {
     int my_number;
     int my_number = 10;
     printf("%d", my_number);
-
 }
-
 ```
