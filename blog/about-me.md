@@ -4,6 +4,6 @@ layout: default
 
 # about me
 
-i am an offensive security professional who transitioned from the legal field to cybersecurity in 2019. i will try to use this blog as a way to document my journey.<br><br>
-i currently hold a few certifications, such as cbbh, ewptxv2, ewptv1, ejptv1, crto, bscp, and more.<br><br>
-if you want, you can connect with me on [linkedin](https://linkedin.com/in/julio-cfa). see ya!
+I am an offensive security professional who transitioned from the legal field to cybersecurity in 2019. I will try to use this blog as a way to document my journey.<br><br>
+I currently hold a few certifications, such as CBBH, eWPTXv2, eWPTv1, eJPTv1, CRTO, BSCP, and more.<br><br>
+If you want, you can connect with me on [Linkedin](https://linkedin.com/in/julio-cfa). See ya!
