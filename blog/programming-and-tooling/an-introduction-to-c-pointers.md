@@ -186,9 +186,9 @@ int main (void) {
 #include <stdlib.h>
 
 int main(void) {
-    int *pointer = malloc(4); // We allocate 4 bytes of memory: 00000000 00000000 00000000 00000000
+    int *pointer = malloc(2); // We allocate 2 bytes of memory: 00000000 00000000
 
-    *pointer = 42; // We stored 42 and memory now looks like this: 00000000 00000000 00000000 00101010
+    *pointer = 42; // We stored 42 and memory now looks like this: 00000000 00101010
 
     printf("The address allocated is %p and the value stored is %d\n", pointer, *pointer);
 
@@ -203,7 +203,8 @@ int main(void) {
 The address allocated is 0x60000391c020 and the value stored is 42
 ```
 
-<p>What we did here, in short, was store the void pointer that was returned in an integer pointer - which automatically converted/typecasted it. We could have done the same thing with a string pointer, char pointer, float pointer, and so forth.
+<p>What we did here, in short, was assign the void pointer that was returned to an integer pointer - which automatically converted/typecasted it. We could have done the same thing with a string pointer, char pointer, float pointer, and so forth.</p>
+<p>A void pointer, in this case, is very useful because there we do not know what kind of data someone will store. If void pointers did not exist, we would need several functions like <custom-code>int *malloc_int(size_t size);</custom-code>, <custom-code>float *malloc_float(size_t size);</custom-code>, and so on.
 
 ## Function Pointers
 
