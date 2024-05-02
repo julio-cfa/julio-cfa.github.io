@@ -2,3 +2,9 @@
 ---
 
 @import 'jekyll-theme-hacker';
+
+code {
+    color: purple; // Set text color to purple
+    background-color: darkgray; // Set background color to dark gray
+    padding: 0.2em 0.4em; // Add some padding for better readability
+  }
