@@ -186,9 +186,9 @@ int main (void) {
 #include <stdlib.h>
 
 int main(void) {
-    int *pointer = malloc(4);
+    int *pointer = malloc(4); // Here, we allocate 4 bytes of memory: 00000000 00000000 00000000 00000000
 
-    *pointer = 42;
+    *pointer = 42; // We stored 42 in the space we allocated before. Memory now looks like this: 00000000 00000000 00000000 00101010
 
     printf("The address allocated is %p and the value stored is %d\n", pointer, *pointer);
 
