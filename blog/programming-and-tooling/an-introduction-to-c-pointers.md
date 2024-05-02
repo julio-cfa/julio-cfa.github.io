@@ -9,7 +9,7 @@ layout: default
 <p>What is a pointer? Well, this is a question that lived rent-free in my head for a long time. It was just too hard for me to understand what the hell a pointer was. Not only that, everyone I talked to - programmers and security folks - about it would try to avoid this question and tell me that pointers were incomprehensible. After reading <a href="https://beej.us/guide/bgc/">Beej's Guide To C Programming</a> I understood that that couldn't be farther from the truth.</p>
 <p>Ok, so... What the hell is a pointer then? Well, a pointer is a reference to an address in memory. Yeah, I know, that's still a bit complicated. Let's break it down a bit more.</p>
 
-## Pointers
+## Using Pointers
 
 <p>Let's take a look at the following code:</p>
 
@@ -175,7 +175,7 @@ int main (void) {
 10
 ```
 
-### Voids Pointers And Malloc
+## Voids Pointers And Malloc
 
 <p>So, we kind of understood what void pointers are. But what is a practical application of such pointers? Well, a very common is when we are using the <custom-code>malloc()</custom-code> function.</p>
 <p>This is the definition of the function: <custom-code>void *malloc(size_t size);</custom-code>. As seen, the function takes <custom-code>size_t</custom-code> (which is basically an integer) to know how many bytes of memory it needs to allocate.</p>
@@ -207,3 +207,7 @@ The address allocated is 0x60000391c020 and the value stored is 42
 <p>A void pointer, in this case, is very useful because there we do not know what kind of data someone will store. If void pointers did not exist, we would need several functions like <custom-code>int *malloc_int(size_t size);</custom-code>, <custom-code>float *malloc_float(size_t size);</custom-code>, and so on.</p>
 
 ## Function Pointers
+
+## Pointers In Offensive Security
+
+<p>This article is called "An (Offensive) Introduction To C Pointers" for a reason.</p>
