@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# /about-us
+# about-us
 
 I am an offensive security professional who transitioned from the legal field to cybersecurity in 2019. I will try to use this blog as a way to document my journey.<br><br>
 I currently hold a few certifications, such as CBBH, eWPTXv2, eWPTv1, eJPTv1, CRTO, BSCP, and more.<br><br>

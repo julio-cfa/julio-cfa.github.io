@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# /home
+# home
 
 Welcome to my blog. You can browse through the following categories:
 
