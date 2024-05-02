@@ -6,7 +6,11 @@ layout: default
 
 Testing test, testing test.
 
-```
-code test
+```python
+#!/bin/bash
+
+name = "Testing"
+number = 123
+
 ```
 
