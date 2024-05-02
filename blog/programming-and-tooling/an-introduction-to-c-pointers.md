@@ -204,10 +204,6 @@ The address allocated is 0x60000391c020 and the value stored is 42
 ```
 
 <p>What we did here, in short, was assign the void pointer that was returned to an integer pointer - which automatically converted/typecasted it. We could have done the same thing with a string pointer, char pointer, float pointer, and so forth.</p>
-<p>A void pointer, in this case, is very useful because there we do not know what kind of data someone will store. If void pointers did not exist, we would need several functions like <custom-code>int *malloc_int(size_t size);</custom-code>, <custom-code>float *malloc_float(size_t size);</custom-code>, and so on.
+<p>A void pointer, in this case, is very useful because there we do not know what kind of data someone will store. If void pointers did not exist, we would need several functions like <custom-code>int *malloc_int(size_t size);</custom-code>, <custom-code>float *malloc_float(size_t size);</custom-code>, and so on.</p>
 
 ## Function Pointers
-
-```
-
-```
