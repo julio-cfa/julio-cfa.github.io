@@ -14,7 +14,35 @@ layout: default
 
 int main (void) {
     int my_number;
-    int my_number = 10;
+
+    my_number = 10;
+
     printf("%d", my_number);
 }
+```
+
+<p>Here, we are defining an `int` called `my_number`. Then, we assign `10` to `my_number`. This value will have to be stored somewhere in memory and that place will receive an address - which is generally a random number. We can call it an address in memory, a location in memory, a reference, call it whatever makes it easier for you to understand it.</p>
+<p>To retrieve the address of a variable (and its value) in memory, we can use something call a pointer. It is something that points to the address of a variable. Let's see it in practice:</p>
+
+```c
+#include <stdio.h>
+
+int main (void) {
+    int my_number;
+    int *pointer;
+
+    my_number = 10;
+    pointer = &my_number;
+
+    printf("The address of my_number is %p\n", pointer);
+    printf("The value of my_number using pointers is %d\n", *pointer);
+}
+```
+
+<p>We can compile this code with `gcc myprogram.c -o myprogram` and execute it with `./myprogram`. The output should be something like:</p>
+
+```
+./myprogram
+The address of my_number is 0x16d82721c
+The value of my_number using pointers is 10
 ```
