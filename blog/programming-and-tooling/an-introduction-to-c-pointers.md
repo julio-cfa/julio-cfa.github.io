@@ -46,3 +46,8 @@ int main (void) {
 The address of my_number is 0x16d82721c
 The value of my_number using pointers is 10
 ```
+
+<p>A few things to consider here:</p>
+<ol>
+<li><custom-code>int *pointer</custom-code> is how we define a pointer to an integer. We could also have written it as <custom-code>int* pointer</custom-code>. It is pretty much the same thing.</li>
+</ol>
