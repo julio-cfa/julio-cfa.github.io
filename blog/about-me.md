@@ -1,7 +1,4 @@
 ---
 layout: post
 ---
-
-# About me
-
-This is just a test.
+This is actually just a template test.
