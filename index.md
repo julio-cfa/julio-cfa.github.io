@@ -4,7 +4,7 @@ layout: default
 
 # Home
 
-Welcome! You can browse through the following categories:
+Welcome to this blog! You can browse through the following categories:
 
 - [About Us](./blog/about-us.html)<br>
 - [Certifications](./blog/certifications.html)<br>
