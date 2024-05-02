@@ -6,8 +6,8 @@ layout: default
 
 ## Introduction
 
-What is a pointer? Well, this is a question that lived rent-free in my head for a long time. It was just too hard for me to understand what the hell a pointer was. Not only that, everyone I talked to - programmers and security folks - about it would try to avoid this question and tell me that pointers were incomprehensible. After reading <a href="https://beej.us/guide/bgc/">Beej's Guide To C Programming</a> I understood that that couldn't be farther from the truth.<br>
-Ok, so... What the hell is a pointer then? Well, a pointer is a reference to an address in memory. Yeah, I know, that's still a bit complicated. Let's break it down a bit more.<br>
+<p>What is a pointer? Well, this is a question that lived rent-free in my head for a long time. It was just too hard for me to understand what the hell a pointer was. Not only that, everyone I talked to - programmers and security folks - about it would try to avoid this question and tell me that pointers were incomprehensible. After reading <a href="https://beej.us/guide/bgc/">Beej's Guide To C Programming</a> I understood that that couldn't be farther from the truth.</p>
+<p>Ok, so... What the hell is a pointer then? Well, a pointer is a reference to an address in memory. Yeah, I know, that's still a bit complicated. Let's break it down a bit more.</p>
 
 ```c
 #include <stdio.h>
@@ -21,8 +21,8 @@ int main (void) {
 }
 ```
 
-Here, we are defining an `int` called `my_number`. Then, we assign `10` to `my_number`. This value will have to be stored somewhere in memory and that place will receive an address - which is generally a random number. We can call it an address in memory, a location in memory, a reference, call it whatever makes it easier for you to understand it.<br>
-To retrieve the address of a variable (and its value) in memory, we can use something call a pointer. It is something that points to the address of a variable. Let's see it in practice:<br>
+<p>Here, we are defining an <code>int</code> called <code>my_number</code>. Then, we assign `10` to `my_number`. This value will have to be stored somewhere in memory and that place will receive an address - which is generally a random number. We can call it an address in memory, a location in memory, a reference, call it whatever makes it easier for you to understand it.</p>
+<p>To retrieve the address of a variable (and its value) in memory, we can use something call a pointer. It is something that points to the address of a variable. Let's see it in practice:</p>
 
 ```c
 #include <stdio.h>
@@ -39,7 +39,7 @@ int main (void) {
 }
 ```
 
-We can compile this code with `gcc myprogram.c -o myprogram` and execute it with `./myprogram`. The output should be something like:<br>
+<p>We can compile this code with `gcc myprogram.c -o myprogram` and execute it with `./myprogram`. The output should be something like:</p>
 
 ```
 ./myprogram
