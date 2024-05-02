@@ -38,8 +38,8 @@ int main (void) {
     my_number = 10;
     pointer = &my_number;
 
-    printf("The address of my_number is %p\n", pointer);
-    printf("The value of my_number using pointers is %d\n", *pointer);
+    printf("The address of my_number is: %p\n", pointer);
+    printf("The value of my_number using pointers is: %d\n", *pointer);
 }
 ```
 
@@ -47,8 +47,8 @@ int main (void) {
 
 ```
 ./myprogram
-The address of my_number is 0x16d82721c
-The value of my_number using pointers is 10
+The address of my_number is: 0x16d82721c
+The value of my_number using pointers is: 10
 ```
 
 <p>A few things to consider here:</p>
@@ -79,7 +79,7 @@ int main (void) {
     *pointer = 11;
 
     printf("The value of my_number using pointers is now: %d\n", *pointer);
-    printf("And we can confirm that my_number is now also %d\n", my_number);
+    printf("And we can confirm that my_number is now also: %d\n", my_number);
 }
 ```
 
@@ -89,9 +89,44 @@ int main (void) {
 ./myprogram
 The value of my_number using pointers is: 10
 The value of my_number using pointers is now: 11
-And we can confirm that my_number is now also 11
+And we can confirm that my_number is now also: 11
+```
+
+## Void Pointers
+
+<p>So, we can have pointers of different data types. For example:</p>
+
+```c
+#include <stdio.h>
+
+int main (void) {
+    int my_number = 10;
+    float my_float = 3.14;
+    char* my_string = "Hello World";
+    char my_char = 'A';
+
+    int *n_pointer = &my_number;
+    float *f_pointer = &my_float;
+    char* *s_pointer = &my_string;
+    char *c_pointer = &my_char;
+
+    printf("We can print:\n- An int: %d\n- A float: %f\n- A string: %s\n- A char: %c\n", *n_pointer, *f_pointer, *s_pointer, *c_pointer);
+}
+```
+
+The output of the above code should be:
+
+```
+./myprogram
+We can print:
+- An int: 10
+- A float: 3.140000
+- A string: Hello World
+- A char: A
 ```
 
 ## Function Pointers
 
-## Void Pointers
+```
+
+```
