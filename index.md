@@ -7,4 +7,5 @@ layout: default
 Welcome to my blog. You can browse through the following categories:
 
 [About Me](./blog/about-me.html)<br>
-[CVEs](./blog/cves.html)
+[Certifications](./blog/certifications.html)<br>
+[CVEs](./blog/cves.html)<br>
