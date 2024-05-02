@@ -6,7 +6,5 @@ layout: default
 
 Testing test, testing test.
 
-[About Me](./about-me)
-[Certifications](./certifications)
-[CTFs](./ctfs)
-[Posts](./posts)
+[About Me](./_blog/about-me)
+[CTFs](./_blog/ctfs)
