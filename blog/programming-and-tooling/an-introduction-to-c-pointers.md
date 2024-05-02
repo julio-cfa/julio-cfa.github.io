@@ -76,7 +76,7 @@ int main (void) {
 
     printf("The value of my_number using pointers is: %d\n", *pointer);
 
-    *pointer = 11;
+    *pointer = 11; // here we are using the pointer to change the value of my_number...
 
     printf("The value of my_number using pointers is now: %d\n", *pointer);
     printf("And we can confirm that my_number is now also: %d\n", my_number);
