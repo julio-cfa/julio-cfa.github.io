@@ -186,9 +186,9 @@ int main (void) {
 #include <stdlib.h>
 
 int main(void) {
-    int *pointer = malloc(4); // Here, we allocate 4 bytes of memory: 00000000 00000000 00000000 00000000
+    int *pointer = malloc(4); // We allocate 4 bytes of memory: 00000000 00000000 00000000 00000000
 
-    *pointer = 42; // We stored 42 in the space we allocated before. Memory now looks like this: 00000000 00000000 00000000 00101010
+    *pointer = 42; // We stored 42 and memory now looks like this: 00000000 00000000 00000000 00101010
 
     printf("The address allocated is %p and the value stored is %d\n", pointer, *pointer);
 
@@ -202,6 +202,8 @@ int main(void) {
 ./myprogram
 The address allocated is 0x60000391c020 and the value stored is 42
 ```
+
+<p>What we did here, in short, was store the void pointer that was returned in an integer pointer - which automatically converted/typecasted it. We could have done the same thing with a string pointer, char pointer, float pointer, and so forth.
 
 ## Function Pointers
 
