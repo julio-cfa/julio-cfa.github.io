@@ -61,7 +61,7 @@ The value of my_number using pointers is: 10
 
 ## De-referencing
 
-<p>So, I just mention that we can de-reference a pointer. Well, that means, in short, that we will access the value stored in the address that the pointer holds and not the address itself. That's why when we pass <custom-code>pointer</custom-code> to a function that prints out its value we get the address in hexadecimal and when we pass <custom-code>*pointer</custom-code> we get the value. We are basically telling the pointer "hey, tell me what value is inside your address".</p>
+<p>So, I've just mentioned that we can de-reference a pointer. Well, that means, in short, that we can access the value stored in the address that the pointer holds and not the address itself. That's why when we pass <custom-code>pointer</custom-code> to a function that prints out its value we get the address in hexadecimal and when we pass <custom-code>*pointer</custom-code> (with an asterisk) we get the value. In the latter, we are de-referencing. We are basically telling the pointer "hey, tell me what value is stored inside the address you have".</p>
 <p>We can also use this to change values the values that are stored in the address of the pointer. Let's see an example:</p>
 
 ```c
