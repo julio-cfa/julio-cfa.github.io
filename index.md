@@ -6,6 +6,6 @@ layout: default
 
 Testing test, testing test.
 
-[About Me](./blog/about-me)
-[CVEs](./blog/cve.md)
+[About Me](./blog/about-me.html)
+[CVEs](./blog/cve.html)
 
