@@ -218,7 +218,7 @@ The address allocated is 0x60000391c020 and the value stored is 42
 
 ## Payload Encryption
 
-<p>A very common piece of malware code has a goal encrypt malicious payloads. </p>
+<p>Malware, more often than not, will need a way to encrypt payloads. They will generally use encryption and decryption functions to do so. The code we will discuss below is an adapted version of an RC4 encryption payload that is taught in MalDevAcademy's malware development course. You should definitely check it out as it is one of the best - if not the best - malware development courses out there.</p>
 
 ```c
 #include <stdio.h>
@@ -303,5 +303,7 @@ int main(void) {
 }
 
 ```
+
+<p>Yes, I know. This is very long code and may have some concepts you've never seen before or aren't comfortable with. We'll try to break down the code as much as we can. After all, the idea here is to try to get you to understand what pointers are and to give you a taste of offensive security with malware development.</p>
 
 ## Shellcode Injection
