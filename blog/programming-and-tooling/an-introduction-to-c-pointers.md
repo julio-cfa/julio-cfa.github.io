@@ -208,6 +208,9 @@ The address allocated is 0x60000391c020 and the value stored is 42
 
 ## Function Pointers
 
+<p>So far we have talked about pointers that point to a specific data type and pointers that can handle any data types (void pointers). However, we can also have pointers that will point to functions - these are called "function pointers".</p>
+<p>These can be really tricky to understand and its practical application may be a bit confusing as well, so let's try to break it down and go over each piece</p>
+
 ## Pointers In Offensive Security
 
 <p>This article is called "An (Offensive) Introduction To C Pointers" for a reason.</p>
