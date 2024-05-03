@@ -250,17 +250,45 @@ void RInit(RContext* Ctx, const unsigned char* cryptKey, size_t Length) {
     Ctx->a = 0;
     Ctx->b = 0;
 
-    for (i = 0; i < 256; i++) {
-        context->s[i] = i;
+    for (a = 0; a < 256; a++) {
+        context->s[a] = a;
     }
 
-    for (i = 0; i < 256; i++) {
-        b = (b + Ctx->s[i] + crypKey[i % Length]) % 256;
+    for (a = 0; a < 256; a++) {
+        b = (b + Ctx->s[a] + crypKey[a % Length]) % 256;
 
-        tmp = context->s[i];
+        tmp = context->s[a];
         Ctx->s[a] = context->s[b];
         Ctx->s[b] = tmp;
     }
+}
+
+void RCipher(RContext* Ctx; const unsigned char* Input; unsigned char* Output; size_t Length) {
+    unsigned char tmp;
+
+    unsigned int a = Ctx->a;
+    unsigned int b = Ctx->b;
+    unsigned char* s = Ctx->s;
+
+    while (Length > 0) {
+        a = (a + 1) % 256;
+        b = (b + s[a]) % 256;
+
+        tmp = s[a];
+        s[a] = s[b];
+        s[b] = tmp;
+
+        if (Input != NULL && Output != NULL) {
+            *Output = *Input ^ s[(s[a] + s[b]) % 256];
+
+            Input++;
+            Output++;
+        }
+
+        Length--;
+    }
+    Ctx->a = a;
+    Ctx->b = b;
 }
 
 
