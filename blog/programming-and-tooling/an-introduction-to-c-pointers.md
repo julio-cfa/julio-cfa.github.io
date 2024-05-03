@@ -26,7 +26,7 @@ int main (void) {
 ```
 
 <p>Here, we are defining an <custom-code>int</custom-code> called <custom-code>my_number</custom-code>. Then, we assign <custom-code>10</custom-code> to <custom-code>my_number</custom-code>. This value will have to be stored somewhere in memory and that place will receive an address - which is generally a random number. We can call it an address in memory, a location in memory, a reference, call it whatever makes it easier for you to understand it.</p>
-<p>To retrieve the address of a variable (and its value) in memory, we can use something called pointer. It is something that points to the address of a variable. Let's see it in practice:</p>
+<p>To retrieve the address of a variable (and its value) in memory, we can use a pointer. In short, pointer is something that points to the address of a variable. Let's take a look at this in practice:</p>
 
 ```c
 #include <stdio.h>
