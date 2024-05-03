@@ -218,7 +218,7 @@ The address allocated is 0x60000391c020 and the value stored is 42
 
 ## Payload Encryption
 
-<p>Malware, more often than not, will need a way to encrypt payloads. They will generally use encryption and decryption functions to do so. The code we will discuss below is an adapted version of an RC4 encryption payload that is taught in MalDevAcademy's malware development course. You should definitely check it out as it is one of the best - if not the best - malware development courses out there.</p>
+<p>Malware, more often than not, will need a way to encrypt payloads. They will generally use encryption and decryption functions to do so. The code we will discuss below is an adapted version of an RC4 encryption payload that is taught in <a href="https://maldevacademy.com/">MalDevAcademy</a>'s malware development course. You should definitely check it out as it is one of the best - if not the best - malware development course out there.</p>
 
 ```c
 #include <stdio.h>
