@@ -214,3 +214,44 @@ The address allocated is 0x60000391c020 and the value stored is 42
 ## Pointers In Offensive Security
 
 <p>This article is called "An (Offensive) Introduction To C Pointers" for a reason.</p>
+
+## Payload Encryption
+
+```c
+#include <stdio.h>
+#include <Windows.h> // this is a library to interact with the Windows API
+
+typedef struct {
+    unsigned int a;
+    unsigned int b;
+    unsigned char s[256];
+} RContext;
+
+void RInit(RContext* Ctx, const unsigned char* cryptKey, size_t Length) {
+    unsigned int a;
+    unsigned int b;
+    unsigned char tmp;
+
+    if (Ctx == NULL || cryptKey == NULL) {
+        return ERROR_INVALID_PARAMETER;
+    }
+
+    Ctx->a = 0;
+    Ctx->b = 0;
+
+    for (i = 0; i < 256; i++) {
+        context->s[i] = i;
+    }
+
+    for (i = 0; i < 256; i++) {
+        b = (b + Ctx->s[i] + crypKey[i % Length]) % 256;
+
+        tmp = context->s[i];
+        Ctx->s[a] = context->s[b];
+        Ctx->s[b] = tmp;
+    }
+}
+
+```
+
+## Shellcode Injection
