@@ -6,7 +6,7 @@ layout: default
 
 ## Introduction
 
-<p>What is a pointer? It is a question that lived rent-free in my head for a long time. It was simply too hard for me to understand what the hell a pointer was. Not only that, everyone I talked to - programmers and security folks - tried to avoid this question and told me that pointers were incomprehensible. After reading <a href="https://beej.us/guide/bgc/">Beej's Guide To C Programming</a> (please read it), I realized that this couldn't be further from the truth.</p>
+<p>What is a pointer? It is a question that lived rent-free in my head for a long time. It was simply too hard for me to understand what the hell a pointer was. Not only that, most people I talked to - programmers and security folks alike - tried to avoid this question and told me that pointers were incomprehensible. After reading <a href="https://beej.us/guide/bgc/">Beej's Guide To C Programming</a> (please read it), I realized that this couldn't be further from the truth.</p>
 <p>Okay, so... What the hell is a pointer? Well, a pointer is a reference to an address in memory. Yeah, I know, it's still a bit complicated. Let's break it down a little further.</p>
 
 ## Using Pointers
@@ -51,18 +51,19 @@ The address of my_number is: 0x16d82721c
 The value of my_number using pointers is: 10
 ```
 
-<p>A few things to consider here:</p>
+<p>Let's break it down a little bit better:</p>
 <ul>
-<li><custom-code>int *pointer;</custom-code> is how we define a pointer to an integer. We could also have written it as <custom-code>int* pointer;</custom-code>. It is pretty much the same thing.</li>
-<li><custom-code>&my_number;</custom-code> is how we indicate what is the address that we want to store in a pointer. You can read it as "adress of". The whole thing is something like "pointer is the address of my_number".</li>
+<li><custom-code>int *pointer;</custom-code> is how we define a pointer to an integer. We could also have written it as <custom-code>int* pointer;</custom-code> as it is the same thing.</li>
+<li><custom-code>&my_number;</custom-code> is the address that we want to store in a pointer. You can read it as "adress of". The whole line is something like "pointer is the address of my_number".</li>
 <li><custom-code>pointer</custom-code> in the <custom-code>printf()</custom-code> will print out the address of <custom-code>my_number</custom-code> in hexadecimal.</li>
-<li><custom-code>*pointer</custom-code> in the <custom-code>printf()</custom-code> function is how we de-reference it and access the actual value. More on that soon, but know that the asterisk here is different from when we are creating a pointer.</li>
+<li><custom-code>*pointer</custom-code> in the <custom-code>printf()</custom-code> function is how we de-reference it and access the value stored at that address. More on that soon, but know that the asterisk here is different from when we are creating a pointer.</li>
 </ul>
 
 ## De-referencing
 
-<p>So, I've just mentioned that we can de-reference a pointer. Well, that means, in short, that we can access the value stored in the address that the pointer holds and not the address itself. That's why when we pass <custom-code>pointer</custom-code> to a function that prints out its value we get the address in hexadecimal and when we pass <custom-code>*pointer</custom-code> (with an asterisk) we get the value. In the latter, we are de-referencing. We are basically telling the pointer "hey, tell me what value is stored inside the address you have".</p>
-<p>We can also use this to change values the values that are stored in the address of the pointer. Let's see an example:</p>
+<p>I've just mentioned that we can de-reference a pointer. This means, in short, that we can access the value stored in the address that the pointer holds and not the address itself. This is why when we pass <custom-code>pointer</custom-code> to a function that prints out its value we get the address in hexadecimal and when we pass <custom-code>*pointer</custom-code> (with an asterisk) we get the value.</p>
+<p>In the latter, we are de-referencing the pointer. We are basically telling the pointer "hey, tell me what value is stored inside the address you have".</p>
+<p>We can also use de-referencing to change the values that are stored in the address held by the pointer. Let's see an example:</p>
 
 ```c
 #include <stdio.h>
@@ -76,7 +77,7 @@ int main (void) {
 
     printf("The value of my_number using pointers is: %d\n", *pointer);
 
-    *pointer = 11; // here we are using the pointer to change the value of my_number...
+    *pointer = 11; // Here we are using the pointer to change the value of my_number. We are doing so by de-referencing it.
 
     printf("The value of my_number using pointers is now: %d\n", *pointer);
     printf("And we can confirm that my_number is now also: %d\n", my_number);
@@ -222,7 +223,7 @@ The address allocated is 0x60000391c020 and the value stored is 42
 
 ```c
 #include <stdio.h>
-#include <Windows.h> // this is a library to interact with the Windows API
+#include <Windows.h> // Library to interact with the Windows API. Read: https://en.wikipedia.org/wiki/Windows.h.
 
 unsigned char shell_code[] = {
 	"This is just a really long string to be encrypted. Not really shellcode."
