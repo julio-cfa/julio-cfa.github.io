@@ -213,13 +213,24 @@ The address allocated is 0x60000391c020 and the value stored is 42
 
 ## Pointers In Offensive Security
 
-<p>This article is called "An (Offensive) Introduction To C Pointers" for a reason.</p>
+<p>This article is called "An (Offensive) Introduction To C Pointers" for a reason. The very first time I saw a pointer being used in actual code was during a malware development course - shout out to <a href="https://maldevacademy.com/">MalDevAcademy</a>.</p>
+<p>I could not understand why pointers were chosen for specific parts of the code presented by the modules and I could not understand how exactly they were being used. It is true that, at the time, I really lacked C knowledge and was much more of a Python guy.</p>
 
 ## Payload Encryption
+
+<p>A very common piece of malware code has a goal encrypt malicious payloads. </p>
 
 ```c
 #include <stdio.h>
 #include <Windows.h> // this is a library to interact with the Windows API
+
+unsigned char shell_code[] = {
+	"This is just a really long string to be encrypted. Not really shellcode."
+};
+
+unsigned char crypt_key[] = {
+	0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F
+};
 
 typedef struct {
     unsigned int a;
@@ -251,6 +262,8 @@ void RInit(RContext* Ctx, const unsigned char* cryptKey, size_t Length) {
         Ctx->s[b] = tmp;
     }
 }
+
+
 
 ```
 
