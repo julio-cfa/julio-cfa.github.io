@@ -291,7 +291,16 @@ void RCipher(RContext* Ctx; const unsigned char* Input; unsigned char* Output; s
     Ctx->b = b;
 }
 
+int main(void) {
 
+    RContext Ctx = { 0 };
+
+    RInit(&Ctx, crypt_key, sizeof(crypt_key));
+    unsigned char* CText = (unsigned char*)malloc(strlen(shell_code) * sizeof(int));
+    ZeroMemory(CText, strlen(shell_code) * sizeof(int));
+    RCipher(&Ctx, shell_code, CText, strlen(shell_code));
+    printf("CText: 0x%p\n", CText);
+}
 
 ```
 
