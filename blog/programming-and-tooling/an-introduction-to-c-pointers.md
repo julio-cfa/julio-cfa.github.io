@@ -61,7 +61,7 @@ The value of my_number using pointers is: 10
 
 ## De-referencing
 
-<p>I've just mentioned that we can de-reference a pointer. This means, in short, that we can access the value stored in the address that the pointer holds and not the address itself. This is why when we pass <custom-code>pointer</custom-code> to a function that prints out its value we get the address in hexadecimal and when we pass <custom-code>*pointer</custom-code> (with an asterisk) we get the value.</p>
+<p>I've just mentioned that we can de-reference a pointer. This means, in short, that we can access the value stored in the address that the pointer holds. This is why when we pass <custom-code>pointer</custom-code> to a function that prints out its value we get the address in hexadecimal and when we pass <custom-code>*pointer</custom-code> (with an asterisk) we get the value.</p>
 <p>In the latter, we are de-referencing the pointer. We are basically telling the pointer "hey, tell me what value is stored inside the address you have".</p>
 <p>We can also use de-referencing to change the values that are stored in the address held by the pointer. Let's see an example:</p>
 
@@ -211,6 +211,31 @@ The address allocated is 0x60000391c020 and the value stored is 42
 
 <p>So far we have talked about pointers that point to a specific data type and pointers that can handle any data types (void pointers). However, we can also have pointers that will point to functions - these are called "function pointers".</p>
 <p>These can be really tricky to understand and its practical application may be a bit confusing as well, so let's try to break it down and go over each piece</p>
+<p>Take the following code as an example:</p>
+
+```c
+#include <stdio.h>
+
+void my_function (int num1, int num2) {
+    printf("This function takes two numbers: %d and %d\n", num1, num2);
+}
+
+int main (void) {
+    void (*p_function)(int, int);
+    p_function = &my_function;
+
+    (*p_function)(10, 20);
+
+    return 0;
+}
+```
+
+The output should be:
+
+```
+./myprogram
+This function takes two numbers: 10 and 20
+```
 
 ## Pointers In Offensive Security
 
