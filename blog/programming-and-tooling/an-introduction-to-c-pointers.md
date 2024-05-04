@@ -237,6 +237,49 @@ The output should be:
 This function takes two numbers: 10 and 20
 ```
 
+An example in the wild would be qsort:
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int values[] = { 20, 30, 10, 60, 40, 50 };
+
+int compare_ints (const void *a, const void *b) {
+    int i = *((int *)a);
+    int j = *((int *)b);
+
+    if (i > j) {
+        return 1;
+    }
+
+    if (i < j) {
+        return -1;
+    }
+
+    return 0;
+
+}
+
+int main (void) {
+    int i;
+    size_t nelems = sizeof(values) / sizeof(int);
+
+    qsort((void *)values, nelems, sizeof(int), compare_ints);
+
+    for (i = 0; i < nelems; i++) {
+        printf("%d ", values[i]);
+    }
+}
+```
+
+The output should be:
+
+```
+./myprogram
+10 20 30 40 50 60
+```
+
 ## Pointers In Offensive Security
 
 <p>This article is called "An (Offensive) Introduction To C Pointers" for a reason. The very first time I saw a pointer being used in actual code was during a malware development course - shout out to <a href="https://maldevacademy.com/">MalDevAcademy</a>.</p>
