@@ -8,8 +8,8 @@ layout: default
 
 ## Introduction
 
-<p>What is a pointer? It is a question that lived rent-free in my head for a long time. It was simply too hard for me to understand what the hell a pointer was. Not only that, most people I talked to - programmers and security folks alike - tried to avoid this question and told me that pointers were incomprehensible. After reading <a href="https://beej.us/guide/bgc/">Beej's Guide To C Programming</a> (please read it), I realized that this couldn't be further from the truth.</p>
-<p>Okay, so... What the hell is a pointer? Well, a pointer is a reference to an address in memory. Yeah, I know, it's still complicated. Let's break it down a little further.</p>
+<p align="justify">What is a pointer? It is a question that lived rent-free in my head for a long time. It was simply too hard for me to understand what the hell a pointer was. Not only that, most people I talked to - programmers and security folks alike - tried to avoid this question and told me that pointers were incomprehensible. After reading <a href="https://beej.us/guide/bgc/">Beej's Guide To C Programming</a> (please read it), I realized that this couldn't be further from the truth.</p>
+<p align="justify">Okay, so... What the hell is a pointer? Well, a pointer is a reference to an address in memory. Yeah, I know, it's still complicated. Let's break it down a little further.</p>
 
 ## Using Pointers
 
