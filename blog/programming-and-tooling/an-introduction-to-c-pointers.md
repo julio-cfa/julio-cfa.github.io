@@ -384,3 +384,8 @@ int main(void) {
 <p>Yes, I know. This is very long code and may have some concepts you've never seen before or aren't comfortable with. We'll try to break down the code as much as we can. After all, the idea here is to try to get you to understand what pointers are and to give you a taste of offensive security with malware development.</p>
 
 ## Shellcode Injection
+
+## References
+
+<a href="https://beej.us/guide/bgc/">https://beej.us/guide/bgc/</a>
+<a href="https://maldevacademy.com/">https://maldevacademy.com/</a>
