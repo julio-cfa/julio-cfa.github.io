@@ -2,6 +2,8 @@
 layout: default
 ---
 
+<img src="../../assets/images/my_pointers.png" width=500>
+
 # An (Offensive) Introduction To C Pointers
 
 ## Introduction
