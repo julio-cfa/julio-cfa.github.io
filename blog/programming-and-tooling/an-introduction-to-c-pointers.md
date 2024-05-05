@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<img src="../../assets/images/my_pointers.png" width=500>
+<img src="../../assets/images/my_pointers.png" width=500 style="text-align: center;">
 
 # An (Offensive) Introduction To C Pointers
 
