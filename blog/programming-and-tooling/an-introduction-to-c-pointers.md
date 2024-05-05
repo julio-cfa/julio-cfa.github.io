@@ -2,7 +2,6 @@
 layout: default
 ---
 
-<meta property="og:image" content="/assets/images/my_pointers.png"> 
 <img src="/assets/images/my_pointers.png" width=500 class="center">
 
 # An (Offensive) Introduction To C Pointers
@@ -190,9 +189,9 @@ int main (void) {
 #include <stdlib.h>
 
 int main(void) {
-    int *pointer = malloc(2); // We allocate 2 bytes of memory: 00000000 00000000
+    int *pointer = malloc(1); // We allocate 1 byte of memory: 00000000
 
-    *pointer = 42; // We stored 42 and memory now looks like this: 00000000 00101010
+    *pointer = 42; // We stored 42 and memory may look like this now: 00101010
 
     printf("The address allocated is %p and the value stored is %d\n", pointer, *pointer);
 
