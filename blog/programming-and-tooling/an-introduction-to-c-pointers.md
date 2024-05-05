@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 ---
 
 # An (Offensive) Introduction To C Pointers
