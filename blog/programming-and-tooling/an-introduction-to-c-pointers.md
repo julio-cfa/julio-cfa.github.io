@@ -241,7 +241,7 @@ int main (void) {
 This function takes two numbers: 10 and 20
 ```
 
-<p>So, you may be wondering: "ok, what about function pointers in the wild?". Well, an example of a function pointer in use is in the <custom-code>qsort()</custom-code> function (parte of <custom-code>stdlib.h</custom-code>).</p>
+<p>So, you may be wondering: "ok, what about function pointers in the wild?". Well, an example of a function pointer in use is in the <custom-code>qsort()</custom-code> function (which is part of <custom-code>stdlib.h</custom-code>).</p>
 <p>This function sorts an array and it takes a function pointer to define how exactly it is going to sort it - that is, we can kind of customize if it is going to sort the array in an ascending or descending order.</p>
 
 ```c
