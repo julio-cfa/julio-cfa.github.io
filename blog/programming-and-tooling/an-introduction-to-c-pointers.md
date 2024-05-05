@@ -387,5 +387,5 @@ int main(void) {
 
 ## References
 
-<a href="https://beej.us/guide/bgc/">https://beej.us/guide/bgc/</a>
+<a href="https://beej.us/guide/bgc/">https://beej.us/guide/bgc/</a><br>
 <a href="https://maldevacademy.com/">https://maldevacademy.com/</a>
