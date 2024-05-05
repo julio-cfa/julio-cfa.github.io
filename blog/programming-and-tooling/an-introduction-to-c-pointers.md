@@ -7,11 +7,11 @@ layout: default
 ## Introduction
 
 <p>What is a pointer? It is a question that lived rent-free in my head for a long time. It was simply too hard for me to understand what the hell a pointer was. Not only that, most people I talked to - programmers and security folks alike - tried to avoid this question and told me that pointers were incomprehensible. After reading <a href="https://beej.us/guide/bgc/">Beej's Guide To C Programming</a> (please read it), I realized that this couldn't be further from the truth.</p>
-<p>Okay, so... What the hell is a pointer? Well, a pointer is a reference to an address in memory. Yeah, I know, it's still a bit complicated. Let's break it down a little further.</p>
+<p>Okay, so... What the hell is a pointer? Well, a pointer is a reference to an address in memory. Yeah, I know, it's still complicated. Let's break it down a little further.</p>
 
 ## Using Pointers
 
-<p>Let's take a look at the following code:</p>
+<p>Take the following code as an example:</p>
 
 ```c
 #include <stdio.h>
@@ -26,7 +26,7 @@ int main (void) {
 ```
 
 <p>Here, we are defining an <custom-code>int</custom-code> called <custom-code>my_number</custom-code>. Then, we assign <custom-code>10</custom-code> to <custom-code>my_number</custom-code>. This value will have to be stored somewhere in memory, and this location will receive an address - which is usually a random number. We can call it an address in memory, a location in memory, a reference, call it whatever makes it easier for you to understand it.</p>
-<p>To retrieve a variable's address (and value) from memory, we can use a pointer. In short, pointer is something that points to the address of a variable. Let's take a look at this in practice:</p>
+<p>To retrieve a variable's address (and value) from memory, we can use a pointer. In short, a pointer is something that points to the address of a variable. Let's take a look at this in practice:</p>
 
 ```c
 #include <stdio.h>
@@ -111,7 +111,7 @@ int main (void) {
     char* *s_pointer = &my_string;
     char *c_pointer = &my_char;
 
-    printf("We can print:\n- An int: %d\n- A float: %f\n- A string: %s\n- A char: %c\n", *n_pointer, *f_pointer, *s_pointer, *c_pointer);
+    printf("We can print use a pointer to print:\n- An int: %d\n- A float: %f\n- A string: %s\n- A char: %c\n", *n_pointer, *f_pointer, *s_pointer, *c_pointer);
 }
 ```
 
@@ -119,7 +119,7 @@ The output of the above code should be:
 
 ```
 ./myprogram
-We can print:
+We can use a pointer to print:
 - An int: 10
 - A float: 3.140000
 - A string: Hello World
@@ -153,7 +153,7 @@ Pointer holds the address of my_number, which is: 0x16bb2b21c
 Now pointer holds the address of my_string, which is 0x16bb2b210
 ```
 
-<p>The problem is that we cannot de-reference a void pointer. Well, at least not without having it converted (i.e. typecasted) first. So, if we want to access the value that a void pointer stores we would need to define its type before. For example:</p>
+<p>The problem is that we cannot de-reference a void pointer. Well, at least not without having it converted (i.e. typecasted) first. So, if we want to access the value that a void pointer stores we would need to define its type before de-referencing it. For example:</p>
 
 ```c
 #include <stdio.h>
@@ -230,7 +230,9 @@ int main (void) {
 }
 ```
 
-The output should be:
+<p>Here, we are creating a function called <custom-code>my_function</custom-code> that takes two <custom-code>int</custom-code> values. Then, inside the main function, we create a pointer to a function with <custom-code>void (*p_function)(int, int);</custom-code> (the syntax needs to have parenthesis because if it doesn't we would be just creating a normal function).</p>
+<p>We point the function pointer to the address of <custom-code>my_function</custom-code> with <custom-code>p_function = &my_function;</custom-code>. Lastly, we call <custom-code>my_function</custom-code> using the function pointer with <custom-code>(*p_function)(10, 20);</custom-code></p>
+<p>The output should be:</p>
 
 ```
 ./myprogram
