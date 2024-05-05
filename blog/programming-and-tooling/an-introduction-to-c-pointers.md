@@ -2,7 +2,8 @@
 layout: default
 ---
 
-<img src="../../assets/images/my_pointers.png" width=500 class="center">
+<meta property="og:image" content="/assets/images/my_pointers.png"> 
+<img src="/assets/images/my_pointers.png" width=500 class="center">
 
 # An (Offensive) Introduction To C Pointers
 
