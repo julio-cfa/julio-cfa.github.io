@@ -189,7 +189,7 @@ int main (void) {
 #include <stdlib.h>
 
 int main(void) {
-    int *pointer = malloc(1); // We allocate 1 byte of memory: 00000000
+    int *pointer = malloc(1); // We allocated 1 byte of memory: 00000000
 
     *pointer = 42; // We stored 42 and memory may look like this now: 00101010
 
@@ -241,7 +241,8 @@ int main (void) {
 This function takes two numbers: 10 and 20
 ```
 
-An example in the wild would be qsort:
+<p>So, you may be wondering: "ok, what about function pointers in the wild?". Well, an example of a function pointer in use is in the <custom-code>qsort()</custom-code> function (parte of <custom-code>stdlib.h</custom-code>).</p>
+<p>This function sorts an array and it takes a function pointer to define how exactly it is going to sort it - that is, we can kind of customize if it is going to sort the array in an ascending or descending order.</p>
 
 ```c
 #include <stdio.h>
@@ -267,11 +268,11 @@ int compare_ints (const void *a, const void *b) {
 
 int main (void) {
     int i;
-    size_t nelems = sizeof(values) / sizeof(int);
+    size_t n_of_elems = sizeof(values) / sizeof(int);
 
-    qsort((void *)values, nelems, sizeof(int), compare_ints);
+    qsort((void *)values, n_of_elems, sizeof(int), compare_ints);
 
-    for (i = 0; i < nelems; i++) {
+    for (i = 0; i < n_of_elems; i++) {
         printf("%d ", values[i]);
     }
 }
