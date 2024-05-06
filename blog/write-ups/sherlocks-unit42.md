@@ -170,4 +170,18 @@ JSON:
   "TargetFilename": "C:\\Users\\CyberJunkie\\AppData\\Roaming\\Photo and Fax Vn\\Photo and vn 1.1.2\\install\\F97891C\\TempFolder\\~.pdf"
 ```
 
-The answer is "2024-01-14 08:10:06".
+<p>The answer is "2024-01-14 08:10:06".</p>
+
+### The malicious file dropped a few files on disk. Where was "once.cmd" created on disk? Please answer with the full path along with the filename.
+
+```bash
+./evtx-dump Microsoft-Windows-Sysmon-Operational.evtx -o json | grep -v "Record 1*" | jq '.[] | select(.System.EventID == 11) | .EventData' | grep "once.cmd"
+  "TargetFilename": "C:\\Users\\CyberJunkie\\AppData\\Roaming\\Photo and Fax Vn\\Photo and vn 1.1.2\\install\\F97891C\\WindowsVolume\\Games\\once.cmd",
+  "TargetFilename": "C:\\Games\\once.cmd",
+```
+
+<p>The answer is <custom-code>C:\Users\CyberJunkie\AppData\Roaming\Photo and Fax Vn\Photo and vn 1.1.2\install\F97891C\WindowsVolume\Games\once.cmd</custom-code>.</p>
+
+### The malicious file attempted to reach a dummy domain, most likely to check the internet connection status. What domain name did it try to connect to?
+
+<p>We already have this information from the question we looked for DNS queries. The right answer is <custom-code>www.example.com</custom-code></p>
