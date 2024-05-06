@@ -11,7 +11,7 @@ author: Julio
 ## Introduction
 
 <p>Unit42 is a "Very Easy" challenge We have the following scenario: "In this Sherlock, you will familiarize yourself with Sysmon logs and various useful EventIDs for identifying and analyzing malicious activities on a Windows system. Palo Alto's Unit42 recently conducted research on an UltraVNC campaign, wherein attackers utilized a backdoored version of UltraVNC to maintain access to systems. This lab is inspired by that campaign and guides participants through the initial access stage of the campaign."</p>
-<p>We need to download a file called "unit42.zip". After decompressing it, we get a file called "Microsoft-Windows-Sysmon-Operational.evtx".</p>
+<p>We need to download a file called <custom-code>unit42.zip</custom-code>. After decompressing it, we get a file called <custom-code>Microsoft-Windows-Sysmon-Operational.evtx</custom-code>.</p>
 
 ## Questions
 
@@ -217,6 +217,10 @@ JSON:
 ```
 
 <p>The answer is <custom-code>2024-02-14 03:41:58</custom-code>.</p>
+
+## Conclusion
+
+<p>Unit42 is a great and easy challenge. It helps us understand Windows event logs and also how to use tools such as jq and grep to navigate through the events and retrieve important information about incidents.</p>
 
 ## References
 
