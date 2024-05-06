@@ -17,7 +17,8 @@ author: Julio
 
 ### 1. What is the Operating System of the machine?
 
-<p>Judging my the scenario description, we are dealing with a memory dump. We can use a tool called "Volatility" to interact with it - we will be using both its version 2 and version 3. Assuming the memory dump was taken from a Windows machine, we can run the following command to get more information on the system:</p>
+<p>Judging by the scenario description, we are dealing with a memory dump. We can use a tool called "Volatility" to interact with it and retrieve information about what was going on at the moment of the dump.</p>
+<p>Assuming the memory dump was taken from a Windows machine, we can run the following command to get more information on the system:</p>
 
 ```bash
 python3 vol.py -f ../recollection.bin windows.info
@@ -58,7 +59,7 @@ PE TimeDateStamp	Thu Aug  2 02:18:10 2018
 
 ### 3. After the attacker gained access to the machine, the attacker copied an obfuscated PowerShell command to the clipboard. What was the command?
 
-<p>We can use Volatility 2 to retrieve the contents of the clipboard</p>
+<p>We can use Volatility 2 to retrieve the contents of the clipboard:</p>
 
 ```bash
 ./volatility_2.6_mac64_standalone/volatility_2.6_mac64_standalone -f ../recollection.bin --profile=Win7SP1x64_23418 clipboard
@@ -75,7 +76,7 @@ Session    WindowStation Format                         Handle Object           
 
 ### 4. The attacker copied the obfuscated command to use it as an alias for a PowerShell cmdlet. What is the cmdlet name?
 
-<p>We can run the following command to get more information on the console history.</p>
+<p>We can run the following command to get more information on the console history:</p>
 
 ```bash
 ./volatility_2.6_mac64_standalone/volatility_2.6_mac64_standalone -f ../recollection.bin --profile=Win7SP1x64_23418 consoles
