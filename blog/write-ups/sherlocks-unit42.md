@@ -24,7 +24,7 @@ author: Julio
 <P>XML:</p>
 
 ```bash
-../evtx-dump Microsoft-Windows-Sysmon-Operational.evtx
+./evtx-dump Microsoft-Windows-Sysmon-Operational.evtx
 [...snip]
 Record 169
 <?xml version="1.0" encoding="utf-8"?>
@@ -66,7 +66,7 @@ Record 169
 JSON:
 
 ```bash
-../evtx-dump Microsoft-Windows-Sysmon-Operational.evtx -o json | grep -v "Record 1*" | jq
+./evtx-dump Microsoft-Windows-Sysmon-Operational.evtx -o json | grep -v "Record 1*" | jq
 [...snip]
 {
   "Event": {
@@ -124,7 +124,7 @@ JSON:
 <p>As seen above, each event has an <custom-code>EventID</custom-code>. We can use the following command to filter retrieve how many IDs were "11".</p>
 
 ```bash
-../evtx-dump Microsoft-Windows-Sysmon-Operational.evtx -o json | grep -v "Record 1*" | jq .Event.System.EventID | grep 11 | uniq -c
+./evtx-dump Microsoft-Windows-Sysmon-Operational.evtx -o json | grep -v "Record 1*" | jq .Event.System.EventID | grep 11 | uniq -c
   56 11
 ```
 
@@ -135,7 +135,7 @@ JSON:
 <p>We can use the following command to filter the IDs of the events and grep for the command line arguments:</p>
 
 ```bash
-../evtx-dump Microsoft-Windows-Sysmon-Operational.evtx -o json | grep -v "Record 1*" | jq '.[] | select(.System.EventID == 1)' | egrep '"CommandLine"'
+./evtx-dump Microsoft-Windows-Sysmon-Operational.evtx -o json | grep -v "Record 1*" | jq '.[] | select(.System.EventID == 1)' | egrep '"CommandLine"'
     "CommandLine": "\"C:\\Program Files\\Mozilla Firefox\\pingsender.exe\" https://incoming.telemetry.mozilla.org/submit/telemetry/cb88145b-129d-471c-b605-4fdf09fec680/event/Firefox/122.0.1/release/20240205133611?v=4 C:\\Users\\CyberJunkie\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\avsa4d81.default-release\\saved-telemetry-pings\\cb88145b-129d-471c-b605-4fdf09fec680 https://incoming.telemetry.mozilla.org/submit/telemetry/6fcd92a2-cc60-4df6-b6fb-66356dd011c1/main/Firefox/122.0.1/release/20240205133611?v=4 C:\\Users\\CyberJunkie\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\avsa4d81.default-release\\saved-telemetry-pings\\6fcd92a2-cc60-4df6-b6fb-66356dd011c1",
     "CommandLine": "\"C:\\Users\\CyberJunkie\\Downloads\\Preventivo24.02.14.exe.exe\" ",
     "CommandLine": "C:\\Windows\\system32\\msiexec.exe /V",
@@ -145,3 +145,14 @@ JSON:
 ```
 
 <p>The most suspicious one is <custom-code>Preventivo24.02.14.exe.exe</custom-code> and it is the right answer.</p>
+
+### Which Cloud drive was used to distribute the malware?
+
+<p>Events with the ID of 22 are documented as "DNSEvent (DNS query)". According to Sysmon's documentation, "this event is generated when a process executes a DNS query, whether the result is successful or fails, cached or not. The telemetry for this event was added for Windows 8.1 so it is not available on Windows 7 and earlier". We can use this event to look for which sites were requested.</p>
+
+```bash
+./evtx-dump Microsoft-Windows-Sysmon-Operational.evtx -o json | grep -v "Record 1*" | jq '.[] | select(.System.EventID == 22) | .EventData.QueryName'
+"uc2f030016253ec53f4953980a4e.dl.dropboxusercontent.com"
+"d.dropbox.com"
+"www.example.com"
+```
