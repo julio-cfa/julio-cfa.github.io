@@ -156,3 +156,18 @@ JSON:
 "d.dropbox.com"
 "www.example.com"
 ```
+
+<p>The right response, then, is "DropBox".</p>
+
+### The initial malicious file time-stamped (a defense evasion technique, where the file creation date is changed to make it appear old) many files it created on disk. What was the timestamp changed to for a PDF file?
+
+<p>Referring to Sysmon's documentation again, we can see that events that have the ID of 2 are "a process changed a file creation time". We can then use the following command to find our answer:</p>
+
+```bash
+./evtx-dump Microsoft-Windows-Sysmon-Operational.evtx -o json | grep -v "Record 1*" | jq '.[] | select(.System.EventID == 2) | .EventData' | egrep "CreationUtcTime|TargetFilename"  | grep pdf -B2
+  "CreationUtcTime": "2024-01-14 08:10:06.029",
+  "PreviousCreationUtcTime": "2024-02-14 03:41:58.404",
+  "TargetFilename": "C:\\Users\\CyberJunkie\\AppData\\Roaming\\Photo and Fax Vn\\Photo and vn 1.1.2\\install\\F97891C\\TempFolder\\~.pdf"
+```
+
+The answer is "2024-01-14 08:10:06".
