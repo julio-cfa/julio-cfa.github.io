@@ -10,8 +10,8 @@ author: Julio
 
 ## Introduction
 
-<p>Unit42 is a "Very Easy" challenge We have the following scenario: "In this Sherlock, you will familiarize yourself with Sysmon logs and various useful EventIDs for identifying and analyzing malicious activities on a Windows system. Palo Alto's Unit42 recently conducted research on an UltraVNC campaign, wherein attackers utilized a backdoored version of UltraVNC to maintain access to systems. This lab is inspired by that campaign and guides participants through the initial access stage of the campaign."</p>
-<p>We need to download a file called <custom-code>unit42.zip</custom-code>. After decompressing it, we get a file called <custom-code>Microsoft-Windows-Sysmon-Operational.evtx</custom-code>.</p>
+<p>Unit42 is a "Very Easy" incident response challenge on HackTheBox. We have the following scenario: "In this Sherlock, you will familiarize yourself with Sysmon logs and various useful EventIDs for identifying and analyzing malicious activities on a Windows system. Palo Alto's Unit42 recently conducted research on an UltraVNC campaign, wherein attackers utilized a backdoored version of UltraVNC to maintain access to systems. This lab is inspired by that campaign and guides participants through the initial access stage of the campaign."</p>
+<p>For this challenge, we need to download a file called <custom-code>unit42.zip</custom-code>. After decompressing it, we get a file called <custom-code>Microsoft-Windows-Sysmon-Operational.evtx</custom-code>.</p>
 
 ## Questions
 
@@ -19,7 +19,7 @@ author: Julio
 
 <p>We will be using a tool called <custom-code>evtx_dump</custom-code> written by omerbenamram. You can find it here: <a href="https://github.com/omerbenamram/evtx">https://github.com/omerbenamram/evtx</a>.</p>
 
-<p>We can either use this tool to work with XML output or with JSON output.</p>
+<p>We can use this tool to work with either XML output or JSON output.</p>
 
 <P>XML:</p>
 
@@ -121,7 +121,7 @@ JSON:
 }
 ```
 
-<p>As seen above, each event has an <custom-code>EventID</custom-code>. We can use the following command to filter retrieve how many IDs were "11".</p>
+<p>As seen above, each event has an <custom-code>EventID</custom-code>. We can use the following command to filter the output and retrieve how many IDs were "11".</p>
 
 ```bash
 ./evtx-dump Microsoft-Windows-Sysmon-Operational.evtx -o json | grep -v "Record 1*" | jq .Event.System.EventID | grep 11 | uniq -c
@@ -148,7 +148,7 @@ JSON:
 
 ### Which Cloud drive was used to distribute the malware?
 
-<p>Events with the ID of 22 are documented as "DNSEvent (DNS query)". According to Sysmon's documentation, "this event is generated when a process executes a DNS query, whether the result is successful or fails, cached or not. The telemetry for this event was added for Windows 8.1 so it is not available on Windows 7 and earlier". We can use this event to look for which sites were requested.</p>
+<p>Events with the ID of 22 are documented as "DNSEvent (DNS query)". According to Sysmon's documentation, "this event is generated when a process executes a DNS query, whether the result is successful or fails, cached or not. The telemetry for this event was added for Windows 8.1 so it is not available on Windows 7 and earlier". We can use this event to look for all the sites/domains that were requested.</p>
 
 ```bash
 ./evtx-dump Microsoft-Windows-Sysmon-Operational.evtx -o json | grep -v "Record 1*" | jq '.[] | select(.System.EventID == 22) | .EventData.QueryName'
