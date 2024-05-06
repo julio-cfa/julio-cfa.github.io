@@ -212,4 +212,16 @@ user:1001:aad3b435b51404eeaad3b435b51404ee:5915a7959c04d8560468296edaefbc9b:::
 HomeGroupUser$:1002:aad3b435b51404eeaad3b435b51404ee:cb6003ecf6b98b5f7fbbb03df798ac76:::
 ```
 
-<p>Since the question asks about user accounts, I will not be considering the
+<p>Since the question asks about user accounts, I will not be considering the Guest account. Thus, the right answer is <custom-code>3</custom-code>.</p>
+
+### In the "\Device\HarddiskVolume2\Users\user\AppData\Local\Microsoft\Edge" folder there were some sub-folders where there was a file named passwords.txt. What was the full file location/path?
+
+<p>We can run the following command to scan for files and grep for the one we want:</p>
+
+```bash
+./volatility_2.6_mac64_standalone/volatility_2.6_mac64_standalone -f ../recollection.bin --profile=Win7SP1x64_23418 filescan | grep passwords.txt
+Volatility Foundation Volatility Framework 2.6
+0x000000011fc10070      1      0 R--rw- \Device\HarddiskVolume2\Users\user\AppData\Local\Microsoft\Edge\User Data\ZxcvbnData\3.0.0.0\passwords.txt
+```
+
+<p>The right answer is <custom-code>\Device\HarddiskVolume2\Users\user\AppData\Local\Microsoft\Edge\User Data\ZxcvbnData\3.0.0.0\passwords.txt</custom-code>.</p>
