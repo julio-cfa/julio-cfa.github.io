@@ -391,7 +391,6 @@ int main() {
 
 	printf("[i] Ciphertext: ");
 	int i;
-
 	for (int i = 0; i < strlen(shell_code); i++) {
 		printf("%02x", Ciphertext[i]);
 	}
