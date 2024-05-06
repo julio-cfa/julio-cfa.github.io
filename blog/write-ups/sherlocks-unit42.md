@@ -224,6 +224,6 @@ JSON:
 
 ## References
 
-<a href="https://app.hackthebox.com/sherlocks/Unit42">https://app.hackthebox.com/sherlocks/Unit42</a><br>
-<a href="https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon">https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon</a><br>
-<a href="https://github.com/omerbenamram/evtx">https://github.com/omerbenamram/evtx</a>
+- <a href="https://app.hackthebox.com/sherlocks/Unit42">https://app.hackthebox.com/sherlocks/Unit42</a><br>
+- <a href="https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon">https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon</a><br>
+- <a href="https://github.com/omerbenamram/evtx">https://github.com/omerbenamram/evtx</a>

@@ -377,3 +377,12 @@ Volatility Foundation Volatility Framework 2.6
 ```
 
 <p>The file <custom-code>csrsss.exe</custom-code> is suspicious since it appears to have an additional "s". This is the right answer.</p>
+
+## Conclusion
+
+<p>Great challenge for those who want to get more into memory analysis. It made me go deeper into the plugins and commands of Volatility and it helped me understnad how memory analysis can be performed with it. Really cool stuff.</p>
+
+## References
+
+- <a href="https://book.hacktricks.xyz/generic-methodologies-and-resources/basic-forensic-methodology/memory-dump-analysis/volatility-cheatsheet">https://book.hacktricks.xyz/generic-methodologies-and-resources/basic-forensic-methodology/memory-dump-analysis/volatility-cheatsheet</a>
+- <a href="https://github.com/volatilityfoundation/volatility/wiki/Command-Reference">https://github.com/volatilityfoundation/volatility/wiki/Command-Reference</a>
