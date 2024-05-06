@@ -4,7 +4,7 @@ date: 06-05-2024
 author: Julio
 ---
 
-<img src="https://labs.hackthebox.com/storage/challenges/abd815286ba1007abfbb8415b83ae2cf.png" width=450>
+<img src="https://labs.hackthebox.com/storage/challenges/abd815286ba1007abfbb8415b83ae2cf.png" width=450 class="center">
 
 # Unit42
 
@@ -17,7 +17,7 @@ author: Julio
 
 ### How many Event logs are there with Event ID 11?
 
-<p>We will be using a tool called <custom-code>evtx_dump<custom-code> written by omerbenamram. You can find it here: <a href="https://github.com/omerbenamram/evtx">https://github.com/omerbenamram/evtx</a></p>
+<p>We will be using a tool called <custom-code>evtx_dump</custom-code> written by omerbenamram. You can find it here: <a href="https://github.com/omerbenamram/evtx">https://github.com/omerbenamram/evtx</a></p>
 
 <p>We can either use this tool to work with XML output or with JSON output.</p>
 
