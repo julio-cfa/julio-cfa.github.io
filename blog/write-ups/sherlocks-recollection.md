@@ -11,7 +11,7 @@ author: Julio
 ## Introduction
 
 <p>Recollection is an "Easy" sherlock challenge on HackTheBox. This is the scenario: "A junior member of our security team has been performing research and testing on what we believe to be an old and insecure operating system. We believe it may have been compromised & have managed to retrieve a memory dump of the asset. We want to confirm what actions were carried out by the attacker and if any other assets in our environment might be affected. Please answer the questions below."</p>
-<p>We start with a file called recollection.zip and we unzip it to get recollection.bin</p>
+<p>We start with a file called <custom-code>recollection.zip</custom-code> and we unzip it to get <custom-code>recollection.bin</custom-code></p>
 
 ## Questions
 
