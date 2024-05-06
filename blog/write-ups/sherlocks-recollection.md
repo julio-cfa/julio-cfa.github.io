@@ -1,7 +1,7 @@
 ---
 layout: post
-date: 07-05-2024
 author: Julio
+date: 07-05-2024
 title: Recollection Write-Up
 ---
 
