@@ -299,85 +299,126 @@ The output should be:
 
 ```c
 #include <stdio.h>
-#include <Windows.h> // Library to interact with the Windows API. Read: https://en.wikipedia.org/wiki/Windows.h.
+#include <stdlib.h>
+#include <string.h>
 
-unsigned char shell_code[] = {
-	"This is just a really long string to be encrypted. Not really shellcode."
-};
+typedef struct
+{
+	unsigned int i;
+	unsigned int j;
+	unsigned char s[256];
 
-unsigned char crypt_key[] = {
-	0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F
-};
-
-typedef struct {
-    unsigned int a;
-    unsigned int b;
-    unsigned char s[256];
 } RContext;
 
-void RInit(RContext* Ctx, const unsigned char* cryptKey, size_t Length) {
-    unsigned int a;
-    unsigned int b;
-    unsigned char tmp;
+unsigned char crypt_key[] = {
+	0x6D, 0x61, 0x6C, 0x64, 0x65, 0x76, 0x31, 0x32, 0x33
+};
 
-    if (Ctx == NULL || cryptKey == NULL) {
-        return ERROR_INVALID_PARAMETER;
-    }
+unsigned char shell_code[] = "This is not shellcode. Just a string, but it works with shellcode too.";
 
-    Ctx->a = 0;
-    Ctx->b = 0;
 
-    for (a = 0; a < 256; a++) {
-        context->s[a] = a;
-    }
+void RInit(RContext* Ctx, const unsigned char* crypt_key, size_t length)
+{
+	unsigned int i;
+	unsigned int j;
+	unsigned char tmp;
 
-    for (a = 0; a < 256; a++) {
-        b = (b + Ctx->s[a] + crypKey[a % Length]) % 256;
+	if (Ctx == NULL || crypt_key == NULL)
+		printf("%s\n", "We have a problem");
 
-        tmp = context->s[a];
-        Ctx->s[a] = context->s[b];
-        Ctx->s[b] = tmp;
-    }
+	Ctx->i = 0;
+	Ctx->j = 0;
+
+	for (i = 0; i < 256; i++)
+	{
+		Ctx->s[i] = i;
+	}
+
+	for (i = 0, j = 0; i < 256; i++)
+	{
+
+		j = (j + Ctx->s[i] + crypt_key[i % length]) % 256;
+
+		tmp = Ctx->s[i];
+		Ctx->s[i] = Ctx->s[j];
+		Ctx->s[j] = tmp;
+	}
+
 }
 
-void RCipher(RContext* Ctx; const unsigned char* Input; unsigned char* Output; size_t Length) {
-    unsigned char tmp;
 
-    unsigned int a = Ctx->a;
-    unsigned int b = Ctx->b;
-    unsigned char* s = Ctx->s;
+void RCipher(RContext* Ctx, const unsigned char* input, unsigned char* output, size_t length) {
+	unsigned char tmp;
 
-    while (Length > 0) {
-        a = (a + 1) % 256;
-        b = (b + s[a]) % 256;
+	unsigned int i = Ctx->i;
+	unsigned int j = Ctx->j;
+	unsigned char* s = Ctx->s;
 
-        tmp = s[a];
-        s[a] = s[b];
-        s[b] = tmp;
+	while (length > 0)
+	{
+		i = (i + 1) % 256;
+		j = (j + s[i]) % 256;
 
-        if (Input != NULL && Output != NULL) {
-            *Output = *Input ^ s[(s[a] + s[b]) % 256];
+		tmp = s[i];
+		s[i] = s[j];
+		s[j] = tmp;
 
-            Input++;
-            Output++;
-        }
+		if (input != NULL && output != NULL)
+		{
 
-        Length--;
+			*output = *input ^ s[(s[i] + s[j]) % 256];
+
+			input++;
+			output++;
+		}
+
+		length--;
+	}
+
+	Ctx->i = i;
+	Ctx->j = j;
+}
+
+int main() {
+
+	RContext Ctx = { 0 };
+	RInit(&Ctx, crypt_key, sizeof(crypt_key));
+
+	// Encryption
+	unsigned char* Ciphertext = (unsigned char*)calloc(strlen(shell_code), sizeof(int));
+	RCipher(&Ctx, shell_code, Ciphertext, strlen(shell_code));
+	printf("[i] Address of Ciphertext: %p \n", Ciphertext);
+
+
+	printf("[i] Ciphertext: ");
+	int i;
+	for (int i = 0; i < strlen(shell_code); i++) {
+        printf("%02x", Ciphertext[i]);
     }
-    Ctx->a = a;
-    Ctx->b = b;
+    printf("\n");
+
+	RInit(&Ctx, crypt_key, sizeof(crypt_key));
+
+	// Decryption
+	unsigned char* PlainText = (unsigned char*)calloc(strlen(shell_code), sizeof(int));
+	RCipher(&Ctx, Ciphertext, PlainText, strlen(shell_code));
+
+	printf("[i] PlainText: \"%s\" \n", (char*)PlainText);
+
+	free(Ciphertext);
+	free(PlainText);
+	return 0;
+
 }
+```
 
-int main(void) {
+<p>The expected output should be:</p>
 
-    RContext Ctx = { 0 };
-
-    RInit(&Ctx, crypt_key, sizeof(crypt_key));
-    unsigned char* CText = (unsigned char*)malloc(strlen(shell_code) * sizeof(int));
-    ZeroMemory(CText, strlen(shell_code) * sizeof(int));
-    RCipher(&Ctx, shell_code, CText, strlen(shell_code));
-    printf("CText: 0x%p\n", CText);
-}
+```
+./RC4_Encrypt
+[i] Address of Ciphertext: 0x13ee04570
+[i] Ciphertext: 19954c5095b60c82c627807ff6013daacd814ab3d9c49b7fc116c0dbc60a2e17bfd620a18cf70b99768201a7623e5e7bdfaab5d4cf4f30cac4271a025059530391e6f2493288
+[i] PlainText: "This is not shellcode. Just a string, but it works with shellcode too."
 
 ```
 
