@@ -17,7 +17,7 @@ author: Julio
 
 ### How many Event logs are there with Event ID 11?
 
-<p>We will be using a tool called <custom-code>evtx_dump</custom-code> written by omerbenamram. You can find it here: <a href="https://github.com/omerbenamram/evtx">https://github.com/omerbenamram/evtx</a></p>
+<p>We will be using a tool called <custom-code>evtx_dump</custom-code> written by omerbenamram. You can find it here: <a href="https://github.com/omerbenamram/evtx">https://github.com/omerbenamram/evtx</a>.</p>
 
 <p>We can either use this tool to work with XML output or with JSON output.</p>
 
@@ -119,4 +119,11 @@ JSON:
     }
   }
 }
+```
+
+<p>As seen above, each event has an <custom-code>EventID</custom-code>. We can use the following command to filter retrieve how many IDs were "11".</p>
+
+```bash
+../evtx-dump Microsoft-Windows-Sysmon-Operational.evtx -o json | grep -v "Record 1*" | jq .Event.System.EventID | grep 11 | uniq -c
+  56 11
 ```
