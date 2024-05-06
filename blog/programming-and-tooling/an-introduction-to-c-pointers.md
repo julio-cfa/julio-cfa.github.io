@@ -392,10 +392,10 @@ int main() {
 	printf("[i] Ciphertext: ");
 	int i;
 
-    for (int i = 0; i < strlen(shell_code); i++) {
-        printf("%02x", Ciphertext[i]);
-    }
-    printf("\n");
+	for (int i = 0; i < strlen(shell_code); i++) {
+		printf("%02x", Ciphertext[i]);
+	}
+	printf("\n");
 
 	RInit(&Ctx, crypt_key, sizeof(crypt_key));
 
