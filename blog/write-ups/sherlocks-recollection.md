@@ -376,7 +376,7 @@ Volatility Foundation Volatility Framework 2.6
 0x000000011fe5b070     15      0 R--r-- \Device\HarddiskVolume2\Users\user\Downloads\bf9e9366489541153d0e2cd21bdae11591f6be48407f896b75e1320628346b03.zip
 ```
 
-<p>The file <custom-code>csrsss.exe</custom-code> is suspicious since it appears to have an additional "s". This is the right answer.</p>
+<p>The file <custom-code>csrsss.exe</custom-code> is suspicious since it appears to have an extra "s". This is the right answer.</p>
 
 ## Conclusion
 
