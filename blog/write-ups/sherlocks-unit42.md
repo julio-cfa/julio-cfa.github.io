@@ -4,7 +4,7 @@ date: 06-05-2024
 author: Julio
 ---
 
-<img src="https://labs.hackthebox.com/storage/challenges/abd815286ba1007abfbb8415b83ae2cf.png" width="350" class="center">
+<img src="https://labs.hackthebox.com/storage/challenges/abd815286ba1007abfbb8415b83ae2cf.png" width="350" style="text-align: center; justify-content: center;">
 
 # Unit42
 
