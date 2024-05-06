@@ -5,7 +5,7 @@ date: 05-05-2024
 title: An (Offensive) Introduction To C Pointers
 ---
 
-<div class="center"><img src="/assets/images/my_pointers.png" width="450"></div>
+<div class="center"><img src="/assets/images/my_pointers.png" width="450" alt="C Pointers"></div>
 
 # An (Offensive) Introduction To C Pointers
 
