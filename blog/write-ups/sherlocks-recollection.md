@@ -225,3 +225,13 @@ Volatility Foundation Volatility Framework 2.6
 ```
 
 <p>The right answer is <custom-code>\Device\HarddiskVolume2\Users\user\AppData\Local\Microsoft\Edge\User Data\ZxcvbnData\3.0.0.0\passwords.txt</custom-code>.</p>
+
+### A malicious executable file was executed using command. The executable EXE file's name was the hash value of itself. What was the hash value?
+
+<p>We can use the same command to retrieve the contents of the console history and we will find the following in the output:</p>
+
+```
+Cmd #5 at 0xc2ee0: .\b0ad704122d9cffddd57ec92991a1e99fc1ac02d5b4d8fd31720978c02635cb1.exe
+```
+
+<p>The right answer is <custom-code>b0ad704122d9cffddd57ec92991a1e99fc1ac02d5b4d8fd31720978c02635cb1</custom-code>.</p>
