@@ -4,7 +4,7 @@ date: 06-05-2024
 author: Julio
 ---
 
-<img src="https://labs.hackthebox.com/storage/challenges/abd815286ba1007abfbb8415b83ae2cf.png" width=450 class="center">
+<img src="https://labs.hackthebox.com/storage/challenges/abd815286ba1007abfbb8415b83ae2cf.png" width=300 class="center">
 
 # Unit42
 
@@ -127,3 +127,5 @@ JSON:
 ../evtx-dump Microsoft-Windows-Sysmon-Operational.evtx -o json | grep -v "Record 1*" | jq .Event.System.EventID | grep 11 | uniq -c
   56 11
 ```
+
+<p>As seen above, "56" is the right answer</p>
