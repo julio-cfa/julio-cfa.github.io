@@ -6,7 +6,7 @@ author: Julio
 
 <div class="center"><img src="https://labs.hackthebox.com/storage/challenges/abd815286ba1007abfbb8415b83ae2cf.png" width="350"></div>
 
-# Unit42
+# Unit42 Write-Up
 
 ## Introduction
 
@@ -220,7 +220,7 @@ JSON:
 
 ## Conclusion
 
-<p>Unit42 is a great and easy challenge. It helps us understand Windows event logs and also how to use tools such as jq and grep to navigate through the events and retrieve important information about incidents.</p>
+<p>Unit42 is a great and easy challenge. It helps us understand Windows event logs and also how to use tools such as <custom-code>jq</custom-code> and <custom-code>grep</custom-code> to navigate through the events and retrieve important information about incidents.</p>
 
 ## References
 
