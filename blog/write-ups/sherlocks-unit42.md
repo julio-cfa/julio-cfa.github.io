@@ -129,3 +129,19 @@ JSON:
 ```
 
 <p>As seen above, "56" is the right answer</p>
+
+### Whenever a process is created in memory, an event with Event ID 1 is recorded with details such as command line, hashes, process path, parent process path, etc. This information is very useful for an analyst because it allows us to see all programs executed on a system, which means we can spot any malicious processes being executed. What is the malicious process that infected the victim's system?
+
+<p>We can use the following command to filter the IDs of the events and grep for the command line arguments:</p>
+
+```bash
+../evtx-dump Microsoft-Windows-Sysmon-Operational.evtx -o json | grep -v "Record 1*" | jq '.[] | select(.System.EventID == 1)' | egrep '"CommandLine"'
+    "CommandLine": "\"C:\\Program Files\\Mozilla Firefox\\pingsender.exe\" https://incoming.telemetry.mozilla.org/submit/telemetry/cb88145b-129d-471c-b605-4fdf09fec680/event/Firefox/122.0.1/release/20240205133611?v=4 C:\\Users\\CyberJunkie\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\avsa4d81.default-release\\saved-telemetry-pings\\cb88145b-129d-471c-b605-4fdf09fec680 https://incoming.telemetry.mozilla.org/submit/telemetry/6fcd92a2-cc60-4df6-b6fb-66356dd011c1/main/Firefox/122.0.1/release/20240205133611?v=4 C:\\Users\\CyberJunkie\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\avsa4d81.default-release\\saved-telemetry-pings\\6fcd92a2-cc60-4df6-b6fb-66356dd011c1",
+    "CommandLine": "\"C:\\Users\\CyberJunkie\\Downloads\\Preventivo24.02.14.exe.exe\" ",
+    "CommandLine": "C:\\Windows\\system32\\msiexec.exe /V",
+    "CommandLine": "C:\\Windows\\syswow64\\MsiExec.exe -Embedding 5364C761FA9A55D636271A1CE8A6742D C",
+    "CommandLine": "\"C:\\Windows\\system32\\msiexec.exe\" /i \"C:\\Users\\CyberJunkie\\AppData\\Roaming\\Photo and Fax Vn\\Photo and vn 1.1.2\\install\\F97891C\\main1.msi\" AI_SETUPEXEPATH=C:\\Users\\CyberJunkie\\Downloads\\Preventivo24.02.14.exe.exe SETUPEXEDIR=C:\\Users\\CyberJunkie\\Downloads\\ EXE_CMD_LINE=\"/exenoupdates  /forcecleanup  /wintime 1707880560  \" AI_EUIMSI=\"\"",
+    "CommandLine": "C:\\Windows\\syswow64\\MsiExec.exe -Embedding 5250A3DB12224F77D2A18B4EB99AC5EB",
+```
+
+<p>The most suspicious one is <custom-code>Preventivo24.02.14.exe.exe</custom-code> and it is the right answer.</p>

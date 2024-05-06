@@ -4,15 +4,15 @@
 @import 'jekyll-theme-hacker';
 
 custom-code {
-    color: rgb(237, 95, 168); // Set text color to purple
-    background-color: rgb(0, 0, 0); // Set background color to dark gray
-    padding: 0.2em 0.4em; // Add some padding for better readability
+  color: rgb(237, 95, 168); // Set text color to purple
+  background-color: rgb(0, 0, 0); // Set background color to dark gray
+  padding: 0.2em 0.4em; // Add some padding for better readability
   }
 
-  .center {
-    text-align: center;
-    align-content: center;
-  }
+.center {
+  text-align: center;
+  align-content: center;
+}
 
 p {
   text-align: justify;
