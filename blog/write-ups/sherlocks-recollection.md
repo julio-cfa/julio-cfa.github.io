@@ -2,6 +2,7 @@
 layout: post
 date: 07-05-2024
 author: Julio
+title: Recollection Write-Up
 ---
 
 <div class="center"><img src="https://labs.hackthebox.com/storage/challenges/605ff764c617d3cd28dbbdd72be8f9a2.png" width="350"></div>
