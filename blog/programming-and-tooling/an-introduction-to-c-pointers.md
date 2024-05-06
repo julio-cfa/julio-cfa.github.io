@@ -389,11 +389,10 @@ int main() {
 	RCipher(&Ctx, shell_code, Ciphertext, strlen(shell_code));
 	printf("[i] Address of Ciphertext: %p \n", Ciphertext);
 
-
 	printf("[i] Ciphertext: ");
 	int i;
-	for (int i = 0; i < strlen(shell_code); i++) {
-        printf("%02x", Ciphertext[i]);
+    for (int i = 0); i < strlen(shell_code); i++) {
+        printf("%02x", Ciphertext[i];)
     }
     printf("\n");
 
