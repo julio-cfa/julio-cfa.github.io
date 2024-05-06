@@ -184,4 +184,36 @@ JSON:
 
 ### The malicious file attempted to reach a dummy domain, most likely to check the internet connection status. What domain name did it try to connect to?
 
-<p>We already have this information from the question we looked for DNS queries. The right answer is <custom-code>www.example.com</custom-code></p>
+<p>We already have this information from the question we looked for DNS queries. The right answer is <custom-code>www.example.com</custom-code>.</p>
+
+### Which IP address did the malicious process try to reach out to?
+
+<p>Event ID 3 logs all network connections. We can find the destination IPs with the following command:</p>
+
+```bash
+./evtx-dump Microsoft-Windows-Sysmon-Operational.evtx -o json | grep -v "Record 1*" | jq '.[] | select(.System.EventID == 3) | .EventData' | grep Ip
+  "DestinationIp": "93.184.216.34",
+  "DestinationIsIpv6": false,
+  "SourceIp": "172.17.79.132",
+  "SourceIsIpv6": false,
+```
+
+<p>It seems like there was only one connection. The answer is <custom-code>93.184.216.34</custom-code></p>
+
+### The malicious process terminated itself after infecting the PC with a backdoored variant of UltraVNC. When did the process terminate itself?
+
+<p>Lastly, Event ID 5 logs all entries of terminated processes. We can use the following command to find the processes that were terminated:</p>
+
+```bash
+./evtx-dump Microsoft-Windows-Sysmon-Operational.evtx -o json | grep -v "Record 1*" | jq '.[] | select(.System.EventID == 5) | .EventData'
+{
+  "Image": "C:\\Users\\CyberJunkie\\Downloads\\Preventivo24.02.14.exe.exe",
+  "ProcessGuid": "817BDDF3-3684-65CC-2D02-000000001900",
+  "ProcessId": 10672,
+  "RuleName": "-",
+  "User": "DESKTOP-887GK2L\\CyberJunkie",
+  "UtcTime": "2024-02-14 03:41:58.795"
+}
+```
+
+<p>The answer is <custom-code>2024-02-14 03:41:58</custom-code>.</p>
