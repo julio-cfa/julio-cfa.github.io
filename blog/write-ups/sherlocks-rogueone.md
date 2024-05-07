@@ -112,7 +112,7 @@ cat net.txt | grep 6812
 
 ### 6. What is the memory offset of the malicious process?
 
-We can
+<p>We can use the process tree once again to find the memory offset of the process.</p>
 
 ```bash
 cat pstree.txt| grep svchost | grep Downloads
@@ -121,7 +121,7 @@ cat pstree.txt| grep svchost | grep Downloads
 golemax :: Downloads/Rogu
 ```
 
-<p>The right answer is<custom-code>0x9e8b87762080</custom-code>.</p>
+<p>The right answer is <custom-code>0x9e8b87762080</custom-code>.</p>
 
 ### 7. You successfully analyzed a memory dump and received praise from your manager. The following day, your manager requests an update on the malicious file. You check VirusTotal and find that the file has already been uploaded, likely by the reverse engineering team. Your task is to determine when the sample was first submitted to VirusTotal.
 
