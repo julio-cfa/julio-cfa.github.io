@@ -386,5 +386,6 @@ Volatility Foundation Volatility Framework 2.6
 
 ## References
 
+- <a href="https://app.hackthebox.com/sherlocks/Recollection">https://app.hackthebox.com/sherlocks/Recollection</a>
 - <a href="https://book.hacktricks.xyz/generic-methodologies-and-resources/basic-forensic-methodology/memory-dump-analysis/volatility-cheatsheet">https://book.hacktricks.xyz/generic-methodologies-and-resources/basic-forensic-methodology/memory-dump-analysis/volatility-cheatsheet</a>
 - <a href="https://github.com/volatilityfoundation/volatility/wiki/Command-Reference">https://github.com/volatilityfoundation/volatility/wiki/Command-Reference</a>

@@ -141,4 +141,5 @@ First Submission
 ## References
 
 - <a href="https://app.hackthebox.com/sherlocks/RogueOne">https://app.hackthebox.com/sherlocks/RogueOne</a>
+- <a href="https://book.hacktricks.xyz/generic-methodologies-and-resources/basic-forensic-methodology/memory-dump-analysis/volatility-cheatsheet">https://book.hacktricks.xyz/generic-methodologies-and-resources/basic-forensic-methodology/memory-dump-analysis/volatility-cheatsheet</a>
 - <a href="https://github.com/volatilityfoundation/volatility3">https://github.com/volatilityfoundation/volatility3</a>
