@@ -138,4 +138,5 @@ First Submission
 
 ## References
 
+- <a href="https://app.hackthebox.com/sherlocks/RogueOne">https://app.hackthebox.com/sherlocks/RogueOne</a>
 - <a href="https://github.com/volatilityfoundation/volatility3">https://github.com/volatilityfoundation/volatility3</a>
