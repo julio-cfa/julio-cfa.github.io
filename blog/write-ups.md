@@ -2,7 +2,7 @@
 layout: default
 ---
 
-## HackTheBox - Sherlocks
+# HackTheBox - Sherlocks
 
 - <a href="/blog/write-ups/sherlocks-unit42.html">Unit42 Write-Up</a>
 - <a href="/blog/write-ups/sherlocks-recollection.html">Recollection Write-Up</a>
