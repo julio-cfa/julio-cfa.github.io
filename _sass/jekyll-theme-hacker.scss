@@ -78,7 +78,7 @@ header h1 {
 
 
 header h1:before {
-  content: ""; // Original value: ./
+  content: url("https://blog.cat22.io/assets/images/android-chrome-192x192.png"); // Original value: ./
   font-size: 30px;
 }
 
