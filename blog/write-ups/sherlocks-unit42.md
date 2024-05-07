@@ -16,7 +16,7 @@ title: Unit42 Write-Up
 
 ## Questions
 
-### How many Event logs are there with Event ID 11?
+### 1. How many Event logs are there with Event ID 11?
 
 <p>We will be using a tool called <custom-code>evtx_dump</custom-code> written by omerbenamram. You can find it here: <a href="https://github.com/omerbenamram/evtx">https://github.com/omerbenamram/evtx</a>.</p>
 
@@ -131,7 +131,7 @@ JSON:
 
 <p>As seen above, <custom-code>56</custom-code> is the right answer</p>
 
-### Whenever a process is created in memory, an event with Event ID 1 is recorded with details such as command line, hashes, process path, parent process path, etc. This information is very useful for an analyst because it allows us to see all programs executed on a system, which means we can spot any malicious processes being executed. What is the malicious process that infected the victim's system?
+### 2. Whenever a process is created in memory, an event with Event ID 1 is recorded with details such as command line, hashes, process path, parent process path, etc. This information is very useful for an analyst because it allows us to see all programs executed on a system, which means we can spot any malicious processes being executed. What is the malicious process that infected the victim's system?
 
 <p>We can use the following command to filter the IDs of the events and grep for the command line arguments:</p>
 
@@ -147,7 +147,7 @@ JSON:
 
 <p>The most suspicious one is <custom-code>Preventivo24.02.14.exe.exe</custom-code> and it is the right answer.</p>
 
-### Which Cloud drive was used to distribute the malware?
+### 3. Which Cloud drive was used to distribute the malware?
 
 <p>Events with the ID of 22 are documented as "DNSEvent (DNS query)". According to Sysmon's documentation, "this event is generated when a process executes a DNS query, whether the result is successful or fails, cached or not. The telemetry for this event was added for Windows 8.1 so it is not available on Windows 7 and earlier". We can use this event to look for all the sites/domains that were requested.</p>
 
@@ -160,7 +160,7 @@ JSON:
 
 <p>The right answer is <custom-code>DropBox</custom-code>.</p>
 
-### The initial malicious file time-stamped (a defense evasion technique, where the file creation date is changed to make it appear old) many files it created on disk. What was the timestamp changed to for a PDF file?
+### 4. The initial malicious file time-stamped (a defense evasion technique, where the file creation date is changed to make it appear old) many files it created on disk. What was the timestamp changed to for a PDF file?
 
 <p>Referring to Sysmon's documentation again, we can see that events that have the ID of 2 are "a process changed a file creation time". We can then use the following command to find our answer:</p>
 
@@ -173,7 +173,7 @@ JSON:
 
 <p>The answer is <custom-code>2024-01-14 08:10:06</custom-code>.</p>
 
-### The malicious file dropped a few files on disk. Where was "once.cmd" created on disk? Please answer with the full path along with the filename.
+### 5. The malicious file dropped a few files on disk. Where was "once.cmd" created on disk? Please answer with the full path along with the filename.
 
 ```bash
 ./evtx-dump Microsoft-Windows-Sysmon-Operational.evtx -o json | grep -v "Record 1*" | jq '.[] | select(.System.EventID == 11) | .EventData' | grep "once.cmd"
@@ -183,11 +183,11 @@ JSON:
 
 <p>The right answer is <custom-code>C:\Users\CyberJunkie\AppData\Roaming\Photo and Fax Vn\Photo and vn 1.1.2\install\F97891C\WindowsVolume\Games\once.cmd</custom-code>.</p>
 
-### The malicious file attempted to reach a dummy domain, most likely to check the internet connection status. What domain name did it try to connect to?
+### 6. The malicious file attempted to reach a dummy domain, most likely to check the internet connection status. What domain name did it try to connect to?
 
 <p>We already have this information from the question we looked for DNS queries. The right answer is <custom-code>www.example.com</custom-code>.</p>
 
-### Which IP address did the malicious process try to reach out to?
+### 7. Which IP address did the malicious process try to reach out to?
 
 <p>Event ID 3 logs all network connections. We can find the destination IPs with the following command:</p>
 
@@ -201,7 +201,7 @@ JSON:
 
 <p>It seems like there was only one connection. The answer is <custom-code>93.184.216.34</custom-code></p>
 
-### The malicious process terminated itself after infecting the PC with a backdoored variant of UltraVNC. When did the process terminate itself?
+### 8. The malicious process terminated itself after infecting the PC with a backdoored variant of UltraVNC. When did the process terminate itself?
 
 <p>Lastly, Event ID 5 logs all entries of terminated processes. We can use the following command to find the processes that were terminated:</p>
 
