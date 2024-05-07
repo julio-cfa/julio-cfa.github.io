@@ -97,7 +97,7 @@ MD5 (file.0x9e8b909045d0.0x9e8b957f24c0.ImageSectionObject.svchost.exe.img) = 5b
 python3 vol.py -f ../20230810.mem windows.netscan >> net.txt
 ```
 
-then
+<p>And we can trip to grep for the process ID of the malicious process to see if there is an established connection:</p>
 
 ```bash
 cat net.txt | grep 6812
@@ -135,6 +135,8 @@ First Submission
 <p>The right answer is <custom-code>10/08/2023 11:58:10</custom-code>.</p>
 
 ## Conclusion
+
+<p>This was an interesting challenge that made me go deeper into understanding Volatility and memory analysis. I'd definitely recommend it to anyone who's currently understanding DFIR.</p>
 
 ## References
 
