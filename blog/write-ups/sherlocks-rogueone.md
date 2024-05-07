@@ -118,7 +118,6 @@ cat net.txt | grep 6812
 cat pstree.txt| grep svchost | grep Downloads
 *** 936	7436	svchost.exe	0x9e8b8cd89080	0	-	1	False	2023-08-10 11:22:31.000000 	2023-08-10 11:27:51.000000 	\Device\HarddiskVolume3\Users\simon.stark\Downloads\svchost.exe	-	-
 *** 6812	7436	svchost.exe	0x9e8b87762080	3	-	1	False	2023-08-10 11:30:03.000000 	N/A	\Device\HarddiskVolume3\Users\simon.stark\Downloads\svchost.exe	"C:\Users\simon.stark\Downloads\svchost.exe" 	C:\Users\simon.stark\Downloads\svchost.exe
-golemax :: Downloads/Rogu
 ```
 
 <p>The right answer is <custom-code>0x9e8b87762080</custom-code>.</p>

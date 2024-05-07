@@ -418,7 +418,6 @@ int main() {
 [i] Address of Ciphertext: 0x13ee04570
 [i] Ciphertext: 19954c5095b60c82c627807ff6013daacd814ab3d9c49b7fc116c0dbc60a2e17bfd620a18cf70b99768201a7623e5e7bdfaab5d4cf4f30cac4271a025059530391e6f2493288
 [i] PlainText: "This is not shellcode. Just a string, but it works with shellcode too."
-
 ```
 
 <p>Yes, I know. This is very long code and may have some concepts you've never seen before or aren't comfortable with. We'll try to break down the code as much as we can. After all, the idea here is to try to get you to understand what pointers are and to give you a taste of offensive security with malware development.</p>
