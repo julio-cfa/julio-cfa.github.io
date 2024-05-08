@@ -5,13 +5,13 @@ date: 07-05-2024
 title: LockPick1 Write-Up
 ---
 
-<div class="center"><img src="https://labs.hackthebox.com/storage/challenges/605ff764c617d3cd28dbbdd72be8f9a2.png" width="350"></div>
+<div class="center"><img src="https://labs.hackthebox.com/storage/challenges/11b921ef080f7736089c757404650e40.png" width="350"></div>
 
 # LockPick1 Write-Up
 
 ## Introduction
 
-<p>Recollection is an "Easy" sherlock challenge on HackTheBox. This is the scenario: "Forela needs your help! A whole portion of our UNIX servers have been hit with what we think is ransomware. We are refusing to pay the attackers and need you to find a way to recover the files provided. Warning This is a warning that this Sherlock includes software that is going to interact with your computer and files. This software has been intentionally included for educational purposes and is NOT intended to be executed or used otherwise. Always handle such files in isolated, controlled, and secure environments. Once the Sherlock zip has been unzipped, you will find a DANGER.txt file. Please read this to proceed."</p>
+<p>LockPick is an "Easy" sherlock challenge on HackTheBox. This is the scenario: "Forela needs your help! A whole portion of our UNIX servers have been hit with what we think is ransomware. We are refusing to pay the attackers and need you to find a way to recover the files provided. Warning This is a warning that this Sherlock includes software that is going to interact with your computer and files. This software has been intentionally included for educational purposes and is NOT intended to be executed or used otherwise. Always handle such files in isolated, controlled, and secure environments. Once the Sherlock zip has been unzipped, you will find a DANGER.txt file. Please read this to proceed."</p>
 <p>We start with a file called <custom-code>lockpick1.zip</custom-code> and we unzip it to get <custom-code>bescrypt.zip</custom-code> and a bunch of encrypted files inside a folder called <custom-code>forela-criticaldata</custom-code>. We can unzip the second compressed file with a password inside a note that we get when decompressing the first file. We will get a Linux binary called <custom-code>bescrypt3.2</custom-code>.</p>
 
 ## Questions
