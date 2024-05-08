@@ -263,12 +263,16 @@ md5sum trading-firebase_bkup.json.24bes.decrypted
 87baa3a12068c471c3320b7f41235669  trading-firebase_bkup.json.24bes.decrypted
 ```
 
+<p>The right answer is <custom-code>87baa3a12068c471c3320b7f41235669</custom-code>.</p>
+
 ### 10. We need to confirm the integrity of the files once decrypted. Please confirm the MD5 hash of the complaints file.
 
 ```bash
 md5sum complaints.csv.24bes.decrypted
 c3f05980d9bd945446f8a21bafdbf4e7  complaints.csv.24bes.decrypted
 ```
+
+<p>The right answer is <custom-code>c3f05980d9bd945446f8a21bafdbf4e7</custom-code>.</p>
 
 ## References
 
