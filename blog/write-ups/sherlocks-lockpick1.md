@@ -186,8 +186,90 @@ cat forela_uk_applicants.sql.24bes.decrypted | grep wbev
 
 <p>The right answer is <custom-code>Walden Bevans</custom-code>.</p>
 
+### 3. What is the MAC address and serial number of the laptop assigned to Hart Manifould?
+
+<p>We can </p>
+
+```bash
+xmllint --format it_assets.xml.24bes.decrypted | grep "Hart Mani" -A2 -B8
+  <record>
+    <asset_id>501</asset_id>
+    <MAC>E8-16-DF-E7-52-48</MAC>
+    <asset_type>laptop</asset_type>
+    <serial_number>1316262</serial_number>
+    <purchase_date>8/3/2022</purchase_date>
+    <last_patch_date>1/6/2023</last_patch_date>
+    <patch_status>pending</patch_status>
+    <assigned_to>Hart Manifould</assigned_to>
+    <location>Room 1156</location>
+  </record>
+```
+
+<p>The right answer is <custom-code>E8-16-DF-E7-52-48, 1316262</custom-code>.</p>
+
+### 4. What is the email address of the attacker?
+
+<p>There are note files left. In any of the note files we can find the email address of the attacker and right answer, which is <custom-code>bes24@protonmail.com</custom-code>.</p>
+
+### 5. City of London Police have suspiciouns of some insider trading taking part within our trading organisation. Please confirm the email address of the person with the highest profit percentage in a single trade alongside the profit percentage.
+
+<p>We can</p>
+
+```bash
+cat trading-firebase_bkup.json.24bes.decrypted | jq '.[] | "\(.profit_percentage) belongs to \(.email)"' | cut -d " " -f 1 | cut -d '"' -f2 | cut -d "." -f1 | sort -g
+[...snip]
+48753
+142303
+```
+
+<p>Then we grep</p>
+
+```bash
+cat trading-firebase_bkup.json.24bes.decrypted | jq '.[] | "\(.profit_percentage) belongs to \(.email)"' | grep 142303
+"142303.1996053929628411706675436 belongs to fmosedale17a@bizjournals.com"
+```
+
+<p>The right answer is <custom-code>fmosedale17a@bizjournals.com, 142303.1996053929628411706675436</custom-code>.</p>
+
+### 6. Our E-Discovery team would like to confirm the IP address detailed in the Sales Forecast log for a user who is suspected of sharing their account with a colleague. Please confirm the IP address for Karylin O'Hederscoll.
+
+<p>When opening</p>
+
+```
+87	Karylin	O'Hederscoll	kohederscoll2e@dagondesign.com	Female	8.254.104.208	Pakistan	Consulting Hours	8/7/2022	983	1957,61	503,49	494930,67	1924330,63	1429399,96	415
+```
+
+<p>The right answer is <custom-code>8.254.104.208</custom-code>.</p>
+
+### 7. Which of the following file extensions is not targeted by the malware? .txt, .sql,.ppt, .pdf, .docx, .xlsx, .csv, .json, .xml
+
+<p>Going back to the first question, we see that the <custom-code>.ppt</custom-code> extension is not targeted. This is the right answer.</p>
+
+### 8. We need to confirm the integrity of the files once decrypted. Please confirm the MD5 hash of the applicants DB.
+
+<p></p>
+
+```bash
+md5sum forela_uk_applicants.sql.24bes.decrypted
+f3894af4f1ffa42b3a379dddba384405  forela_uk_applicants.sql.24bes.decrypted
+```
+
+<p>The right answer is <custom-code>f3894af4f1ffa42b3a379dddba384405</custom-code>.</p>
+
+### 9. We need to confirm the integrity of the files once decrypted. Please confirm the MD5 hash of the trading backup.
+
+```bash
+md5sum trading-firebase_bkup.json.24bes.decrypted
+87baa3a12068c471c3320b7f41235669  trading-firebase_bkup.json.24bes.decrypted
+```
+
+### 10. We need to confirm the integrity of the files once decrypted. Please confirm the MD5 hash of the complaints file.
+
+```bash
+md5sum complaints.csv.24bes.decrypted
+c3f05980d9bd945446f8a21bafdbf4e7  complaints.csv.24bes.decrypted
+```
+
 ## References
 
-- <a href="https://app.hackthebox.com/sherlocks/Recollection">https://app.hackthebox.com/sherlocks/Recollection</a>
-- <a href="https://book.hacktricks.xyz/generic-methodologies-and-resources/basic-forensic-methodology/memory-dump-analysis/volatility-cheatsheet">https://book.hacktricks.xyz/generic-methodologies-and-resources/basic-forensic-methodology/memory-dump-analysis/volatility-cheatsheet</a>
-- <a href="https://github.com/volatilityfoundation/volatility/wiki/Command-Reference">https://github.com/volatilityfoundation/volatility/wiki/Command-Reference</a>
+- <a href="https://app.hackthebox.com/sherlocks/Recollection">https://app.hackthebox.com/sherlocks/Lockpick</a>
