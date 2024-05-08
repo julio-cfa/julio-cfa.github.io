@@ -3,7 +3,6 @@ layout: post
 author: Julio
 date: 08-05-2024
 title: LockPick1 Write-Up
-tags: ["Security", "DFIR", "Malware Analysis", "Ransomware"]
 ---
 
 <div class="center"><img src="https://labs.hackthebox.com/storage/challenges/11b921ef080f7736089c757404650e40.png" width="350"></div>
@@ -12,12 +11,14 @@ tags: ["Security", "DFIR", "Malware Analysis", "Ransomware"]
 
 ## Introduction
 
-<p>LockPick is an "Easy" sherlock challenge on HackTheBox. This is the scenario: "Forela needs your help! A whole portion of our UNIX servers have been hit with what we think is ransomware. We are refusing to pay the attackers and need you to find a way to recover the files provided. Warning This is a warning that this Sherlock includes software that is going to interact with your computer and files. This software has been intentionally included for educational purposes and is NOT intended to be executed or used otherwise. Always handle such files in isolated, controlled, and secure environments. Once the Sherlock zip has been unzipped, you will find a DANGER.txt file. Please read this to proceed."</p>
+<p>LockPick is an "Easy" sherlock challenge on HackTheBox. This is the scenario: "Forela needs your help! A whole portion of our UNIX servers have been hit with what we think is ransomware. We are refusing to pay the attackers and need you to find a way to recover the files provided. Warning This is a warning that this Sherlock includes software that is going to interact with your computer and files. This software has been intentionally included for educational purposes and is NOT intended to be executed or used otherwise. Always handle such files in isolated, controlled, and secure environments. Once the Sherlock zip has been unzipped, you will find a <custom-code>DANGER.txt</custom-code> file. Please read this to proceed."</p>
 <p>We start with a file called <custom-code>lockpick1.zip</custom-code> and we unzip it to get <custom-code>bescrypt.zip</custom-code> and a bunch of encrypted files inside a folder called <custom-code>forela-criticaldata</custom-code>. We can unzip the second compressed file with a password inside a note that we get when decompressing the first file. We will get a Linux binary called <custom-code>bescrypt3.2</custom-code>.</p>
 
 ## Questions
 
 ### 1. Please confirm the encryption key string utilised for the encryption of the files provided?
+
+<p>First, we can start analyzing the ELF file by opening it with Ghidra. By going to the main function, we can find the following disassembled code:</p>
 
 ```c
 undefined8 main(void)
@@ -27,6 +28,8 @@ undefined8 main(void)
   return 0;
 }
 ```
+
+<p>As we don't know what the <custom-code>process_directory</custom-code> function does exactly, we can go to this function and read its code.</p>
 
 ```c
 void process_directory(char *param_1,undefined8 param_2)
@@ -70,7 +73,8 @@ void process_directory(char *param_1,undefined8 param_2)
 }
 ```
 
-<p>We can confirm that the key is <custom-code>bhUlIshutrea98liOp</custom-code>.</p>
+<p>We see that it takes two arguments. The first one seems to be a directory and we can confirm that by reading the following line: <custom-code>local_10 = opendir(param_1);</custom-code>. Later on, we will see that it encrypts certain files based on their extension by using the <custom-code>encrypt_file()</custom-code> function. The first parameter seems to be the file and the second seems to be the key.</p>
+<p>We can then confirm that the key is <custom-code>bhUlIshutrea98liOp</custom-code>.</p>
 
 ```c
 void encrypt_file(char *param_1,char *param_2)
@@ -278,3 +282,4 @@ c3f05980d9bd945446f8a21bafdbf4e7  complaints.csv.24bes.decrypted
 ## References
 
 - <a href="https://app.hackthebox.com/sherlocks/Recollection">https://app.hackthebox.com/sherlocks/Lockpick</a>
+- <a href="https://ghidra-sre.org/">https://ghidra-sre.org/</a>
