@@ -12,3 +12,4 @@ layout: default
 # HackTheBox - Machines
 
 - <a href="/blog/write-ups/machines-sharp.html">Sharp Write-Up</a>
+- <a href="/blog/write-ups/machines-devvortex.html">DevVortex Write-Up</a>
