@@ -111,7 +111,7 @@ cat /etc/hosts
 
 <p>After accessing the new subdomain, we don't get a lot of information nor a lot of features to interact with. We see the following email address in the footer and take note: "contact@devvortex.htb".</p>
 
-<p>By trying to access "/index.php" we are redirected to the home page, which indicates that the server is running a PHP application. Also, it seems like the website is running on Joomla by accessing its "robots.txt" file:</p>
+<p>By trying to access "/index.php" we are redirected to the home page, which indicates that the server is running a PHP application. Also, it seems like the website is running on Joomla, which can be verified by accessing its "robots.txt" file:</p>
 
 ```bash
 curl http://dev.devvortex.htb/robots.txt
