@@ -2,17 +2,17 @@
 layout: post
 author: Julio
 date: 08-05-2024
-title: LockPick1 Write-Up
+title: LockPick Write-Up
 ---
 
 <div class="center"><img src="https://labs.hackthebox.com/storage/challenges/11b921ef080f7736089c757404650e40.png" width="350"></div>
 
-# LockPick1 Write-Up
+# LockPick Write-Up
 
 ## Introduction
 
 <p>LockPick is an "Easy" sherlock challenge on HackTheBox. This is the scenario: "Forela needs your help! A whole portion of our UNIX servers have been hit with what we think is ransomware. We are refusing to pay the attackers and need you to find a way to recover the files provided. Warning This is a warning that this Sherlock includes software that is going to interact with your computer and files. This software has been intentionally included for educational purposes and is NOT intended to be executed or used otherwise. Always handle such files in isolated, controlled, and secure environments. Once the Sherlock zip has been unzipped, you will find a <custom-code>DANGER.txt</custom-code> file. Please read this to proceed."</p>
-<p>We start with a file called <custom-code>lockpick1.zip</custom-code> and we unzip it to get <custom-code>bescrypt.zip</custom-code> and a bunch of encrypted files inside a folder called <custom-code>forela-criticaldata</custom-code>. We can unzip the second compressed file with a password inside a note that we get when decompressing the first file. We will get a Linux binary called <custom-code>bescrypt3.2</custom-code>.</p>
+<p>We start with a file called <custom-code>lockpick1.zip</custom-code> and we unzip it to get <custom-code>bescrypt.zip</custom-code> and a bunch of encrypted files inside a folder called <custom-code>forela-criticaldata</custom-code>. We can unzip the second compressed file with a password inside the <custom-code>DANGER.txt</custom-code> file. We will then get a Linux binary called <custom-code>bescrypt3.2</custom-code>.</p>
 
 ## Questions
 
@@ -73,8 +73,8 @@ void process_directory(char *param_1,undefined8 param_2)
 }
 ```
 
-<p>We see that it takes two arguments. The first one seems to be a directory and we can confirm that by reading the following line: <custom-code>local_10 = opendir(param_1);</custom-code>. Later on, we will see that it encrypts certain files based on their extension by using the <custom-code>encrypt_file()</custom-code> function. The first parameter seems to be the file and the second seems to be the key.</p>
-<p>We can then confirm that the key is <custom-code>bhUlIshutrea98liOp</custom-code>.</p>
+<p>We see that it takes two arguments. The first one seems to be a directory and we can confirm that by reading the following line: <custom-code>local_10 = opendir(param_1);</custom-code>. Later on, we will see that it encrypts certain files based on their extension by using the <custom-code>encrypt_file(local_418,param_2)</custom-code> function. The first parameter seems to be the file to encrypt and the second seems to be the key.</p>
+<p>We can then confirm that the key is <custom-code>bhUlIshutrea98liOp</custom-code> since the second parameter is the same as the one used in the first function we analyzed. Then, we can read the code of the <custom-code>encrypt_file()</custom-code> to understand how these files are being encrypted.</p>
 
 ```c
 void encrypt_file(char *param_1,char *param_2)
@@ -132,7 +132,7 @@ void encrypt_file(char *param_1,char *param_2)
 }
 ```
 
-<p>We can</p>
+<p>The following line is what we are interested here: <custom-code>*(byte *)((long)local_38 + local_20) = bVar1 ^ param_2[uVar2 % sVar4];</custom-code>. Judging by its syntax, the code seems to be performing XOR encryption. We can create a Python script to decrypt all the files that end with ".24bes" - i.e. the extension used by the ransomware.</p>
 
 ```python
 #!/usr/bin/python3
@@ -168,7 +168,7 @@ listFiles()
 decryptFiles()
 ```
 
-<p>We get the following output:</p>
+<p>After running it, we get the following output:</p>
 
 ```bash
 python3 decrypt_files.py
