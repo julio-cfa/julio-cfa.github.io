@@ -302,7 +302,7 @@ curl -s "http://dev.devvortex.htb/api/index.php/v1/config/application?public=tru
 
 <p>User "lewis" seems to have the password "P4ntherg0t1n5r3c0n##". We can use it to successfully login to Joomla on "/administrator". We tried to SSH into the machine as well with these credentials but it did not work.</p>
 
-<p>After logging into Joomla, Lewis seems to be part of the super users - which means that we have administrator privileges. We can go to "System > Templates > Site Templates > Cassiopedia Details and Files > error.php". We can then add <custom-code>system($_GET['cmd']);</custom-code> to second line of the code.</p>
+<p>After logging into Joomla, Lewis seems to be part of the super users - which means that we have admin privileges. We can go to "System > Templates > Site Templates > Cassiopeia Details and Files > error.php". We can then add <custom-code>system($_GET['cmd']);</custom-code> to second line of the code.</p>
 
 <p>To finally achieve remote code execution (RCE), we can run:</p>
 
