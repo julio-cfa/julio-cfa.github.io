@@ -11,7 +11,10 @@ title: Unit42 Write-Up
 
 ## Introduction
 
-<p>Unit42 is a "Very Easy" incident response challenge on HackTheBox. We have the following scenario: "In this Sherlock, you will familiarize yourself with Sysmon logs and various useful EventIDs for identifying and analyzing malicious activities on a Windows system. Palo Alto's Unit42 recently conducted research on an UltraVNC campaign, wherein attackers utilized a backdoored version of UltraVNC to maintain access to systems. This lab is inspired by that campaign and guides participants through the initial access stage of the campaign."</p>
+<p>Unit42 is a "Very Easy" incident response challenge on HackTheBox. We have the following scenario:</p>
+
+> In this Sherlock, you will familiarize yourself with Sysmon logs and various useful EventIDs for identifying and analyzing malicious activities on a Windows system. Palo Alto's Unit42 recently conducted research on an UltraVNC campaign, wherein attackers utilized a backdoored version of UltraVNC to maintain access to systems. This lab is inspired by that campaign and guides participants through the initial access stage of the campaign."
+
 <p>For this challenge, we need to download a file called <custom-code>unit42.zip</custom-code>. After decompressing it, we get a file called <custom-code>Microsoft-Windows-Sysmon-Operational.evtx</custom-code>.</p>
 
 ## Questions
