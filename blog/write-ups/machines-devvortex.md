@@ -162,9 +162,7 @@ curl http://dev.devvortex.htb/administrator/manifests/files/joomla.xml
 [...snip]
 ```
 
-<p>This version seems to be vulnerable: <a href="https://www.exploit-db.com/exploits/51334">unauthenticated information disclosure</a>.</p>
-
-<p>There's an exploit available, but by reading its code we can see that it consists of calls to an API endpoint. We can exploit it with Curl or even rewrite the exploit in a different language if we feel like it. I'll use Curl.</p>
+<p>This version seems to be vulnerable to an unauthenticated information disclosure issue. There's an <a href="https://www.exploit-db.com/exploits/51334">exploit</a> available, but by reading its code we can see that it consists of calls to an API endpoint. We can exploit it with Curl or even rewrite the exploit in a different language if we feel like it. I'll use Curl.</p>
 
 <p>First, we can get information about the users:</p>
 
