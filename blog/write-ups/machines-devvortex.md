@@ -149,7 +149,7 @@ Disallow: /tmp/
 <p>We can then find Joomla's version with the following command:</p>
 
 ```bash
-golemax :: ~/juumla 6 » curl http://dev.devvortex.htb/administrator/manifests/files/joomla.xml
+curl http://dev.devvortex.htb/administrator/manifests/files/joomla.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <extension type="file" method="upgrade">
 	<name>files_joomla</name>
