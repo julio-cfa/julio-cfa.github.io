@@ -29,7 +29,7 @@ Nmap done: 1 IP address (1 host up) scanned in 34.85 seconds
 
 ```
 
-<p>We can then run scripts to get the services and their versions.</p>
+<p>Then, we can run Nmap with flags to get the services and their versions:</p>
 
 ```bash
 sudo nmap -sC -sV -p22,80 10.10.11.253 --open -Pn
@@ -51,7 +51,7 @@ Nmap done: 1 IP address (1 host up) scanned in 8.70 seconds
 
 ```
 
-<p>We can access the website and we will get a calculator</p>
+<p>We see that there's a website called "Weighted Grade Calculator". Once we access the website, we get to the following functionality:</p>
 
 <div class="center"><img src="/assets/images/screenshots/htb-perfection-website1.png"></div>
 
