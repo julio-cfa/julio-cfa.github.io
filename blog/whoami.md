@@ -4,8 +4,7 @@ layout: default
 
 # Whoami
 
-<p>I am an offensive security professional who transitioned from the legal field to cybersecurity in 2019. I will try to use this blog as a way to document my journey.</p>
-<p>I am currently a Senior Security Engineer and hold a few certifications, such as CBBH, eWPTXv2, eWPTv1, eJPTv1, CRTO, BSCP, and more. My activities can be summed up to:</p>
+<p>I am currently a Senior Security Engineer and hold a few certifications, such as CBBH, eWPTXv2, eWPTv1, eJPTv1, CRTO, BSCP, and more. I transitioned from the legal field to cybersecurity in 2019. My activities can be summed up to:</p>
 <ul>
     <li>Web application and API pentesting based on OWASP methodologies such as the WSTG;</li>
     <li>Mobile application pentesting (Android and iOS) based on OWASP metholodogies such as the MSTG;</li>
