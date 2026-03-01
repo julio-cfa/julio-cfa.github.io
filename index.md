@@ -2,12 +2,19 @@
 layout: default
 ---
 
-# Home
+# Latest Posts
 
-Welcome to my blog! You can browse through the following categories:
-
-- [Whoami]({{ '/about/' | relative_url }})
-- [Certifications]({{ '/certifications/' | relative_url }})
-- [CVEs]({{ '/cves/' | relative_url }})
-- [Programming & Tooling]({{ '/programming-and-tooling/' | relative_url }})
-- [Write-Ups]({{ '/write-ups/' | relative_url }})
+{% assign latest_posts = site.writeups | concat: site.programming | concat: site.cves | concat: site.certifications | sort: "date" | reverse %}
+{% for post in latest_posts %}
+{% assign post_label = post.collection %}
+{% if post.collection == "writeups" %}
+  {% assign post_label = "Write-Up" %}
+{% elsif post.collection == "programming" %}
+  {% assign post_label = "Programming & Tooling" %}
+{% elsif post.collection == "cves" %}
+  {% assign post_label = "CVE" %}
+{% elsif post.collection == "certifications" %}
+  {% assign post_label = "Certification" %}
+{% endif %}
+- [{{ post.title }}]({{ post.url | relative_url }}) <small>{{ post.date | date: "%Y-%m-%d" }} · {{ post_label }}</small>
+{% endfor %}

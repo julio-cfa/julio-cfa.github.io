@@ -5,13 +5,10 @@ permalink: /about/
 
 # Whoami
 
-<p>I am currently a Head of Security @ Rocket.Chat and hold a few certifications, such as CBBH, eWPTXv2, eWPTv1, eJPTv1, CRTO, BSCP, and more. I transitioned from the legal field to cybersecurity in 2019. My activities can be summed up to:</p>
-<ul>
-    <li>Web application and API pentesting based on OWASP methodologies such as the WSTG;</li>
-    <li>Mobile application pentesting (Android and iOS) based on OWASP metholodogies such as the MSTG;</li>
-    <li>Development and execution of phishing campaigns with GoPhish ahd Evilginx;</li>
-    <li>ISO/IEC 27001 and 27002 compliance;</li>
-    <li>Brazilian Data Protection Law (LGPD) & General Data Protection Regulation (GDPR) compliance.</li>
-    <li>SOC2 Type I and Type II compliance;</li>
-</ul>
-<p>If you want, you can connect with me on <a href="https://linkedin.com/in/julio-cfa">Linkedin</a>. See ya!</p>
+<p>I am Julio Araujo, currently working in security leadership and application security. My recent experience includes:</p>
+
+<p>| Head of Security @ Rocket.Chat</p>
+<p>| Senior Application Security Engineer @ Rocket.Chat</p>
+<p>| Senior Offensive Security Engineer @ Loadsmart</p>
+
+<p>I also hold certifications such as CBBH, eWPTXv2, eWPTv1, eJPTv1, CRTO, and BSCP. You can find me on <a href="https://linkedin.com/in/julio-cfa">LinkedIn</a> or <a href="https://github.com/julio-cfa">GitHub</a>.</p>
