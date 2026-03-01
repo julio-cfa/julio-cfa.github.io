@@ -19,6 +19,9 @@ collections:
   programming:
     output: true
     permalink: /programming-and-tooling/:name/
+  journal:
+    output: true
+    permalink: /journal/:name/
 defaults:
   - scope:
       path: ""
@@ -43,5 +46,10 @@ defaults:
   - scope:
       path: ""
       type: programming
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: journal
     values:
       layout: post
