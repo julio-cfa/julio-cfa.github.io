@@ -1,0 +1,8 @@
+<nav class="site-nav" aria-label="Primary">
+  <a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>Whoami</a>
+  <a href="{{ '/journal/' | relative_url }}"{% if page.url == '/journal/' or page.collection == 'journal' %} aria-current="page"{% endif %}>Journal</a>
+  <a href="{{ '/certifications/' | relative_url }}"{% if page.url == '/certifications/' or page.collection == 'certifications' %} aria-current="page"{% endif %}>Certifications</a>
+  <a href="{{ '/cves/' | relative_url }}"{% if page.url == '/cves/' or page.collection == 'cves' %} aria-current="page"{% endif %}>CVEs</a>
+  <a href="{{ '/programming-and-tooling/' | relative_url }}"{% if page.url == '/programming-and-tooling/' or page.collection == 'programming' %} aria-current="page"{% endif %}>Programming &amp; Tooling</a>
+  <a href="{{ '/write-ups/' | relative_url }}"{% if page.url == '/write-ups/' or page.collection == 'writeups' %} aria-current="page"{% endif %}>Write-Ups</a>
+</nav>

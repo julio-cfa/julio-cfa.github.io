@@ -132,6 +132,12 @@ a:focus {
   color: var(--accent-strong);
 }
 
+.site-nav a[aria-current="page"] {
+  background-color: var(--surface-soft);
+  border-color: var(--accent-muted);
+  color: var(--accent-strong);
+}
+
 .btn {
   color: var(--accent-muted);
   border-color: var(--surface-border);
