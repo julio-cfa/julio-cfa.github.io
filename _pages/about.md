@@ -29,6 +29,7 @@ permalink: /about/
   .t-item{
     position: relative;
     padding: 1.15rem 0 1.15rem 0;
+    padding-left: 1.8rem;
   }
 
   /* square node */
@@ -36,7 +37,7 @@ permalink: /about/
     content: "";
     position: absolute;
     left: .72rem;
-    top: 1.45rem;
+    top: 1.75rem;
     width: .55rem;
     height: .55rem;
     background: rgba(255,255,255,.55);
@@ -130,7 +131,7 @@ permalink: /about/
         <a class="c-rocketchat" href="https://rocket.chat" target="_blank" rel="noopener">Rocket.Chat</a>
         <span class="badge">Present</span>
       </p>
-      <p class="t-meta">Security leadership • Strategy • Governance • AppSec enablement</p>
+      <p class="t-meta">Security Leadership • Strategy • Governance • AppSec  •  Cloud Security  • IT Security</p>
     </div>
 
     <div class="t-item">
@@ -139,7 +140,7 @@ permalink: /about/
         <a class="c-rocketchat" href="https://rocket.chat" target="_blank" rel="noopener">Rocket.Chat</a>
         <span class="badge">Past</span>
       </p>
-      <p class="t-meta">Secure SDLC • Threat modeling • Reviews • Automation</p>
+      <p class="t-meta">Secure SDLC • Threat Modeling • Code Reviews • Automation</p>
     </div>
 
     <div class="t-item">
@@ -148,7 +149,25 @@ permalink: /about/
         <a class="c-loadsmart" href="https://loadsmart.com" target="_blank" rel="noopener">Loadsmart</a>
         <span class="badge">Past</span>
       </p>
-      <p class="t-meta">Red teaming • Pentesting • Adversary simulation</p>
+      <p class="t-meta">Pentesting • Adversary Simulation • Phishing Assessments</p>
+    </div>
+
+    <div class="t-item">
+      <p class="t-role">
+        Senior IT Security Engineer <span class="at">@</span>
+        <a class="c-snowflake" href="https://openzeppelin.com" target="_blank" rel="noopener">OpenZeppelin</a>
+        <span class="badge">Past</span>
+      </p>
+      <p class="t-meta">Cloud Security • IAM •  • IT Security • Compliance • Pentesting </p>
+    </div>
+
+    <div class="t-item">
+      <p class="t-role">
+        Lead Cybersecurity Consultant <span class="at">@</span>
+        <a class="c-snowflake" href="https://berghem.com.br" target="_blank" rel="noopener">Berghem</a>
+        <span class="badge">Past</span>
+      </p>
+      <p class="t-meta">Security Leadership • Web App/API Pentesting • Active Directory Pentesting • AWS Pentesting • Mobile App (Android/iOS) Pentesting</p>
     </div>
 
     <!-- Optional: add more entries in the same format -->

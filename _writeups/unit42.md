@@ -11,21 +11,21 @@ series: Sherlocks
 
 ## Introduction
 
-<p>Unit42 is a "Very Easy" incident response challenge on HackTheBox. We have the following scenario:</p>
+Unit42 is a "Very Easy" incident response challenge on HackTheBox. We have the following scenario:
 
 > In this Sherlock, you will familiarize yourself with Sysmon logs and various useful EventIDs for identifying and analyzing malicious activities on a Windows system. Palo Alto's Unit42 recently conducted research on an UltraVNC campaign, wherein attackers utilized a backdoored version of UltraVNC to maintain access to systems. This lab is inspired by that campaign and guides participants through the initial access stage of the campaign."
 
-<p>For this challenge, we need to download a file called <custom-code>unit42.zip</custom-code>. After decompressing it, we get a file called <custom-code>Microsoft-Windows-Sysmon-Operational.evtx</custom-code>.</p>
+For this challenge, we need to download a file called `unit42.zip`. After decompressing it, we get a file called `Microsoft-Windows-Sysmon-Operational.evtx`.
 
 ## Questions
 
 ### 1. How many Event logs are there with Event ID 11?
 
-<p>We will be using a tool called <custom-code>evtx_dump</custom-code> written by omerbenamram. You can find it here: <a href="https://github.com/omerbenamram/evtx">https://github.com/omerbenamram/evtx</a>.</p>
+We will be using a tool called `evtx_dump` written by omerbenamram. You can find it here: <a href="https://github.com/omerbenamram/evtx">https://github.com/omerbenamram/evtx</a>.
 
-<p>We can use this tool to work with either XML output or JSON output.</p>
+We can use this tool to work with either XML output or JSON output.
 
-<P>XML:</p>
+XML:
 
 ```bash
 ./evtx-dump Microsoft-Windows-Sysmon-Operational.evtx
@@ -125,18 +125,18 @@ JSON:
 }
 ```
 
-<p>As seen above, each event has an <custom-code>EventID</custom-code>. We can use the following command to filter the output and retrieve how many IDs were "11".</p>
+As seen above, each event has an `EventID`. We can use the following command to filter the output and retrieve how many IDs were "11".
 
 ```bash
 ./evtx-dump Microsoft-Windows-Sysmon-Operational.evtx -o json | grep -v "Record 1*" | jq .Event.System.EventID | grep 11 | uniq -c
   56 11
 ```
 
-<p>As seen above, <custom-code>56</custom-code> is the right answer</p>
+As seen above, `56` is the right answer
 
 ### 2. Whenever a process is created in memory, an event with Event ID 1 is recorded with details such as command line, hashes, process path, parent process path, etc. This information is very useful for an analyst because it allows us to see all programs executed on a system, which means we can spot any malicious processes being executed. What is the malicious process that infected the victim's system?
 
-<p>We can use the following command to filter the IDs of the events and grep for the command line arguments:</p>
+We can use the following command to filter the IDs of the events and grep for the command line arguments:
 
 ```bash
 ./evtx-dump Microsoft-Windows-Sysmon-Operational.evtx -o json | grep -v "Record 1*" | jq '.[] | select(.System.EventID == 1)' | egrep '"CommandLine"'
@@ -148,11 +148,11 @@ JSON:
     "CommandLine": "C:\\Windows\\syswow64\\MsiExec.exe -Embedding 5250A3DB12224F77D2A18B4EB99AC5EB",
 ```
 
-<p>The most suspicious one is <custom-code>Preventivo24.02.14.exe.exe</custom-code> and it is the right answer.</p>
+The most suspicious one is `Preventivo24.02.14.exe.exe` and it is the right answer.
 
 ### 3. Which Cloud drive was used to distribute the malware?
 
-<p>Events with the ID of 22 are documented as "DNSEvent (DNS query)". According to Sysmon's documentation, "this event is generated when a process executes a DNS query, whether the result is successful or fails, cached or not. The telemetry for this event was added for Windows 8.1 so it is not available on Windows 7 and earlier". We can use this event to look for all the sites/domains that were requested.</p>
+Events with the ID of 22 are documented as "DNSEvent (DNS query)". According to Sysmon's documentation, "this event is generated when a process executes a DNS query, whether the result is successful or fails, cached or not. The telemetry for this event was added for Windows 8.1 so it is not available on Windows 7 and earlier". We can use this event to look for all the sites/domains that were requested.
 
 ```bash
 ./evtx-dump Microsoft-Windows-Sysmon-Operational.evtx -o json | grep -v "Record 1*" | jq '.[] | select(.System.EventID == 22) | .EventData.QueryName'
@@ -161,11 +161,11 @@ JSON:
 "www.example.com"
 ```
 
-<p>The right answer is <custom-code>DropBox</custom-code>.</p>
+The right answer is `DropBox`.
 
 ### 4. The initial malicious file time-stamped (a defense evasion technique, where the file creation date is changed to make it appear old) many files it created on disk. What was the timestamp changed to for a PDF file?
 
-<p>Referring to Sysmon's documentation again, we can see that events that have the ID of 2 are "a process changed a file creation time". We can then use the following command to find our answer:</p>
+Referring to Sysmon's documentation again, we can see that events that have the ID of 2 are "a process changed a file creation time". We can then use the following command to find our answer:
 
 ```bash
 ./evtx-dump Microsoft-Windows-Sysmon-Operational.evtx -o json | grep -v "Record 1*" | jq '.[] | select(.System.EventID == 2) | .EventData' | egrep "CreationUtcTime|TargetFilename"  | grep pdf -B2
@@ -174,7 +174,7 @@ JSON:
   "TargetFilename": "C:\\Users\\CyberJunkie\\AppData\\Roaming\\Photo and Fax Vn\\Photo and vn 1.1.2\\install\\F97891C\\TempFolder\\~.pdf"
 ```
 
-<p>The answer is <custom-code>2024-01-14 08:10:06</custom-code>.</p>
+The answer is `2024-01-14 08:10:06`.
 
 ### 5. The malicious file dropped a few files on disk. Where was "once.cmd" created on disk? Please answer with the full path along with the filename.
 
@@ -184,15 +184,15 @@ JSON:
   "TargetFilename": "C:\\Games\\once.cmd",
 ```
 
-<p>The right answer is <custom-code>C:\Users\CyberJunkie\AppData\Roaming\Photo and Fax Vn\Photo and vn 1.1.2\install\F97891C\WindowsVolume\Games\once.cmd</custom-code>.</p>
+The right answer is `C:\Users\CyberJunkie\AppData\Roaming\Photo and Fax Vn\Photo and vn 1.1.2\install\F97891C\WindowsVolume\Games\once.cmd`.
 
 ### 6. The malicious file attempted to reach a dummy domain, most likely to check the internet connection status. What domain name did it try to connect to?
 
-<p>We already have this information from the question we looked for DNS queries. The right answer is <custom-code>www.example.com</custom-code>.</p>
+We already have this information from the question we looked for DNS queries. The right answer is `www.example.com`.
 
 ### 7. Which IP address did the malicious process try to reach out to?
 
-<p>Event ID 3 logs all network connections. We can find the destination IPs with the following command:</p>
+Event ID 3 logs all network connections. We can find the destination IPs with the following command:
 
 ```bash
 ./evtx-dump Microsoft-Windows-Sysmon-Operational.evtx -o json | grep -v "Record 1*" | jq '.[] | select(.System.EventID == 3) | .EventData' | grep Ip
@@ -202,11 +202,11 @@ JSON:
   "SourceIsIpv6": false,
 ```
 
-<p>It seems like there was only one connection. The answer is <custom-code>93.184.216.34</custom-code></p>
+It seems like there was only one connection. The answer is `93.184.216.34`
 
 ### 8. The malicious process terminated itself after infecting the PC with a backdoored variant of UltraVNC. When did the process terminate itself?
 
-<p>Lastly, Event ID 5 logs all entries of terminated processes. We can use the following command to find the processes that were terminated:</p>
+Lastly, Event ID 5 logs all entries of terminated processes. We can use the following command to find the processes that were terminated:
 
 ```bash
 ./evtx-dump Microsoft-Windows-Sysmon-Operational.evtx -o json | grep -v "Record 1*" | jq '.[] | select(.System.EventID == 5) | .EventData'
@@ -220,11 +220,11 @@ JSON:
 }
 ```
 
-<p>The answer is <custom-code>2024-02-14 03:41:58</custom-code>.</p>
+The answer is `2024-02-14 03:41:58`.
 
 ## Conclusion
 
-<p>Unit42 is a great and easy challenge. It helps us understand Windows event logs and also how to use tools such as <custom-code>jq</custom-code> and <custom-code>grep</custom-code> to navigate through the events and retrieve important information about incidents.</p>
+Unit42 is a great and easy challenge. It helps us understand Windows event logs and also how to use tools such as `jq` and `grep` to navigate through the events and retrieve important information about incidents.
 
 ## References
 

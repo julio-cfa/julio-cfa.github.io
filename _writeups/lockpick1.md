@@ -11,17 +11,17 @@ series: Sherlocks
 
 ## Introduction
 
-<p>LockPick is an "Easy" sherlock challenge on HackTheBox. This is the scenario:</p>
+LockPick is an "Easy" sherlock challenge on HackTheBox. This is the scenario:
 
 > Forela needs your help! A whole portion of our UNIX servers have been hit with what we think is ransomware. We are refusing to pay the attackers and need you to find a way to recover the files provided. Warning This is a warning that this Sherlock includes software that is going to interact with your computer and files. This software has been intentionally included for educational purposes and is NOT intended to be executed or used otherwise. Always handle such files in isolated, controlled, and secure environments. Once the Sherlock zip has been unzipped, you will find a DANGER.txt file. Please read this to proceed.
 
-<p>We start with a file called <custom-code>lockpick1.zip</custom-code> and we unzip it to get <custom-code>bescrypt.zip</custom-code> and a bunch of encrypted files inside a folder called <custom-code>forela-criticaldata</custom-code>. We can unzip the second compressed file with a password inside the <custom-code>DANGER.txt</custom-code> file. We will then get a Linux binary called <custom-code>bescrypt3.2</custom-code>.</p>
+We start with a file called `lockpick1.zip` and we unzip it to get `bescrypt.zip` and a bunch of encrypted files inside a folder called `forela-criticaldata`. We can unzip the second compressed file with a password inside the `DANGER.txt` file. We will then get a Linux binary called `bescrypt3.2`.
 
 ## Questions
 
 ### 1. Please confirm the encryption key string utilised for the encryption of the files provided?
 
-<p>First, we can start analyzing the ELF file by opening it with Ghidra. By going to the main function, we can find the following disassembled code:</p>
+First, we can start analyzing the ELF file by opening it with Ghidra. By going to the main function, we can find the following disassembled code:
 
 ```c
 undefined8 main(void)
@@ -32,7 +32,7 @@ undefined8 main(void)
 }
 ```
 
-<p>As we don't know what the <custom-code>process_directory</custom-code> function does exactly, we can go to this function and read its code.</p>
+As we don't know what the `process_directory` function does exactly, we can go to this function and read its code.
 
 ```c
 void process_directory(char *param_1,undefined8 param_2)
@@ -76,8 +76,9 @@ void process_directory(char *param_1,undefined8 param_2)
 }
 ```
 
-<p>We see that it takes two arguments. The first one seems to be a directory and we can confirm that by reading the following line: <custom-code>local_10 = opendir(param_1);</custom-code>. Later on, we will see that it encrypts certain files based on their extension by using the <custom-code>encrypt_file(local_418,param_2)</custom-code> function. The first parameter seems to be the file to encrypt and the second seems to be the key.</p>
-<p>We can then confirm that the key is <custom-code>bhUlIshutrea98liOp</custom-code> since the second parameter is the same as the one used in the first function we analyzed. Then, we can read the code of the <custom-code>encrypt_file()</custom-code> to understand how these files are being encrypted.</p>
+We see that it takes two arguments. The first one seems to be a directory and we can confirm that by reading the following line: `local_10 = opendir(param_1);`. Later on, we will see that it encrypts certain files based on their extension by using the `encrypt_file(local_418,param_2)` function. The first parameter seems to be the file to encrypt and the second seems to be the key.
+
+We can then confirm that the key is `bhUlIshutrea98liOp` since the second parameter is the same as the one used in the first function we analyzed. Then, we can read the code of the `encrypt_file()` to understand how these files are being encrypted.
 
 ```c
 void encrypt_file(char *param_1,char *param_2)
@@ -135,7 +136,7 @@ void encrypt_file(char *param_1,char *param_2)
 }
 ```
 
-<p>The following line is what we are interested here: <custom-code>*(byte *)((long)local_38 + local_20) = bVar1 ^ param_2[uVar2 % sVar4];</custom-code>. Judging by its syntax, the code seems to be performing XOR encryption. We can create a Python script to decrypt all the files that end with ".24bes" - i.e. the extension used by the ransomware.</p>
+The following line is what we are interested here: `*(byte *)((long)local_38 + local_20) = bVar1 ^ param_2[uVar2 % sVar4];`. Judging by its syntax, the code seems to be performing XOR encryption. We can create a Python script to decrypt all the files that end with ".24bes" - i.e. the extension used by the ransomware.
 
 ```python
 #!/usr/bin/python3
@@ -171,7 +172,7 @@ listFiles()
 decryptFiles()
 ```
 
-<p>After running it, we get the following output:</p>
+After running it, we get the following output:
 
 ```bash
 python3 decrypt_files.py
@@ -185,18 +186,18 @@ python3 decrypt_files.py
 
 ### 2. We have recently recieved an email from wbevansn1@cocolog-nifty.com demanding to know the first and last name we have him registered as. They believe they made a mistake in the application process. Please confirm the first and last name of this applicant.
 
-<p>We can run</p>
+We can run
 
 ```bash
 cat forela_uk_applicants.sql.24bes.decrypted | grep wbev
 (830,'Walden','Bevans','wbevansn1@cocolog-nifty.com','Male','Aerospace Manufacturing','2023-02-16'),
 ```
 
-<p>The right answer is <custom-code>Walden Bevans</custom-code>.</p>
+The right answer is `Walden Bevans`.
 
 ### 3. What is the MAC address and serial number of the laptop assigned to Hart Manifould?
 
-<p>We can </p>
+We can 
 
 ```bash
 xmllint --format it_assets.xml.24bes.decrypted | grep "Hart Mani" -A2 -B8
@@ -213,15 +214,15 @@ xmllint --format it_assets.xml.24bes.decrypted | grep "Hart Mani" -A2 -B8
   </record>
 ```
 
-<p>The right answer is <custom-code>E8-16-DF-E7-52-48, 1316262</custom-code>.</p>
+The right answer is `E8-16-DF-E7-52-48, 1316262`.
 
 ### 4. What is the email address of the attacker?
 
-<p>There are note files left. In any of the note files we can find the email address of the attacker and right answer, which is <custom-code>bes24@protonmail.com</custom-code>.</p>
+There are note files left. In any of the note files we can find the email address of the attacker and right answer, which is `bes24@protonmail.com`.
 
 ### 5. City of London Police have suspiciouns of some insider trading taking part within our trading organisation. Please confirm the email address of the person with the highest profit percentage in a single trade alongside the profit percentage.
 
-<p>We can</p>
+We can
 
 ```bash
 cat trading-firebase_bkup.json.24bes.decrypted | jq '.[] | "\(.profit_percentage) belongs to \(.email)"' | cut -d " " -f 1 | cut -d '"' -f2 | cut -d "." -f1 | sort -g
@@ -230,39 +231,37 @@ cat trading-firebase_bkup.json.24bes.decrypted | jq '.[] | "\(.profit_percentage
 142303
 ```
 
-<p>Then we grep</p>
+Then we grep
 
 ```bash
 cat trading-firebase_bkup.json.24bes.decrypted | jq '.[] | "\(.profit_percentage) belongs to \(.email)"' | grep 142303
 "142303.1996053929628411706675436 belongs to fmosedale17a@bizjournals.com"
 ```
 
-<p>The right answer is <custom-code>fmosedale17a@bizjournals.com, 142303.1996053929628411706675436</custom-code>.</p>
+The right answer is `fmosedale17a@bizjournals.com, 142303.1996053929628411706675436`.
 
 ### 6. Our E-Discovery team would like to confirm the IP address detailed in the Sales Forecast log for a user who is suspected of sharing their account with a colleague. Please confirm the IP address for Karylin O'Hederscoll.
 
-<p>When opening</p>
+When opening
 
 ```
 87	Karylin	O'Hederscoll	kohederscoll2e@dagondesign.com	Female	8.254.104.208	Pakistan	Consulting Hours	8/7/2022	983	1957,61	503,49	494930,67	1924330,63	1429399,96	415
 ```
 
-<p>The right answer is <custom-code>8.254.104.208</custom-code>.</p>
+The right answer is `8.254.104.208`.
 
 ### 7. Which of the following file extensions is not targeted by the malware? .txt, .sql,.ppt, .pdf, .docx, .xlsx, .csv, .json, .xml
 
-<p>Going back to the first question, we see that the <custom-code>.ppt</custom-code> extension is not targeted. This is the right answer.</p>
+Going back to the first question, we see that the `.ppt` extension is not targeted. This is the right answer.
 
 ### 8. We need to confirm the integrity of the files once decrypted. Please confirm the MD5 hash of the applicants DB.
-
-<p></p>
 
 ```bash
 md5sum forela_uk_applicants.sql.24bes.decrypted
 f3894af4f1ffa42b3a379dddba384405  forela_uk_applicants.sql.24bes.decrypted
 ```
 
-<p>The right answer is <custom-code>f3894af4f1ffa42b3a379dddba384405</custom-code>.</p>
+The right answer is `f3894af4f1ffa42b3a379dddba384405`.
 
 ### 9. We need to confirm the integrity of the files once decrypted. Please confirm the MD5 hash of the trading backup.
 
@@ -271,7 +270,7 @@ md5sum trading-firebase_bkup.json.24bes.decrypted
 87baa3a12068c471c3320b7f41235669  trading-firebase_bkup.json.24bes.decrypted
 ```
 
-<p>The right answer is <custom-code>87baa3a12068c471c3320b7f41235669</custom-code>.</p>
+The right answer is `87baa3a12068c471c3320b7f41235669`.
 
 ### 10. We need to confirm the integrity of the files once decrypted. Please confirm the MD5 hash of the complaints file.
 
@@ -280,7 +279,7 @@ md5sum complaints.csv.24bes.decrypted
 c3f05980d9bd945446f8a21bafdbf4e7  complaints.csv.24bes.decrypted
 ```
 
-<p>The right answer is <custom-code>c3f05980d9bd945446f8a21bafdbf4e7</custom-code>.</p>
+The right answer is `c3f05980d9bd945446f8a21bafdbf4e7`.
 
 ## References
 
