@@ -17,7 +17,7 @@ $container-max-width: 1000px;
 body {
   margin: 0;
   padding: 0;
-  background: $body-background url("../images/bkg.png") 0 0;
+  background: $body-background;
   color: $body-foreground;
   font-size: 16px;
   line-height: 1.5;
@@ -52,9 +52,9 @@ li {
 */
 
 header {
-  background: rgba(0, 0, 0, 0.1);
+  background: #111111;
   width: 100%;
-  border-bottom: 1px dashed $conifer; //header;
+  border-bottom: 1px solid $dove-grey;
   padding: 20px 0;
   margin: 0 0 40px 0;
 }
@@ -66,9 +66,7 @@ header h1 {
   font-weight: bold;
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
   color: $conifer;//$header;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1),
-               0 0 5px rgba(181, 232, 83, 0.1),
-               0 0 10px rgba(181, 232, 83, 0.1);
+  text-shadow: none;
   letter-spacing: -1px;
   -webkit-font-smoothing: antialiased;
   @include media-max-width($container-max-width) {
@@ -85,7 +83,7 @@ header h1:before {
 header h2 {
   font-size: 18px;
   font-weight: 300;
-  color: #666;
+  color: $grey;
 }
 
 #downloads .btn {
@@ -110,9 +108,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
   color: $header;
   letter-spacing: -0.03em;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1),
-               0 0 5px rgba(181, 232, 83, 0.1),
-               0 0 10px rgba(181, 232, 83, 0.1);
+  text-shadow: none;
 }
 
 #main_content h1 {
@@ -140,7 +136,7 @@ h1, h2, h3, h4, h5, h6 {
 #main_content h6 {
   font-size: 12px;
   text-transform: uppercase;
-  color: #999;
+  color: $silver-chalice;
   margin: 0 0 5px 0;
 }
 
@@ -150,21 +146,21 @@ dt {
 }
 
 ul li {
-  list-style-image:url('../images/bullet.png');
+  list-style-type: square;
 }
 
 blockquote {
   color: $blockquote-color;
   padding-left: 10px;
-  border-left: 1px dotted $blockquote-border;
+  border-left: 1px solid $blockquote-border;
 }
 
 pre {
-  background: rgba(0, 0, 0, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #111111;
+  border: 1px solid $dove-grey;
   padding: 10px;
   font-size: 16px;
-  color: #b5e853;
+  color: $alto;
   border-radius: 2px;
   word-wrap: normal;
   overflow: auto;
@@ -172,11 +168,11 @@ pre {
 }
 
 code.highlighter-rouge {
-  background: rgba(0,0,0,0.9);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #111111;
+  border: 1px solid $dove-grey;
   padding: 0px 3px;
   margin: 0px -3px;
-  color: #aa759f;
+  color: $gallery;
   border-radius: 2px;
 }
 
@@ -187,7 +183,7 @@ table {
 
 th {
   text-align: left;
-  border-bottom: 1px dashed #b5e853;
+  border-bottom: 1px solid $dove-grey;
   padding: 5px 10px;
 }
 
@@ -198,8 +194,8 @@ td {
 hr {
   height: 0;
   border: 0;
-  border-bottom: 1px dashed #b5e853;
-  color: #b5e853;
+  border-bottom: 1px solid $dove-grey;
+  color: $dove-grey;
 }
 
 /* Buttons
@@ -207,23 +203,21 @@ hr {
 
 .btn {
   display: inline-block;
-  background: -webkit-linear-gradient(top, rgba(40, 40, 40, 0.3), rgba(35, 35, 35, 0.3) 50%, rgba(10, 10, 10, 0.3) 50%, rgba(0, 0, 0, 0.3));
+  background: linear-gradient(to bottom, #2a2a2a, #161616);
   padding: 8px 18px;
   border-radius: 50px;
-  border: 2px solid rgba(0, 0, 0, 0.7);
-  border-bottom: 2px solid rgba(0, 0, 0, 0.7);
-  border-top: 2px solid rgba(0, 0, 0, 1);
-  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid $dove-grey;
+  color: $gallery;
   font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-size: 13px;
   text-decoration: none;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.75);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  text-shadow: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .btn:hover {
-  background: -webkit-linear-gradient(top, rgba(40, 40, 40, 0.6), rgba(35, 35, 35, 0.6) 50%, rgba(10, 10, 10, 0.8) 50%, rgba(0, 0, 0, 0.8));
+  background: linear-gradient(to bottom, #323232, #1b1b1b);
 }
 
 .btn .icon {
@@ -244,8 +238,13 @@ hr {
 */
 
 a {
-  color: #63c0f5;
-  text-shadow: 0 0 5px rgba(104, 182, 255, 0.5);
+  color: $hippie-blue;
+  text-shadow: none;
+}
+
+a:hover,
+a:focus {
+  color: $gallery;
 }
 
 /* Clearfix */

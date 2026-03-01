@@ -1,8 +1,8 @@
 ---
-layout: post
 author: Julio
-date: 11-05-2024
+date: 2024-05-11
 title: Perfection Write-Up
+series: Machines
 ---
 
 # Perfection Write-Up

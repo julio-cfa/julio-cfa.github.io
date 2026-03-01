@@ -1,7 +1,6 @@
 ---
-layout: post
 author: Julio
-date: 05-05-2024
+date: 2024-05-05
 title: Certified Bug Bounty Hunter (CBBH) Review
 ---
 

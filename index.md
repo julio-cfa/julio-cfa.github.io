@@ -6,8 +6,8 @@ layout: default
 
 Welcome to my blog! You can browse through the following categories:
 
-- [Whoami](/blog/whoami.html)<br>
-- [Certifications](/blog/certifications.html)<br>
-- [CVEs](/blog/cves.html)<br>
-- [Programming & Tooling](/blog/programming-and-tooling.html)<br>
-- [Write-Ups](/blog/write-ups.html)<br>
+- [Whoami]({{ '/about/' | relative_url }})
+- [Certifications]({{ '/certifications/' | relative_url }})
+- [CVEs]({{ '/cves/' | relative_url }})
+- [Programming & Tooling]({{ '/programming-and-tooling/' | relative_url }})
+- [Write-Ups]({{ '/write-ups/' | relative_url }})

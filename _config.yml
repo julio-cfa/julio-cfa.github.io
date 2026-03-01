@@ -4,3 +4,44 @@ author: Julio
 show_downloads: false
 google_analytics:
 theme: jekyll-theme-hacker
+include:
+  - _pages
+collections:
+  writeups:
+    output: true
+    permalink: /write-ups/:name/
+  cves:
+    output: true
+    permalink: /cves/:name/
+  certifications:
+    output: true
+    permalink: /certifications/:name/
+  programming:
+    output: true
+    permalink: /programming-and-tooling/:name/
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: writeups
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: cves
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: certifications
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: programming
+    values:
+      layout: post

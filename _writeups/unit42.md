@@ -1,8 +1,8 @@
 ---
-layout: post
 author: Julio
-date: 06-05-2024
+date: 2024-05-06
 title: Unit42 Write-Up
+series: Sherlocks
 ---
 
 <div class="center"><img src="https://labs.hackthebox.com/storage/challenges/abd815286ba1007abfbb8415b83ae2cf.png" width="350"></div>

@@ -1,10 +1,11 @@
 ---
-layout: default
+title: Whoami
+permalink: /about/
 ---
 
 # Whoami
 
-<p>I am currently a Senior Security Engineer and hold a few certifications, such as CBBH, eWPTXv2, eWPTv1, eJPTv1, CRTO, BSCP, and more. I transitioned from the legal field to cybersecurity in 2019. My activities can be summed up to:</p>
+<p>I am currently a Head of Security @ Rocket.Chat and hold a few certifications, such as CBBH, eWPTXv2, eWPTv1, eJPTv1, CRTO, BSCP, and more. I transitioned from the legal field to cybersecurity in 2019. My activities can be summed up to:</p>
 <ul>
     <li>Web application and API pentesting based on OWASP methodologies such as the WSTG;</li>
     <li>Mobile application pentesting (Android and iOS) based on OWASP metholodogies such as the MSTG;</li>

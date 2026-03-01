@@ -1,8 +1,8 @@
 ---
-layout: post
 author: Julio
-date: 07-05-2024
+date: 2024-05-07
 title: Recollection Write-Up
+series: Sherlocks
 ---
 
 <div class="center"><img src="https://labs.hackthebox.com/storage/challenges/605ff764c617d3cd28dbbdd72be8f9a2.png" width="350"></div>

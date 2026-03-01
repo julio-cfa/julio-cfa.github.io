@@ -1,8 +1,8 @@
 ---
-layout: post
 author: Julio
-date: 08-05-2024
+date: 2024-05-08
 title: LockPick Write-Up
+series: Sherlocks
 ---
 
 <div class="center"><img src="https://labs.hackthebox.com/storage/challenges/11b921ef080f7736089c757404650e40.png" width="350"></div>

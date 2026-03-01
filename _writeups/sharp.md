@@ -1,8 +1,8 @@
 ---
-layout: post
 author: Julio
-date: 09-05-2024
+date: 2024-05-09
 title: Sharp Write-Up
+series: Machines
 ---
 
 # Sharp Write-Up
