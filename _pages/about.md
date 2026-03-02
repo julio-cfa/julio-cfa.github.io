@@ -158,7 +158,7 @@ permalink: /about/
         <a class="c-openzeppelin" href="https://openzeppelin.com" target="_blank" rel="noopener">OpenZeppelin</a>
         <span class="badge">Past</span>
       </p>
-      <p class="t-meta">Cloud Security • IAM •  • IT Security • Compliance • Pentesting </p>
+      <p class="t-meta">Cloud Security • IAM • IT Security • Compliance • Pentesting </p>
     </div>
 
     <div class="t-item">
