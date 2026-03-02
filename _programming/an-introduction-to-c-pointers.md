@@ -10,7 +10,7 @@ title: An (Offensive) Introduction To C Pointers
 
 ## Introduction
 
-What is a pointer? It is a question that lived rent-free in my head for a long time. It was simply too hard for me to understand what the hell a pointer was. Not only that, most people I talked to - programmers and security folks alike - tried to avoid this question and told me that pointers were incomprehensible. After reading <a href="https://beej.us/guide/bgc/">Beej's Guide To C Programming</a> (please read it), I realized that this couldn't be further from the truth.
+What is a pointer? It is a question that lived rent-free in my head for some time. When I was starting in the field, in 2019/2020, it was simply too hard for me to understand what the hell a pointer was. Not only that, most people I talked to - programmers and security folks alike - would tell me that pointers were a really hard concept to grasp. After reading <a href="https://beej.us/guide/bgc/">Beej's Guide To C Programming</a> (please read it), I realized that this couldn't be further from the truth.
 
 Okay, so... What the hell is a pointer? Well, a pointer is a reference to an address in memory. Yeah, I know, it's still complicated. Let's break it down a little further.
 
@@ -30,9 +30,9 @@ int main (void) {
 }
 ```
 
-Here, we are defining an `int` called `my_number`. Then, we assign `10` to `my_number`. This value has to live somewhere in memory, and that location has an address. The exact address is decided by the program at runtime, so it will vary from execution to execution.
+Here, we are defining an `int` called `my_number`. Then, we assign the value `10` to `my_number`. This value has to live somewhere in memory, and that location has an address. The exact address is decided by the program at runtime, so it will vary from execution to execution.
 
-To store a variable's address and then access the value at that address, we can use a pointer. In short, a pointer is a variable whose value is a memory address. Let's take a look at this in practice:
+To store a variable's address and then access the value at that address, we can use a pointer. In short, a pointer is a variable whose value is a memory address. Let's see an example:
 
 ```c
 #include <stdio.h>
@@ -64,9 +64,24 @@ Let's break it down a little bit better:
 - `pointer` in the `printf()` prints the address of `my_number` in hexadecimal form.
 - `*pointer` in the `printf()` function is how we dereference it and access the value stored at that address. More on that soon, but know that the asterisk here is different from when we are creating a pointer.
 
+But why use a pointer instead of simply copying the value into another variable? Because a copy creates a separate value in memory, while a pointer refers to the original one. This lets us modify the original data indirectly, avoid unnecessary copying, and improve memory usage and performance.
+
+Here is a tiny example:
+
+```c
+int my_number = 10;
+int copy = my_number;
+int *pointer = &my_number;
+
+copy = 20;      // only changes copy
+*pointer = 30;  // changes my_number itself
+```
+
+After this code runs, `my_number` is `30` and `copy` is `20`. In other words, `copy` is a separate value, while `pointer` still refers to the original variable.
+
 ## Dereferencing
 
-I've just mentioned that we can dereference a pointer. This means, in short, that we can access the value stored at the address that the pointer holds. This is why when we pass `pointer` to something that prints its value we get an address in hexadecimal, and when we pass `*pointer` we get the value stored there.
+We can also dereference a pointer. This means, in short, accessing the value stored at the address that the pointer holds. This is why, when we pass `pointer` to something that prints its value, we get an address in hexadecimal, and when we pass `*pointer`, we get the value stored there.
 
 In the latter case, we are dereferencing the pointer. We are basically telling it: "show me the value stored at the address you contain".
 
@@ -304,7 +319,7 @@ The output should be:
 
 ## Pointers In Offensive Security
 
-This article is called "An (Offensive) Introduction To C Pointers" for a reason. The very first time I saw a pointer being used in actual code was during a malware development course - shout out to <a href="https://maldevacademy.com/">MalDevAcademy</a>.
+This article is called "An (Offensive) Introduction To C Pointers" for a reason. One of the first times I saw a pointer being used in actual code was during a malware development course - shout out to <a href="https://maldevacademy.com/">MalDevAcademy</a>.
 
 I could not understand why pointers were chosen for specific parts of the code presented by the modules and I could not understand how exactly they were being used. It is true that, at the time, I really lacked C knowledge and was much more of a Python guy.
 
@@ -551,6 +566,8 @@ int main(void) {
 In this code, pointers are central to dynamic memory management and execution flow. `VirtualAlloc()` returns a pointer (`buffer`) to the allocated executable region, which is used by `memcpy()` to copy shellcode bytes into it. This same pointer is passed as a parameter to `CreateThread()`, where it's received as `LPVOID` and cast back to `unsigned char *`. Finally, inside the thread, the pointer is reinterpreted as a function pointer (`void(*)()`) and called to execute the shellcode. Pointers enable flexible interpretation of memory addresses - as data buffers, function entry points, or parameters - allowing the code to allocate, populate, and invoke arbitrary instructions at runtime, which is the essence of a shellcode loader.
 
 ## Conclusion
+
+My intention with this blog post is to introduce the concept of pointers in C and then walk you through a couple of offensive security examples. This is generally how I learn best: first understanding the concept in a simplified way, and then seeing it applied to real-world cases. I am terrible at learning through abstractions and purely theoretical explanations. I **need** to see how something is used in practice before it really clicks.
 
 Pointers stop feeling mysterious once you reduce them to what they really are: variables that store memory addresses. From there, the rest is practice - learning when to take an address, when to dereference it, and how low-level code uses pointers to move through memory, share state, and call functionality dynamically. If you are interested in exploit development, malware analysis, or systems programming in general, getting comfortable with pointers is not optional; it is one of the core skills that makes the rest of the field much easier to understand.
 

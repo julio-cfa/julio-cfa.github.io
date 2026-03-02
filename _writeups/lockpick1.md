@@ -184,9 +184,9 @@ python3 decrypt_files.py
 [!] Decrypting trading-firebase_bkup.json.24bes...
 ```
 
-### 2. We have recently recieved an email from wbevansn1@cocolog-nifty.com demanding to know the first and last name we have him registered as. They believe they made a mistake in the application process. Please confirm the first and last name of this applicant.
+### 2. We have recently received an email from wbevansn1@cocolog-nifty.com demanding to know the first and last name we have him registered as. They believe they made a mistake in the application process. Please confirm the first and last name of this applicant.
 
-We can run
+We can run the following command to get the answer:
 
 ```bash
 cat forela_uk_applicants.sql.24bes.decrypted | grep wbev
@@ -197,7 +197,7 @@ The right answer is `Walden Bevans`.
 
 ### 3. What is the MAC address and serial number of the laptop assigned to Hart Manifould?
 
-We can 
+We can run the following command to get it:
 
 ```bash
 xmllint --format it_assets.xml.24bes.decrypted | grep "Hart Mani" -A2 -B8
@@ -222,7 +222,7 @@ There are note files left. In any of the note files we can find the email addres
 
 ### 5. City of London Police have suspiciouns of some insider trading taking part within our trading organisation. Please confirm the email address of the person with the highest profit percentage in a single trade alongside the profit percentage.
 
-We can
+We can run the following command:
 
 ```bash
 cat trading-firebase_bkup.json.24bes.decrypted | jq '.[] | "\(.profit_percentage) belongs to \(.email)"' | cut -d " " -f 1 | cut -d '"' -f2 | cut -d "." -f1 | sort -g
@@ -231,7 +231,7 @@ cat trading-firebase_bkup.json.24bes.decrypted | jq '.[] | "\(.profit_percentage
 142303
 ```
 
-Then we grep
+Then we grep it:
 
 ```bash
 cat trading-firebase_bkup.json.24bes.decrypted | jq '.[] | "\(.profit_percentage) belongs to \(.email)"' | grep 142303
@@ -242,7 +242,7 @@ The right answer is `fmosedale17a@bizjournals.com, 142303.1996053929628411706675
 
 ### 6. Our E-Discovery team would like to confirm the IP address detailed in the Sales Forecast log for a user who is suspected of sharing their account with a colleague. Please confirm the IP address for Karylin O'Hederscoll.
 
-When opening
+When opening the aforementioned file, we will see the following information:
 
 ```
 87	Karylin	O'Hederscoll	kohederscoll2e@dagondesign.com	Female	8.254.104.208	Pakistan	Consulting Hours	8/7/2022	983	1957,61	503,49	494930,67	1924330,63	1429399,96	415

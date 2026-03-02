@@ -53,7 +53,7 @@ Nmap done: 1 IP address (1 host up) scanned in 8.70 seconds
 
 We see that there's a website called "Weighted Grade Calculator". Once we access the website, we get to the following functionality:
 
-<div class="center"><img src="/assets/images/screenshots/htb-perfection-website1.png"></div>
+<div class="center"><img src="/assets/images/htb-perfection-website1.png"></div>
 
 ## User Flag
 

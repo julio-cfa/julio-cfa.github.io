@@ -74,10 +74,10 @@ permalink: /about/
   }
 
   /* company accent variants (optional) */
-  .c-rocketchat { color: #7bbcff; }
+  .c-rocketchat { color: #ff7b7b; }
   .c-loadsmart  { color: #9be59b; }
-  .c-snowflake  { color: #7ad0ff; }
-  .c-google     { color: #ffd36b; }
+  .c-openzeppelin  { color: #7ad0ff; }
+  .c-berghem     { color: #ffbf6b; }
 
   /* Small intro paragraph style */
   .lead{
@@ -106,9 +106,10 @@ permalink: /about/
     list-style: none;
   }
   .pill-list li{
+    list-style: none;
     border: 1px solid rgba(255,255,255,.14);
     background: rgba(255,255,255,.04);
-    padding: .35rem .6rem;
+    padding: .35rem 2.10rem;
     border-radius: 999px;
     font-size: .95rem;
     color: rgba(255,255,255,.8);
@@ -119,8 +120,7 @@ permalink: /about/
   <h1>Whoami</h1>
 
   <p class="lead">
-    I am Julio Araujo, currently working in security leadership and application security.
-    My recent experience includes:
+    My name is Julio Araujo and I'm currently working as a technical security leader. I'd like to use this blog as a way to help others in their careers, share knowledge, and so forth. Here's my most recent professional experience:
   </p>
 
   <div class="timeline" aria-label="Career timeline">
@@ -155,7 +155,7 @@ permalink: /about/
     <div class="t-item">
       <p class="t-role">
         Senior IT Security Engineer <span class="at">@</span>
-        <a class="c-snowflake" href="https://openzeppelin.com" target="_blank" rel="noopener">OpenZeppelin</a>
+        <a class="c-openzeppelin" href="https://openzeppelin.com" target="_blank" rel="noopener">OpenZeppelin</a>
         <span class="badge">Past</span>
       </p>
       <p class="t-meta">Cloud Security • IAM •  • IT Security • Compliance • Pentesting </p>
@@ -164,7 +164,7 @@ permalink: /about/
     <div class="t-item">
       <p class="t-role">
         Lead Cybersecurity Consultant <span class="at">@</span>
-        <a class="c-snowflake" href="https://berghem.com.br" target="_blank" rel="noopener">Berghem</a>
+        <a class="c-berghem" href="https://berghem.com.br" target="_blank" rel="noopener">Berghem</a>
         <span class="badge">Past</span>
       </p>
       <p class="t-meta">Security Leadership • Web App/API Pentesting • Active Directory Pentesting • AWS Pentesting • Mobile App (Android/iOS) Pentesting</p>
@@ -186,12 +186,20 @@ permalink: /about/
   <div class="certs">
     <h2>Certifications</h2>
     <ul class="pill-list" aria-label="Certifications">
-      <li>CBBH</li>
+      <li>CPTS</li>
+      <li>CWES (formerly CBBH)</li>
       <li>eWPTXv2</li>
       <li>eWPTv1</li>
       <li>eJPTv1</li>
       <li>CRTO</li>
       <li>BSCP</li>
+      <li>GCRTP</li>
+      <li>CKA</li>
+      <li>PNPT</li>
+      <li>AWS CLF-C01</li>
+      <li>DCPT</li>
+      <li>PDPF</li>
+      <li>ISFS</li>
     </ul>
 
     <p class="lead" style="margin-top:1.25rem;">
