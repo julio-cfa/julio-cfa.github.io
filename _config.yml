@@ -12,7 +12,7 @@ collections:
     permalink: /write-ups/:name/
   cves:
     output: true
-    permalink: /cves/:name/
+    permalink: /cves-and-research/:name/
   certifications:
     output: true
     permalink: /certifications/:name/

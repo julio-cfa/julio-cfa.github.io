@@ -127,45 +127,54 @@ permalink: /about/
     <!-- Present roles -->
     <div class="t-item">
       <p class="t-role">
-        Head of Security <span class="at">@</span>
+        Director, Information Security <span class="at">@</span>
         <a class="c-rocketchat" href="https://rocket.chat" target="_blank" rel="noopener">Rocket.Chat</a>
         <span class="badge">Present</span>
       </p>
-      <p class="t-meta">Security Leadership • Strategy • Governance • AppSec  •  Cloud Security  • IT Security</p>
+      <p class="t-meta">Hands-on • Security Leadership • Strategy • Governance • AppSec • Cloud Security • IT Security</p>
+    </div>
+
+    <div class="t-item">
+      <p class="t-role">
+        Head of Security <span class="at">@</span>
+        <a class="c-rocketchat" href="https://rocket.chat" target="_blank" rel="noopener">Rocket.Chat</a>
+        <span class="badge">2024-2026</span>
+      </p>
+      <p class="t-meta">Hands-on • Security Leadership • Strategy • Governance • AppSec • Cloud Security • IT Security</p>
     </div>
 
     <div class="t-item">
       <p class="t-role">
         Senior Application Security Engineer <span class="at">@</span>
         <a class="c-rocketchat" href="https://rocket.chat" target="_blank" rel="noopener">Rocket.Chat</a>
-        <span class="badge">Past</span>
+        <span class="badge">2024</span>
       </p>
-      <p class="t-meta">Secure SDLC • Threat Modeling • Code Reviews • Automation</p>
+      <p class="t-meta">Secure SDLC • Threat Modeling • Code Reviews • Automation • Web App/API Pentesting</p>
     </div>
 
     <div class="t-item">
       <p class="t-role">
         Senior Offensive Security Engineer <span class="at">@</span>
         <a class="c-loadsmart" href="https://loadsmart.com" target="_blank" rel="noopener">Loadsmart</a>
-        <span class="badge">Past</span>
+        <span class="badge">2021-2024</span>
       </p>
-      <p class="t-meta">Pentesting • Adversary Simulation • Phishing Assessments</p>
+      <p class="t-meta">Web App/API Pentesting • AWS Pentesting • Mobile App (Android/iOS) Pentesting • Adversary Simulation/Purple Teaming • Phishing Assessments</p>
     </div>
 
     <div class="t-item">
       <p class="t-role">
         Senior IT Security Engineer <span class="at">@</span>
         <a class="c-openzeppelin" href="https://openzeppelin.com" target="_blank" rel="noopener">OpenZeppelin</a>
-        <span class="badge">Past</span>
+        <span class="badge">2023-2024</span>
       </p>
-      <p class="t-meta">Cloud Security • IAM • IT Security • Compliance • Pentesting </p>
+      <p class="t-meta">Cloud Security • IAM • IT Security • Compliance • Web App/API Pentesting</p>
     </div>
 
     <div class="t-item">
       <p class="t-role">
         Lead Cybersecurity Consultant <span class="at">@</span>
         <a class="c-berghem" href="https://berghem.com.br" target="_blank" rel="noopener">Berghem</a>
-        <span class="badge">Past</span>
+        <span class="badge">2019-2021</span>
       </p>
       <p class="t-meta">Security Leadership • Web App/API Pentesting • Active Directory Pentesting • AWS Pentesting • Mobile App (Android/iOS) Pentesting</p>
     </div>
@@ -186,20 +195,20 @@ permalink: /about/
   <div class="certs">
     <h2>Certifications</h2>
     <ul class="pill-list" aria-label="Certifications">
-      <li>CPTS</li>
-      <li>CWES (formerly CBBH)</li>
-      <li>eWPTXv2</li>
-      <li>eWPTv1</li>
-      <li>eJPTv1</li>
-      <li>CRTO</li>
-      <li>BSCP</li>
-      <li>GCRTP</li>
-      <li>CKA</li>
-      <li>PNPT</li>
-      <li>AWS CLF-C01</li>
-      <li>DCPT</li>
-      <li>PDPF</li>
-      <li>ISFS</li>
+      <li><a href="https://academy.hackthebox.com/preview/certifications/htb-certified-penetration-testing-specialist">CPTS</a></li>
+      <li><a href="https://academy.hackthebox.com/preview/certifications/htb-certified-web-exploitation-specialist">CWES (formerly CBBH)</a></li>
+      <li><a href="https://ine.com/security/certifications/ewptx-certification">eWPTXv2</a></li>
+      <li><a href="https://ine.com/security/certifications/ewpt-certification">eWPTv1</a></li>
+      <li><a href="https://ine.com/security/certifications/ejpt-certification">eJPTv1</a></li>
+      <li><a href="https://www.zeropointsecurity.co.uk/course/red-team-ops">CRTO</a></li>
+      <li><a href="https://portswigger.net/web-security/certification">BSCP</a></li>
+      <li><a href="https://bootcamps.pwnedlabs.io/gcrtp-bootcamp">GCRTP</a></li>
+      <li><a href="https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka">CKA</a></li>
+      <li><a href="https://certifications.tcm-sec.com/pnpt/">PNPT</a></li>
+      <li><a href="https://aws.amazon.com/certification/certified-cloud-practitioner/">AWS CLF-C01</a></li>
+      <li><a href="https://desecsecurity.com/curso/pentest-experience">DCPT</a></li>
+      <li><a href="https://www.exin.com/data-protection-security/exin-privacy-and-data-protection/exin-privacy-and-data-protection-professional/">PDPF</a></li>
+      <li><a href="https://www.exin.com/data-protection-security/exin-information-security-management-iso-iec-27001/information-security-foundation-based-on-iso-iec-27001/">ISFS</a></li>
     </ul>
 
     <p class="lead" style="margin-top:1.25rem;">

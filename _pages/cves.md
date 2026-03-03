@@ -1,9 +1,9 @@
 ---
-title: CVEs
-permalink: /cves/
+title: CVEs & Research
+permalink: /cves-and-research/
 ---
 
-# CVEs
+# CVEs & Research
 
 {% assign cves = site.cves | sort: "date" | reverse %}
 {% for cve in cves %}
