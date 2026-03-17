@@ -1,7 +1,7 @@
 ---
 author: Julio
 date: 2026-03-04
-title: Becoming a Director: My Six-Year Journey in Security
+title: "Becoming a Director: My Six-Year Journey in Security"
 ---
 
 # Becoming a Director: My Six-Year Journey in Security
