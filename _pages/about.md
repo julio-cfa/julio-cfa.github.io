@@ -127,7 +127,7 @@ permalink: /about/
     <!-- Present roles -->
     <div class="t-item">
       <p class="t-role">
-        Director, Information Security <span class="at">@</span>
+        Director, Security Engineering <span class="at">@</span>
         <a class="c-rocketchat" href="https://rocket.chat" target="_blank" rel="noopener">Rocket.Chat</a>
         <span class="badge">Present</span>
       </p>
