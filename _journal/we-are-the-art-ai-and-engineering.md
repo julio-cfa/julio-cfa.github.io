@@ -22,4 +22,4 @@ I, myself, am using AI right now to write this piece. This is not AI written, bu
 
 The question we should all be asking is: what does it look like to be the art as an engineer in an AI world? I'd say being the one who understands _why_ the code does what it does, not just that it works. When something breaks at 2 am, you can reason through it, you're able to understand it, because you actually built it and didn't accept AI output at face value.
 
-It is being the one in the room who can take a vague business problem and translate it into a technical approach, challenge your own assumptions with AI as a thinking partner, use AI to stress-test your approach, and then make an informed decision. It's being the problem solver. In the end, we are still the experts. We are the engineers. We are art.
+It is being the one in the room who can take a vague business problem and translate it into a technical approach, challenge your own assumptions with AI as a thinking partner, use AI to stress-test your approach, and then make an informed decision. It's being the problem solver. In the end, we are still the experts. We are the engineers. We are the art.
