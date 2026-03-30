@@ -6,6 +6,8 @@ title: "We Are The Art - AI & Software Engineering"
 
 <p style="text-align: center"><img src="/assets/images/fallen-angel-cabanel.png" alt="Fallen Angel by Alexandre Cabanel"></p>
 
+# We Are The Art - AI & Software Engineering
+
 In the past few months, the release of powerful LLMs such as Opus 4.6 and GPT 5.4 as well as agents such as Claude Code, Codex, Opencode, and more have led to a lot of discussion in the software engineering industry. While some engineers are excited about using artificial intelligence to speed up their workflows, others are scared that we're done and software engineers will no longer exist in the following months - the social media fearmongers definitely don't help.
 
 I was recently watching [Brandon Sanderson's keynote speech](https://www.youtube.com/watch?v=mb3uK-_QkOo) and it made me draw some parallels with the current state of engineering, which led me to write this piece. This opinion will probably be outdated in the next couple of years or maybe even months, but that's okay. That's part of trying to imagine what the future is going to be like.
