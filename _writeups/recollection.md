@@ -3,6 +3,7 @@ author: Julio
 date: 2024-05-07
 title: Recollection Write-Up
 series: Sherlocks
+image: https://labs.hackthebox.com/storage/challenges/605ff764c617d3cd28dbbdd72be8f9a2.png
 ---
 
 <div class="center"><img src="https://labs.hackthebox.com/storage/challenges/605ff764c617d3cd28dbbdd72be8f9a2.png" width="350"></div>

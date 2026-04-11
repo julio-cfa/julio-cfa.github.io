@@ -2,6 +2,7 @@
 author: Julio
 date: 2024-05-05
 title: An (Offensive) Introduction To C Pointers
+image: /assets/images/my_pointers.png
 ---
 
 <div class="center"><img src="/assets/images/my_pointers.png" width="450" alt="C Pointers"></div>

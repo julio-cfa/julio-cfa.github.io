@@ -3,6 +3,7 @@ author: Julio
 date: 2024-05-08
 title: LockPick Write-Up
 series: Sherlocks
+image: https://labs.hackthebox.com/storage/challenges/11b921ef080f7736089c757404650e40.png
 ---
 
 <div class="center"><img src="https://labs.hackthebox.com/storage/challenges/11b921ef080f7736089c757404650e40.png" width="350"></div>

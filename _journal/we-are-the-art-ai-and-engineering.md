@@ -2,6 +2,7 @@
 author: Julio
 date: 2026-03-29
 title: "We Are The Art - AI & Software Engineering"
+image: /assets/images/fallen-angel-cabanel.png
 ---
 
 <p style="text-align: center"><img src="/assets/images/fallen-angel-cabanel.png" alt="Fallen Angel by Alexandre Cabanel"></p>

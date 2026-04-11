@@ -12,7 +12,7 @@ layout: default
 {% elsif post.collection == "programming" %}
   {% assign post_label = "Programming & Tooling" %}
 {% elsif post.collection == "cves" %}
-  {% assign post_label = "CVE" %}
+  {% assign post_label = "CVE & Research" %}
 {% elsif post.collection == "certifications" %}
   {% assign post_label = "Certification" %}
 {% elsif post.collection == "journal" %}

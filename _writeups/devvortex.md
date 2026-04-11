@@ -3,6 +3,7 @@ author: Julio
 date: 2024-05-09
 title: Devvortex Write-Up
 series: Machines
+image: https://labs.hackthebox.com/storage/avatars/2565d292772abc4a2d774117cf4d36ff.png
 ---
 
 # Devvortex Write-Up

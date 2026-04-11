@@ -3,6 +3,7 @@ author: Julio
 date: 2024-05-07
 title: RogueOne Write-Up
 series: Sherlocks
+image: https://labs.hackthebox.com/storage/challenges/8b16ebc056e613024c057be590b542eb.png
 ---
 
 <div class="center"><img src="https://labs.hackthebox.com/storage/challenges/8b16ebc056e613024c057be590b542eb.png" width="350"></div>
