@@ -15,6 +15,8 @@ FreeSWITCH's ESL API accepts the `load` command with arbitrary file paths, inclu
 
 ## Introduction
 
+FreeSWITCH is an open-source, cross-platform telephony engine used to build voice, video, and messaging applications. It is widely deployed as a PBX, softswitch, or voicemail server, and exposes an Event Socket Library (ESL) API on port 8021 that allows programmatic control of the switch.
+
 Not long ago, we were creating an integration with FreeSWITCH to allow our customers to use Rocket.Chat as a client. As part of the development process, the security team performed an assessment of FreeSWITCH, looking for possible misconfigurations and how to harden it.
 
 One of the risks that we listed was the possibility of an attacker logging into FreeSWITCH’s ESL/API (port 8021) and issuing system commands with `system` or `bg_system` from the `mod_dptools` module. By reviewing FreeSWITCH’s code, we noticed that it was possible to disable system commands by adding the following values to `vars.xml`:
@@ -216,3 +218,9 @@ As seen below, I got a shell as the administrator account:
 ## Conclusion
 
 I communicated this finding to the FreeSWITCH security team a year ago. They indicated that this is intended behavior and that the ability to load modules from arbitrary paths is by design - thus, no CVE was issued. Regardless, it was fun diving into FreeSWITCH's code and playing with possible attack paths.
+
+## References
+
+- [https://developer.signalwire.com/freeswitch/FreeSWITCH-Explained/Modules/](https://developer.signalwire.com/freeswitch/FreeSWITCH-Explained/Modules/)
+- [https://developer.signalwire.com/freeswitch/FreeSWITCH-Explained/Client-and-Developer-Interfaces/Event-Socket-Library/](https://developer.signalwire.com/freeswitch/FreeSWITCH-Explained/Client-and-Developer-Interfaces/Event-Socket-Library/)
+- [https://developer.signalwire.com/freeswitch/FreeSWITCH-Explained/Community/Contributing-Code/Creating-New-Modules/](https://developer.signalwire.com/freeswitch/FreeSWITCH-Explained/Community/Contributing-Code/Creating-New-Modules/)
