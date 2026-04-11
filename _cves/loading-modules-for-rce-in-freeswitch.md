@@ -5,7 +5,7 @@ title: "Loading Modules From Untrusted Paths to Achieve RCE/Privilege Escalation
 image: /assets/images/freeswitch_rce_privesc1.svg
 ---
 
-<p style="text-align: center"><img src="/assets/images/freeswitch_rce_privesc1.svg" alt="Diagram showing FreeSwitch's exploitation path"></p>
+<p style="text-align: center"><img src="/assets/images/freeswitch_rce_privesc1.svg" alt="Diagram showing FreeSwitch's exploitation path" width="650"></p>
 
 # Loading Modules From Untrusted Paths to Achieve RCE/Privilege Escalation in FreeSwitch
 
