@@ -17,6 +17,31 @@ FreeSWITCH's ESL API accepts the `load` command with arbitrary file paths, inclu
 
 FreeSWITCH is an open-source, cross-platform telephony engine used to build voice, video, and messaging applications. It is widely deployed as a PBX, softswitch, or voicemail server, and exposes an Event Socket Library (ESL) API on port 8021 that allows programmatic control of the switch.
 
+ESL is a plain-text TCP protocol. Upon connecting to port 8021, the server immediately sends an auth challenge, and the client responds with the password followed by two newlines - that is the entire handshake. There is no TLS, no certificate, and no second factor by default.
+
+```
+$ nc target 8021
+Content-Type: auth/request
+
+auth ClueCon
+
+Content-Type: command/reply
+Reply-Text: +OK accepted
+
+api status
+...
+```
+
+The default password is `ClueCon` - named after the FreeSWITCH community conference - and a large number of deployments never change it. Commands are sent as either `api <command>` (blocking) or `bgapi <command>` (async), and the interface exposes virtually everything an administrator can do: manage channels, reload configuration, and load or unload modules.
+
+FreeSWITCH ships with `fs_cli`, a readline-based CLI that wraps ESL and is the normal operator interface. The important thing to understand is that `fs_cli` is just a convenience wrapper - anything it can do, an attacker with `nc` and the password can do too.
+
+## FreeSWITCH Modules
+
+FreeSWITCH’s core is intentionally thin - almost all functionality is implemented as loadable modules. Modules are shared libraries (`.so` on Linux, `.dll` on Windows) that are loaded at startup based on the configuration in `modules.conf.xml`, or manually at runtime via the API. There are modules for SIP handling, codecs, scripting languages, logging, and application logic, among others.
+
+One of the most commonly loaded modules is `mod_dptools` - the "dialplan tools" module. It provides a large set of dialplan applications and API commands used in virtually every FreeSWITCH deployment: things like `bridge`, `playback`, `answer`, `hangup`, and, notably, `system` and `bg_system`. These last two execute arbitrary shell commands as the FreeSWITCH process, which is the most direct path to code execution for anyone with API access.
+
 Not long ago, we were creating an integration with FreeSWITCH to allow our customers to use Rocket.Chat as a client. As part of the development process, the security team performed an assessment of FreeSWITCH, looking for possible misconfigurations and how to harden it.
 
 One of the risks that we listed was the possibility of an attacker logging into FreeSWITCH’s ESL/API (port 8021) and issuing system commands with `system` or `bg_system` from the `mod_dptools` module. By reviewing FreeSWITCH’s code, we noticed that it was possible to disable system commands by adding the following values to `vars.xml`:
