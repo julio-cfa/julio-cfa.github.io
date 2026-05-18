@@ -1,13 +1,13 @@
 ---
 author: Julio
 date: 2026-03-29
-title: "We Are The Art - AI & Software Engineering"
+title: "We Are The Art - AI & Engineering"
 image: /assets/images/fallen-angel-cabanel.png
 ---
 
-<p style="text-align: center"><img src="/assets/images/fallen-angel-cabanel.png" alt="Fallen Angel by Alexandre Cabanel"></p>
+<p style="text-align: center"><img src="/assets/images/fallen-angel-cabanel.png" alt="Fallen Angel by Alexandre Cabanel" style="border: 1px solid white;"></p>
 
-# We Are The Art - AI & Software Engineering
+# We Are The Art - AI & Engineering
 
 In the past few months, the release of powerful LLMs such as Opus 4.6 and GPT 5.4 as well as agents such as Claude Code, Codex, Opencode, and more have led to a lot of discussion in the software engineering industry. While some engineers are excited about using artificial intelligence to speed up their workflows, others are scared that we're done and software engineers will no longer exist in the following months - the social media fearmongers definitely don't help.
 
@@ -19,10 +19,14 @@ This resonates with the way I think engineers (software, security, QA, etc.) sho
 
 So when someone asks me: is it still worth learning to code? My opinion is: yes, absolutely! Coding is just part of what you'll need to learn for the journey. The field will change, sure, but engineers will not be replaced tomorrow. The same way the cloud made system administrators become devops engineers and then site reliability engineers. The same way cybersecurity has significantly changed from on-premises security and the network perimeter to zero trust and considering a larger attack surface.
 
-LLMs and agents are tools - powerful ones, but tools. You shouldn't be delegating everything to them. You should be driving them, using them to learn, to help you speed up your workflows, and to deliver better results. You should be leveraging them to become a more complete engineer by being able to work on areas that were not your expertise before nor were you willing to tackle from scratch.
+LLMs and agents are tools - powerful ones, yes, but tools. You shouldn't be delegating everything to them. You should be driving them, using them to learn, to help you speed up your workflows, and to deliver better results. You should be leveraging them to become a more complete engineer by being able to work on areas that were not your expertise before nor were you willing to tackle from scratch.
 
 I, myself, am using AI right now to write this piece. This is not AI written, but I've fed it with Sanderson's speech and am using Claude Code as a rubber duck. I'm talking to it, reasoning with it, exploring ideas, understanding my own thought process, and then typing my own words, using my own voice. And, once everything is typed out, I'll ask the AI to review it for typos. I'm not making it write the piece for me, I'm using it as a copilot - no pun intended.
 
-The question we should all be asking is: what does it look like to be the art as an engineer in an AI world? I'd say being the one who understands _why_ the code does what it does, not just that it works. When something breaks at 2 am, you can reason through it, you're able to understand it, because you actually built it and didn't accept AI output at face value.
+The question we should all be asking is: what does it look like to be an engineer in an AI world? I'd say being the one who understands _why_ the code does what it does, not just that it works. When something breaks at 2 am, you can reason through it, you're able to understand it, because you actually built it and didn't accept AI output at face value.
 
-It is being the one in the room who can take a vague business problem and translate it into a technical approach, challenge your own assumptions with AI as a thinking partner, use AI to stress-test your approach, and then make an informed decision. It's being the problem solver. In the end, we are still the experts. We are the engineers. We are the art.
+It is being the one in the room who can take a vague business problem and translate it into a technical approach, challenge your own assumptions with AI as a thinking partner, use AI to stress-test your approach, and then make an informed decision. It's being the problem solver.
+
+Working in cybersecurity these past months, I've been dealing with this challenge every single day. In my experience, AI by itself can become messy real quick. Not only it can get very costly when you don't know what you're doing, but it can hallucinate, provide you with the wrong answers, change things it wasn't supposed to, introduce vulnerabilities, and do a lot of damage.
+
+In the end, we are still the experts and there's still a lot of value in being a good engineer. At least for now.

