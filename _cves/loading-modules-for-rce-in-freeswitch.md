@@ -219,7 +219,7 @@ As seen below, I got a shell as the administrator account:
 
 I communicated this finding to the FreeSWITCH security team a year ago. They indicated that this is intended behavior and that the ability to load modules from arbitrary paths is by design - thus, no CVE was issued. Regardless, it was fun diving into FreeSWITCH's code and playing with possible attack paths.
 
-Also, there's a part 2 of this post and you can see it here: [More Ways of Achieving RCE/Privesc in FreeSWITCH](https://bulio.io/cves-and-research/more-ways-of-achieving-rce-privesc-in-freeswitch/).
+Also, there's a part 2 of this post and you can see it here: [More Ways to Achieve RCE/Privesc in FreeSWITCH](https://bulio.io/cves-and-research/more-ways-of-achieving-rce-privesc-in-freeswitch/).
 
 
 PS: Everything in this article was tested on FreeSWITCH v1.10.12 running as the `root` user (Linux) / `Administrator` user (Windows).

@@ -1,13 +1,13 @@
 ---
 author: Julio
 date: 2026-05-17
-title: "More Ways of Achieving RCE/Privesc in FreeSWITCH"
+title: "More Ways to Achieve RCE/Privesc in FreeSWITCH"
 image: /assets/images/freeswitch_ways_to_rce.svg
 ---
 
 <p style="text-align: center"><img src="/assets/images/freeswitch_ways_to_rce.svg" alt="Diagram showing FreeSwitch's exploitation path" width="650"></p>
 
-# More Ways of Achieving RCE/Privesc in FreeSWITCH
+# More Ways to Achieve RCE/Privesc in FreeSWITCH
 
 ## TL;DR
 
