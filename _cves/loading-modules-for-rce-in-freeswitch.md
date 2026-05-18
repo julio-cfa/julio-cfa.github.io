@@ -2,10 +2,10 @@
 author: Julio
 date: 2026-04-11
 title: "Loading Modules From Untrusted Paths to Achieve RCE/Privilege Escalation in FreeSWITCH"
-image: /assets/images/freeswitch_rce_privesc.svg
+image: /assets/images/freeswitch_ways_to_rce.svg
 ---
 
-<p style="text-align: center"><img src="/assets/images/freeswitch_rce_privesc.svg" alt="Diagram showing FreeSwitch's exploitation path" width="650"></p>
+<p style="text-align: center"><img src="/assets/images/freeswitch_ways_to_rce.svg" alt="Diagram showing FreeSwitch's exploitation path" width="650"></p>
 
 # Loading Modules From Untrusted Paths to Achieve RCE/Privilege Escalation in FreeSWITCH
 
