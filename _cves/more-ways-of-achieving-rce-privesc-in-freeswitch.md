@@ -551,7 +551,9 @@ if __name__ == '__main__':
 
 ESL access is code execution. The techniques in this article differ in complexity, but they share the same precondition and the same outcome - and `disable_system_api_commands` doesn't change that. As shown in the Recording2Shell technique, it can be unset by any user with ESL access and the ability to trigger a call recording. It is a configuration flag, not a security boundary.
 
-FreeSWITCH is a powerful platform precisely because it exposes so many hooks - fax callbacks, media recording, audio pipelines, scripting runtimes. Those hooks are features. They're also why restricting individual modules by itself is a losing game. When hardening FreeSWITCH, you should consider: firewall port 8021 and never expose ESL to untrusted networks, replace the default `ClueCon` password, and keep the loaded module list minimal. ESL access should be treated with the same sensitivity as shell access, because the distance between the two is not very large.
+FreeSWITCH is a powerful platform precisely because it exposes so many hooks - fax callbacks, media recording, audio pipelines, scripting runtimes. Those hooks are features. They're also why restricting individual modules by itself is a losing game. When hardening FreeSWITCH, you should consider: firewall port 8021 and never expose ESL to untrusted networks, replace the default `ClueCon` password, don't run FreeSWITCH as the `root` user, monitor anomalous traffic coming into and out of the FreeSWITCH server, and keep the loaded module list minimal. ESL access should be treated with the same sensitivity as shell access, because the distance between the two is not very large.
+
+This blog post, as well as the previous one on FreeSWITCH modules, isn't meant to be comprehensive. Feel free to do your own research and contribute to documenting FreeSWITCH's attack surface so that we can help those deploying it.
 
 PS: Everything in this article was tested on FreeSWITCH v1.10.12 running as the `root` user.
 
