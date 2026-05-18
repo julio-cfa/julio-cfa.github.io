@@ -222,7 +222,7 @@ I communicated this finding to the FreeSWITCH security team a year ago. They ind
 Also, there's a part 2 of this post and you can see it here: [More Ways to Achieve RCE/Privesc in FreeSWITCH](https://bulio.io/cves-and-research/more-ways-of-achieving-rce-privesc-in-freeswitch/).
 
 
-PS: Everything in this article was tested on FreeSWITCH v1.10.12 running as the `root` user (Linux) / `Administrator` user (Windows).
+PS: Everything in this article was tested on a vanilla installation of FreeSWITCH v1.10.12 running as the `root` user (Linux) / `Administrator` user (Windows).
 
 ## References
 

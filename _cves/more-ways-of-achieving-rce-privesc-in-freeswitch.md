@@ -555,7 +555,7 @@ FreeSWITCH is a powerful platform precisely because it exposes so many hooks - f
 
 This blog post, as well as the previous one on FreeSWITCH modules, isn't meant to be comprehensive. Feel free to do your own research and contribute to documenting FreeSWITCH's attack surface so that we can help those deploying it.
 
-PS: Everything in this article was tested on FreeSWITCH v1.10.12 running as the `root` user.
+PS: Everything in this article was tested on on a vanilla installation of FreeSWITCH v1.10.12 running as the `root` user.
 
 ## References
 
