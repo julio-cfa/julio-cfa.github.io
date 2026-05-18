@@ -15,7 +15,7 @@ A user with access to FreeSWITCH's Event Socket Library (ESL) has several differ
 
 ## Introduction
 
-Following my previous post on FreeSWITCH, [Loading Modules From Untrusted Paths to Achieve RCE/Privilege Escalation in FreeSWITCH](https://bulio.io/cves-and-research/loading-modules-for-rce-in-freeswitch/) (which I recommend reading for getting more context on this one), I wanted to explore more ways of achieving RCE and understand the attack surface a bit better. In this post, we will explore built-in features and one unintended way of achieving RCE.
+Following my previous post on FreeSWITCH, [Loading Modules From Untrusted Paths to Achieve RCE/Privilege Escalation in FreeSWITCH](https://bulio.io/cves-and-research/loading-modules-for-rce-in-freeswitch/) (which I recommend reading for getting more context on this one), I wanted to explore different paths to RCE and understand the attack surface a bit better. In this post, we will explore built-in features and one unintended way of achieving RCE.
 
 ## Faxing The Shell (mod_spandsp)
 
