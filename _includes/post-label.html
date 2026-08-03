@@ -1,0 +1,8 @@
+{%- case include.collection -%}
+{%- when "writeups" -%}Write-Up
+{%- when "programming" -%}Programming & Tooling
+{%- when "cves" -%}CVE & Research
+{%- when "certifications" -%}Certification
+{%- when "journal" -%}Journal
+{%- else -%}{{ include.collection }}
+{%- endcase -%}

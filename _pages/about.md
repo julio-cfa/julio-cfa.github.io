@@ -5,7 +5,7 @@ permalink: /about/
 
 <style>
   .whoami-wrap{
-    color: #e8e8e8;
+    color: var(--text-primary);
   }
 
   /* === Timeline === */
@@ -23,7 +23,7 @@ permalink: /about/
     top: .25rem;
     bottom: .25rem;
     width: 2px;
-    background: rgba(255,255,255,.12);
+    background: var(--surface-border);
   }
 
   .t-item{
@@ -40,8 +40,8 @@ permalink: /about/
     top: 1.75rem;
     width: .55rem;
     height: .55rem;
-    background: rgba(255,255,255,.55);
-    box-shadow: 0 0 0 3px rgba(255,255,255,.08);
+    background: var(--accent-muted);
+    box-shadow: 0 0 0 3px var(--surface-soft);
   }
 
   .t-role{
@@ -59,17 +59,17 @@ permalink: /about/
   .t-meta{
     margin: .35rem 0 0 0;
     font-size: 1rem;
-    color: rgba(255,255,255,.55);
+    color: var(--text-muted);
   }
 
   /* status label */
   .badge{
     display: inline-block;
     padding: .15rem .5rem;
-    border: 1px solid rgba(255,255,255,.14);
+    border: 1px solid var(--surface-border);
     border-radius: 999px;
     font-size: .85rem;
-    color: rgba(255,255,255,.65);
+    color: var(--text-muted);
     margin-left: .4rem;
   }
 
@@ -81,7 +81,7 @@ permalink: /about/
 
   /* Small intro paragraph style */
   .lead{
-    color: rgba(255,255,255,.72);
+    color: var(--text-primary);
     font-size: 1.05rem;
     line-height: 1.75;
     margin: 0 0 1.25rem 0;
@@ -91,10 +91,10 @@ permalink: /about/
   .certs{
     margin-top: 2.25rem;
     padding-top: 1.25rem;
-    border-top: 1px dashed rgba(255,255,255,.12);
-    color: rgba(255,255,255,.72);
+    border-top: 1px dashed var(--surface-border);
+    color: var(--text-primary);
   }
-  .certs strong{ color: rgba(255,255,255,.9); }
+  .certs strong{ color: var(--accent-strong); }
 
   /* Nice pill list */
   .pill-list{
@@ -107,16 +107,17 @@ permalink: /about/
   }
   .pill-list li{
     list-style: none;
-    border: 1px solid rgba(255,255,255,.14);
-    background: rgba(255,255,255,.04);
+    border: 1px solid var(--surface-border);
+    background: var(--surface-soft);
     padding: .35rem 2.10rem;
     border-radius: 999px;
     font-size: .95rem;
-    color: rgba(255,255,255,.8);
+    color: var(--text-primary);
   }
 </style>
 
 <div class="whoami-wrap">
+  <p class="eyebrow">&gt; whoami</p>
   <h1>Whoami</h1>
 
   <p class="lead">

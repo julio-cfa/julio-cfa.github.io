@@ -3,6 +3,8 @@ title: Programming & Tooling
 permalink: /programming-and-tooling/
 ---
 
+<p class="eyebrow">&gt; programming-and-tooling</p>
+
 # Programming & Tooling
 
 {% assign posts = site.programming | sort: "date" | reverse %}

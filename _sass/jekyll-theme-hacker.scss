@@ -17,7 +17,7 @@ $container-max-width: 1000px;
 body {
   margin: 0;
   padding: 0;
-  background: $body-background;
+  background: var(--body-bg);
   color: $body-foreground;
   font-size: 16px;
   line-height: 1.5;
@@ -52,11 +52,11 @@ li {
 */
 
 header {
-  background: #111111;
+  background: var(--panel-bg);
   width: 100%;
-  border-bottom: 1px solid $dove-grey;
-  padding: 20px 0;
-  margin: 0 0 40px 0;
+  border-bottom: 1px solid var(--surface-border);
+  padding: 20px 0 12px;
+  margin: 0 0 24px 0;
 }
 
 header h1 {
@@ -65,7 +65,7 @@ header h1 {
   margin: 0 0 0 -40px;
   font-weight: bold;
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
-  color: $conifer;//$header;
+  color: var(--accent-strong);//$header;
   text-shadow: none;
   letter-spacing: -1px;
   -webkit-font-smoothing: antialiased;
@@ -150,17 +150,17 @@ ul li {
 }
 
 blockquote {
-  color: $blockquote-color;
+  color: var(--text-muted);
   padding-left: 10px;
-  border-left: 1px solid $blockquote-border;
+  border-left: 1px solid var(--surface-border);
 }
 
 pre {
-  background: #111111;
-  border: 1px solid $dove-grey;
+  background: var(--panel-bg);
+  border: 1px solid var(--surface-border);
   padding: 10px;
   font-size: 16px;
-  color: $alto;
+  color: var(--pre-fg);
   border-radius: 2px;
   word-wrap: normal;
   overflow: auto;
@@ -168,11 +168,11 @@ pre {
 }
 
 code.highlighter-rouge {
-  background: #111111;
-  border: 1px solid $dove-grey;
+  background: var(--panel-bg);
+  border: 1px solid var(--surface-border);
   padding: 0px 3px;
   margin: 0px -3px;
-  color: $gallery;
+  color: var(--code-fg);
   border-radius: 2px;
 }
 
@@ -183,7 +183,7 @@ table {
 
 th {
   text-align: left;
-  border-bottom: 1px solid $dove-grey;
+  border-bottom: 1px solid var(--surface-border);
   padding: 5px 10px;
 }
 
@@ -194,8 +194,8 @@ td {
 hr {
   height: 0;
   border: 0;
-  border-bottom: 1px solid $dove-grey;
-  color: $dove-grey;
+  border-bottom: 1px solid var(--surface-border);
+  color: var(--surface-border);
 }
 
 /* Buttons
@@ -203,7 +203,7 @@ hr {
 
 .btn {
   display: inline-block;
-  background: linear-gradient(to bottom, #2a2a2a, #161616);
+  background: linear-gradient(to bottom, var(--btn-grad-start), var(--btn-grad-end));
   padding: 8px 18px;
   border-radius: 50px;
   border: 1px solid $dove-grey;
@@ -217,7 +217,7 @@ hr {
 }
 
 .btn:hover {
-  background: linear-gradient(to bottom, #323232, #1b1b1b);
+  background: linear-gradient(to bottom, var(--btn-grad-start-hover), var(--btn-grad-end-hover));
 }
 
 .btn .icon {

@@ -1,0 +1,21 @@
+<dialog id="search" aria-label="Search the blog">
+  <div class="search-head">
+    <input id="search-input" type="text" placeholder="search posts&hellip;" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="true" aria-controls="search-results" aria-label="Search posts">
+    <span class="search-count" data-search-count aria-live="polite"></span>
+  </div>
+  <ol id="search-results" role="listbox" aria-label="Results"></ol>
+  <div class="search-foot">
+    <span>&uarr;&darr; navigate</span>
+    <span>&crarr; open</span>
+    <span>esc close</span>
+  </div>
+</dialog>
+<script type="application/json" id="search-data">
+[
+{% assign search_posts = site.writeups | concat: site.programming | concat: site.cves | concat: site.certifications | concat: site.journal | sort: "date" | reverse %}
+{% for post in search_posts %}{% unless forloop.first %},{% endunless %}
+{% capture post_label %}{% include post-label.html collection=post.collection %}{% endcapture %}
+{"title":{{ post.title | jsonify }},"url":{{ post.url | relative_url | jsonify }},"date":{{ post.date | date: "%Y-%m-%d" | jsonify }},"label":{{ post_label | jsonify }},"excerpt":{{ post.content | strip_html | strip_newlines | truncatewords: 24 | jsonify }}}
+{% endfor %}
+]
+</script>

@@ -3,6 +3,8 @@ title: Write-Ups
 permalink: /write-ups/
 ---
 
+<p class="eyebrow">&gt; write-ups</p>
+
 # Write-Ups
 
 ## HackTheBox - Sherlocks

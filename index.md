@@ -2,21 +2,26 @@
 layout: default
 ---
 
+<p class="eyebrow">&gt; homepage</p>
+
 # Latest Posts
 
 {% assign latest_posts = site.writeups | concat: site.programming | concat: site.cves | concat: site.certifications | concat: site.journal | sort: "date" | reverse %}
+{% assign total = latest_posts.size %}
+
+<div class="listhead">
+  <span>idx</span><span>date</span><span>rt</span><span>title &mdash; category</span>
+</div>
+<div class="listing" role="list">
 {% for post in latest_posts %}
-{% assign post_label = post.collection %}
-{% if post.collection == "writeups" %}
-  {% assign post_label = "Write-Up" %}
-{% elsif post.collection == "programming" %}
-  {% assign post_label = "Programming & Tooling" %}
-{% elsif post.collection == "cves" %}
-  {% assign post_label = "CVE & Research" %}
-{% elsif post.collection == "certifications" %}
-  {% assign post_label = "Certification" %}
-{% elsif post.collection == "journal" %}
-  {% assign post_label = "Journal" %}
-{% endif %}
-- [{{ post.title }}]({{ post.url | relative_url }}) <small>{{ post.date | date: "%Y-%m-%d" }} · {{ post_label }}</small>
+{% assign idx = total | minus: forloop.index0 %}
+{% capture post_label %}{% include post-label.html collection=post.collection %}{% endcapture %}
+{% capture rt %}{% include reading-time.html content=post.content %}{% endcapture %}
+<a class="row" href="{{ post.url | relative_url }}">
+  <span class="idx">{{ idx | prepend: '000' | slice: -3, 3 }}</span>
+  <span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>
+  <span class="rt">{{ rt }}m</span>
+  <span class="title-cell"><span class="title">{{ post.title }}</span> <span class="cat">{{ post_label }}</span></span>
+</a>
 {% endfor %}
+</div>
