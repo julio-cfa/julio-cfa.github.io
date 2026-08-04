@@ -74,10 +74,10 @@ permalink: /about/
   }
 
   /* company accent variants (optional) */
-  .c-rocketchat { color: #ff7b7b; }
-  .c-loadsmart  { color: #9be59b; }
-  .c-openzeppelin  { color: #7ad0ff; }
-  .c-berghem     { color: #ffbf6b; }
+  .c-rocketchat { color: var(--c-rocketchat); }
+  .c-loadsmart  { color: var(--c-loadsmart); }
+  .c-openzeppelin  { color: var(--c-openzeppelin); }
+  .c-berghem     { color: var(--c-berghem); }
 
   /* Small intro paragraph style */
   .lead{

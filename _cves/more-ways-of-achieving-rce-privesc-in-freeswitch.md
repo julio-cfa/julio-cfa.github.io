@@ -2,10 +2,10 @@
 author: Julio
 date: 2026-05-17
 title: "More Ways to Achieve RCE/Privesc in FreeSWITCH"
-image: /assets/images/freeswitch_ways_to_rce.svg
+image: /assets/images/freeswitch_phone.png
 ---
 
-<p style="text-align: center"><img src="/assets/images/freeswitch_ways_to_rce.svg" alt="Diagram showing FreeSwitch's exploitation path" width="650"></p>
+<p style="text-align: center"><img src="/assets/images/freeswitch_phone.png" alt="Illustration of a phone handset connected by a coiled cord to a terminal window" width="800"></p>
 
 # More Ways to Achieve RCE/Privesc in FreeSWITCH
 

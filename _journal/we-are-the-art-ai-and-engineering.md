@@ -2,10 +2,10 @@
 author: Julio
 date: 2026-03-29
 title: "We Are The Art - AI & Engineering"
-image: /assets/images/fallen-angel-cabanel.png
+image: /assets/images/fallen-angel-detail.png
 ---
 
-<p style="text-align: center"><img src="/assets/images/fallen-angel-cabanel.png" alt="Fallen Angel by Alexandre Cabanel" style="border: 1px solid white;"></p>
+<p style="text-align: center"><img src="/assets/images/fallen-angel-detail.png" alt="High-contrast halftone close-up of the face in Alexandre Cabanel's Fallen Angel" style="border: 1px solid white;"></p>
 
 # We Are The Art - AI & Engineering
 

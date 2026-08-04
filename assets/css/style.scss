@@ -38,6 +38,11 @@
   --rg-header: #87afaf;
   --rg-error-fg: #1c1c1c;
   --rg-error-bg: #d75f87;
+
+  --c-rocketchat: #ff7b7b;
+  --c-loadsmart: #9be59b;
+  --c-openzeppelin: #7ad0ff;
+  --c-berghem: #ffbf6b;
 }
 
 :root[data-theme="light"] {
@@ -74,6 +79,11 @@
   --rg-header: #2f6666;
   --rg-error-fg: #6b1230;
   --rg-error-bg: #f3c6d6;
+
+  --c-rocketchat: #c23b3b;
+  --c-loadsmart: #2f8f4f;
+  --c-openzeppelin: #1f6fa0;
+  --c-berghem: #a66a1f;
 }
 
 @media (prefers-color-scheme: light) {
@@ -111,6 +121,11 @@
     --rg-header: #2f6666;
     --rg-error-fg: #6b1230;
     --rg-error-bg: #f3c6d6;
+
+    --c-rocketchat: #c23b3b;
+    --c-loadsmart: #2f8f4f;
+    --c-openzeppelin: #1f6fa0;
+    --c-berghem: #a66a1f;
   }
 }
 
@@ -211,15 +226,15 @@ a:focus {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.5rem 0.65rem;
+  gap: 0.55rem 0.7rem;
   margin-top: 1.5rem;
   margin-bottom: 0.25rem;
-  font-size: 0.93rem;
+  font-size: 1rem;
 }
 
 .site-nav a {
   display: inline-block;
-  padding: 0.4rem 0.72rem;
+  padding: 0.46rem 0.8rem;
   border: 1px solid var(--surface-border);
   color: var(--accent-muted);
   background-color: transparent;
